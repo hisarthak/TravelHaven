@@ -84,9 +84,16 @@ const listing = <%- JSON.stringify(listing) %>;
                 <p class="mb-0"><%= review.rating %> / 5</p>
               </div>
               <p class="card-text"><%= review.comment %></p>
-              <form class="mt-auto" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id%>?_method=DELETE">
+
+              <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                <form class="mb-3" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                  <button class="btn btn-sm btn-dark">Delete</button>
+                </form>
+              <% } %>
+
+              <!-- <form class="mt-auto" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id%>?_method=DELETE">
                 <button class="btn btn-sm btn-dark">Delete</button>
-              </form>
+              </form> -->
             </div>
           </div>
         </div>

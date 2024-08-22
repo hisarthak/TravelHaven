@@ -114,6 +114,34 @@ font-weight: 400 !important;
 
 /* New Page */
 
+.btns{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem; /* Adjust gap as needed */
+    margin-top: 1rem; 
+}
+
+/* Define custom styles for buttons */
+.btn-custom {
+    padding: 0.5rem 1rem; /* Padding for responsiveness */
+    font-size: 0.875rem; /* Font size to ensure text fits well */
+    border-radius: 0.25rem; /* Rounded corners */
+}
+/* h */
+
+.btn {
+    flex: 1; /* Ensure buttons take up equal space */
+    padding: 0.5rem 1rem; /* Adjust padding for better visibility */
+    text-align: center;
+    font-size: 1rem; /* Adjust font size as needed */
+}
+
+.delete-btn {
+    flex: 1; /* Equal width for both buttons */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    min-width: 6rem;
+}
+
 .add-btn{
     background-color: #fe424d !important;
     border: none !important;
@@ -124,6 +152,9 @@ font-weight: 400 !important;
 .edit-btn{
     background-color: #fe424d !important;
     border: none !important;
+    flex: 1;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    min-width: 6rem;
 }
 
 /* Show Page */
@@ -132,9 +163,6 @@ font-weight: 400 !important;
     height: 30vh;
 }
 
-.btns{
-    display: flex;
-}
 
 .show-card{
     padding-left: 0;
