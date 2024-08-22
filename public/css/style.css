@@ -144,9 +144,23 @@ font-weight: 400 !important;
 /* Map */
 
 #map {
-  height: 400px;
-  width: 80vh;
-     }
+    height: 50vh; /* Default height */
+    width: 80%;   /* Default width */
+  }
+  
+  @media (max-width: 768px) {
+    #map {
+      height: 40vh; /* Smaller height for medium screens */
+      width: 100%;  /* Full width on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #map {
+      height: 30vh; /* Even smaller height for very small screens */
+    }
+  }
+  
    
      
       @media (max-width: 768px) {
