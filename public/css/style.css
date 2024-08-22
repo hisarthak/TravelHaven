@@ -202,6 +202,7 @@ font-weight: 400 !important;
 
         .navbar-nav .nav-link {
             color: #000000; /* Text color */
+            margin-left: 1rem;
         
           }
           
