@@ -113,6 +113,13 @@ font-weight: 400 !important;
 }
 
 /* New Page */
+.revDelBtn {
+    margin-left: 0.5rem;
+}
+
+.revComm {
+    margin-left: 0.5rem;
+}
 
 .btns{
     display: flex;
@@ -212,4 +219,5 @@ font-weight: 400 !important;
             border-bottom: 1px solid #ccc; /* Optional: Add a border between items */
           }
     }
+    
     
