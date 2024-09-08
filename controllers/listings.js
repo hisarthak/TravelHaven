@@ -79,9 +79,7 @@ module.exports.updateListing =  async (req, res)=>{
         .send();
         let {id} = req.params;
     let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
-    console.log(req.body.listing);
-    console.log(req.body.listing.location);
-    console.log(response.body.features[0].geometry);
+ 
     listing.geometry = response.body.features[0].geometry;
 
 
