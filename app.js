@@ -103,6 +103,11 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+// ADD THIS ROUTE to direct the root URL to the homepage (listings page)
+app.get("/", (req, res) => {
+    res.redirect("/listings"); // Redirect root URL to /listings
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
