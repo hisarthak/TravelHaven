@@ -34,7 +34,7 @@ main()
  })
 
 async function main(){
-    await mongoose.connect(dbUrl);
+     mongoose.connect(dbUrl);
 }
 
 const store = MongoStore.create({
@@ -79,8 +79,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
-    
     res.locals.currUser = req.user;
+    console.log(res.locals.currUser);
     next();
 });
 
