@@ -107,10 +107,13 @@
                 <img src="<%=listing.image.url%>" class="card-img-top" alt="listing-image" style="height: 20rem;">
                 <div class="card-img-overlay"></div>
                 <div class="card-body">
-                  <p class="card-text">
+        
+                <p class="card-text">
                     <b><%= listing.title %></b><br>
-                    &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
-                    <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+                    <span class="price" data-original-price="<%= listing.price %>">
+                        &#8377; <span class="display-price"><%= listing.price.toLocaleString("en-IN") %></span> / night
+                    </span>
+                    <span class="tax-info" style="display:none;">&nbsp; (<i>including 18% GST</i> )</span>
                 </p>
                 </div>
               </div>
@@ -118,7 +121,7 @@
               <% } %>
        
     </div>
-
+<!-- 
     <script>
         let taxSwitch = document.getElementById("flexSwitchCheckDefault");
         taxSwitch.addEventListener("click", () =>{
@@ -133,5 +136,30 @@
            
            }
         })
-    </script>
+    </script> -->
+
+<script>
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info");
+        let prices = document.getElementsByClassName("price");
+
+        for (let price of prices) {
+            let originalPrice = parseFloat(price.getAttribute("data-original-price"));
+            let displayPrice = price.querySelector(".display-price");
+            let taxInfo = price.nextElementSibling; // Get the tax-info span
+
+            if (taxSwitch.checked) {
+                let taxAmount = originalPrice * 0.18; // 18% tax
+                let totalPrice = originalPrice + taxAmount;
+                displayPrice.innerHTML = totalPrice.toLocaleString("en-IN");
+                taxInfo.style.display = "inline"; // Show the tax info
+            } else {
+                displayPrice.innerHTML = originalPrice.toLocaleString("en-IN");
+                taxInfo.style.display = "none"; // Hide the tax info
+            }
+        }
+    });
+</script>
+
 
