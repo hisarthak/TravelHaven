@@ -38,9 +38,21 @@ body{
     font-size: 2rem;
 }
 
-.nav-link{
-    color: #222222 !important;
+.nav-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.625rem 1rem; /* Adjust padding for better spacing (10px is ~0.625rem, 15px is ~1rem) */
+    color: #222222 !important; /* Text color */
+    transition: background-color 0.3s, border 0.3s; /* Smooth transition */
+    border-radius: 1.25rem; /* Rounded edges for pill shape */
 }
+
+.nav-link:hover {
+    background-color: rgba(128, 128, 128, 0.2); /* Light grey background */
+    /* border: 1px solid grey; Grey border */
+}
+
 
 /* Footer */
 

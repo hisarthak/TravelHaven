@@ -107,3 +107,20 @@ module.exports.destroyListing = async (req,res)=>{
     req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
 }
+
+module.exports.searchListing =  async (req, res) => {
+    const searchQuery = req.query.query;
+
+      // Search the listings based on the search query
+      const results = await Listing.find({
+        $or: [
+          { location: { $regex: searchQuery, $options: 'i' } }, // Case-insensitive search for location
+          { country: { $regex: searchQuery, $options: 'i' } },   // Case-insensitive search for country
+          { title: { $regex: searchQuery, $options: 'i' } }      // Case-insensitive search for title
+        ]
+      });
+  
+      // Render the search results (assuming you have a search-results view)
+      res.render("listings/search.ejs", { searchResults: results || [] });
+
+  }
