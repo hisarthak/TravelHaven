@@ -78,33 +78,7 @@ body{
       }
 }
 
-
-
-  
-  
-    /* .search-btn {
-      background-color:#fe4248 ;
-      color: #fff;
-      border-radius: 25px;
-      padding: 0 1rem 0 1rem;
-    }
-  
-    .search-btn:hover {
-      background-color:#fe4248 ;
-      color: #fff;
-    }
-  
-    .search-btn i {
-      display: inline;
-      margin-right: 0.5rem;
-     
-    }
-  
-    .search-inp {
-      border-radius: 25px;
-      padding: 0.5rem 3rem 0.5rem 3rem;
-      font-size: 1rem;
-    } */
+/* Website Icon */
   
     .icon {
       width: 2.2rem;             /* Default size */
@@ -159,25 +133,44 @@ body{
 
 
 /* Cards */
+/* Override Bootstrap's default row and column behavior */
+.custom-row {
+    display: block; /* Remove flexbox layout from row */
+    margin: 0; /* Reset any Bootstrap row margins */
+}
+
+/* Custom styling for your grid layout */
+.custom-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns on large screens */
+    grid-gap: 1rem; /* Add space between the grid items */
+}
+
+/* Optional: Adjust margins or paddings as per your needs */
+.custom-cols > div {
+    margin-bottom: 2rem; /* Add space between items */
+}
+
+/* Adjust columns for different screen sizes */
+@media (max-width: 768px) {
+    .custom-cols {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-cols {
+        grid-template-columns: 1fr; /* One column on small screens */
+    }
+}
 
 
-
-/* Container to hold listings and center them with margin */
-/* .listings-container {
-    margin-left: 7rem;  /* Adds margin to the left */
-    /* margin-right: 7rem; /* Adds margin to the right */
-/* } */
-/* Styles for individual listing cards */
-/* .listing-card {
-    border: none !important;
-    margin-bottom: 2rem;
-    margin-left: 1rem; /* Margin between cards */
-    /* margin-right: 1rem; /* Margin between cards */
-/* } */ 
 
 .listing-card{
     border: none !important;
     margin-bottom: 2rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
 }
 
 .card-img-top {
@@ -196,6 +189,7 @@ font-weight: 400 !important;
 
 .listing-link {
     text-decoration: none;
+    
 }
 
 /* Card Effect */
