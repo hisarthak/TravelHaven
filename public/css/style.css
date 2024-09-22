@@ -54,6 +54,74 @@ body{
 }
 
 
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: #f2f2f2; /* Light gray background */
+        border-bottom-left-radius: 10px; /* Rounded bottom left corner */
+        border-bottom-right-radius: 10px; /* Rounded bottom right corner */
+        border-bottom: 2px solid #ccc; /* Light gray border at the bottom */
+        z-index: 1000; /* Ensure it appears above other elements */
+        padding: 0.3rem;
+    }
+
+    .navbar-nav .nav-link {
+        color: #000000; /* Text color */
+        margin-left: 1rem;
+        padding: 0.6rem 0.7rem;
+    
+      }
+      
+      .navbar-nav .nav-item {
+        margin: 0.3125rem 0; /* Space between items */
+        padding: 0.625rem; /* Space inside each item */
+        border-bottom: 1px solid #ccc; /* Optional: Add a border between items */
+      }
+}
+
+
+
+  
+  
+    /* .search-btn {
+      background-color:#fe4248 ;
+      color: #fff;
+      border-radius: 25px;
+      padding: 0 1rem 0 1rem;
+    }
+  
+    .search-btn:hover {
+      background-color:#fe4248 ;
+      color: #fff;
+    }
+  
+    .search-btn i {
+      display: inline;
+      margin-right: 0.5rem;
+     
+    }
+  
+    .search-inp {
+      border-radius: 25px;
+      padding: 0.5rem 3rem 0.5rem 3rem;
+      font-size: 1rem;
+    } */
+  
+    .icon {
+      width: 2.2rem;             /* Default size */
+      height: auto;            /* Maintain aspect ratio */
+      object-fit: cover;       /* Ensure the image covers the given dimensions */
+      border-radius: 0.625rem;      /* Curvy edges */
+  }
+  
+  
+  @media (max-width: 480px) {
+      .icon {
+          width: 2rem;         /* Even smaller for small screens */
+      }
+  }
+  
+
+
 /* Footer */
 
 .f-info-links a{
@@ -88,7 +156,24 @@ body{
     align-content: space-evenly;
 }
 
+
+
 /* Cards */
+
+
+
+/* Container to hold listings and center them with margin */
+/* .listings-container {
+    margin-left: 7rem;  /* Adds margin to the left */
+    /* margin-right: 7rem; /* Adds margin to the right */
+/* } */
+/* Styles for individual listing cards */
+/* .listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+    margin-left: 1rem; /* Margin between cards */
+    /* margin-right: 1rem; /* Margin between cards */
+/* } */ 
 
 .listing-card{
     border: none !important;
@@ -120,8 +205,8 @@ font-weight: 400 !important;
 }
 
 .card-img-overlay:hover {
-    opacity: 0.2;
-    background-color: #ebebeb;
+    opacity: 0.1 !important;
+    background-color: #ebebeb !important;
 }
 
 /* New Page */
@@ -136,9 +221,9 @@ font-weight: 400 !important;
 .btns{
     display: flex;
     justify-content: flex-start;
-    gap: 1rem; /* Adjust gap as needed */
+     gap: 1rem;
     margin-top: 1rem; 
-}
+ }
 
 /* Define custom styles for buttons */
 .btn-custom {
@@ -158,7 +243,7 @@ font-weight: 400 !important;
 .delete-btn {
     flex: 1; /* Equal width for both buttons */
     flex-shrink: 0; /* Prevent buttons from shrinking */
-    min-width: 6rem;
+    min-width: 5rem;
 }
 
 .add-btn{
@@ -172,9 +257,20 @@ font-weight: 400 !important;
     background-color: #fe424d !important;
     border: none !important;
     flex: 1;
-    flex-shrink: 0; /* Prevent buttons from shrinking */
-    min-width: 6rem;
+    flex-shrink: 0; 
+    min-width: 5rem;
+} 
+
+.edit-btn2 {
+    background-color: #fe424d !important;
+    border: none !important;
+    min-width: 6rem; /* Minimum width of the button */
+    max-width: 12rem; /* Maximum width of the button */
+    width: auto; /* Adjusts to the content size */
+    display: inline-block; /* Ensures the button stays inline */
+    margin: 0 auto; /* Center the button if possible */
 }
+
 
 /* Show Page */
 
@@ -187,6 +283,8 @@ font-weight: 400 !important;
     padding-left: 0;
     padding-right: 0;
 }
+
+
 
 /* Map */
 
@@ -208,28 +306,411 @@ font-weight: 400 !important;
     }
   }
   
-   
-     
-      @media (max-width: 768px) {
-        .navbar-collapse {
-            background-color: #f2f2f2; /* Light gray background */
-            border-bottom-left-radius: 10px; /* Rounded bottom left corner */
-            border-bottom-right-radius: 10px; /* Rounded bottom right corner */
-            border-bottom: 2px solid #ccc; /* Light gray border at the bottom */
-            z-index: 1000; /* Ensure it appears above other elements */
-        }
 
-        .navbar-nav .nav-link {
-            color: #000000; /* Text color */
-            margin-left: 1rem;
-        
-          }
-          
-          .navbar-nav .nav-item {
-            margin: 5px 0; /* Space between items */
-            padding: 10px; /* Space inside each item */
-            border-bottom: 1px solid #ccc; /* Optional: Add a border between items */
-          }
+    /* Search.ejs and Index.ejs */
+
+    #filters{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .filter{
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: 0.7;
+        border-bottom: 0.1rem solid transparent; /* Add transparent border by default */
+        padding-bottom: 0.1rem; /* Add padding to compensate for border space */
+    }
+
+     .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+        border-bottom: 0.1rem solid rgba(128, 128, 128, 0.4); /* Black bottom border */
+    background-color: transparent; /* Transparent background */
+    padding-bottom: 0rem; /* Adjust space below the icon */
+    
+    } 
+
+    .filter p {
+        font-size: 0.8rem;
+    }
+
+    .selected i {
+    color: black; /* Changes the icon to black */
+}
+
+.selected {
+    
+    border-bottom: 0.1rem solid black !important; /* Black bottom border */
+    background-color: transparent; /* Transparent background */
+    opacity: 1; /* Full opacity for the selected icon */
+    transition: border-bottom 0.3s ease;
+    padding-bottom: 0.1rem; /* Keep padding consistent */
+}
+
+
+    .tax-info {
+        display: none;
+    }
+
+    
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: auto; /* Allow height adjustment */
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        max-width: 20rem; /* Adjust max-width as needed */
+        margin: 0 auto; /* Center it within its container */
     }
     
+    .form-container {
+        display: flex;
+        justify-content: space-between; /* Maintain space between filters and toggle */
+        align-items: center;
+        flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    }
     
+    /* Media query adjustments */
+    @media (max-width: 48rem) { /* Approximately 768px */
+        .form-container {
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+    
+        .tax-toggle {
+            margin-top: 1rem; /* Space between the filters and toggle switch */
+            width: auto; /* Allow it to fit the content */
+            text-align: left; /* Align text to the left */
+        }
+    
+        #filters {
+            margin-bottom: 1rem; /* Space below the filters */
+        }
+    }
+    
+
+   
+    
+
+        /* Flexbox container to align form and tax-toggle side by side */
+        .form-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+/* Customizing the switch when it's ON */
+.form-switch .form-check-input:checked {
+    background-color: black !important; /* Make the switch background black when ON */
+    border-color: black !important; /* Make the border black */
+    box-shadow: none !important; /* Remove any shadow */
+}
+
+/* Customizing the thumb (circle) when switch is ON */
+.form-switch .form-check-input:checked::before {
+    background-color: white !important; /* Thumb color when ON */
+    transform: translateX(1.5rem) !important; /* Move thumb to the right */
+}
+
+/* Customizing the switch when it's OFF */
+.form-switch .form-check-input {
+    background-color: white !important; /* Switch background when OFF */
+    border-color: black !important; /* Switch border color when OFF */
+    box-shadow: none !important; /* Remove shadow */
+}
+
+/* Customizing the thumb (circle) when switch is OFF */
+.form-switch .form-check-input::before {
+    background-color: black !important; /* Thumb color when OFF */
+    width: 1rem !important; /* Thumb size */
+    height: 1rem !important;
+    transform: translateX(0) !important; /* Thumb position on the left */
+    transition: background-color 0.2s ease, transform 0.2s ease !important; /* Smooth transition */
+}
+
+/* Remove focus outline */
+.form-switch .form-check-input:focus {
+    box-shadow: none !important;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.center-message-container {
+    display: flex;                     /* Use flexbox */
+    justify-content: center;           /* Center horizontally */
+    align-items: center;               /* Center vertically */
+    height: auto;                    /* Full viewport height */
+    text-align: center;                /* Center text */
+    margin-top: 50px;                 /* Add margin-top to create space above */
+}
+
+.center-message {
+    font-size: 2rem;                 /* Optional: Increase font size */
+    color: #444;                       /* Optional: Change text color */
+    padding: 1.25rem; 
+}
+
+/* checkbox style */
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid #000;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: black;
+    position: relative;
+  }
+  
+  input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.3125rem;
+    width: 0.375rem;
+    height: 0.75rem;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Search Button */
+
+.search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+
+  form .search-btn {
+    background-color: #fe4248;
+    color: #fff;
+    border-radius: 0 1.5rem 1.5rem 0; /* Pill shape */
+    padding: 0.5rem 1rem; /* Adjust padding */
+    border: 1px solid #fe4248; /* Remove default border */
+    border-left: none !important;
+    transition: box-shadow 0.3s ease, backgroond-color 0.3s; /* Smooth transition */
+    margin-left:0 !important;
+    position: relative; /* Needed for tooltip positioning */
+    box-shadow: 0 0.20rem 0.20rem rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+@keyframes click-shadow {
+    0% {
+        box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.3); /* Larger shadow on click */
+    }
+    100% {
+        box-shadow: 0 0.20rem 0.20rem rgba(0, 0, 0, 0.2); /* Revert to original shadow */
+    }
+}
+
+/* When the button is clicked (focused), trigger the animation */
+form .search-btn:focus {
+    animation: click-shadow 0.3s ease-in-out; /* Run the shadow animation */
+}
+
+
+form .search-btn:hover {
+    background-color: #fe2a2d; /* Darker on hover */
+     border: 1px solid #fe4248 !important; /* Remove default border */
+    border-left: none !important;
+    color: #fff;
+}
+
+
+form .search-inp {
+    border-radius: 1.5rem 0rem 0rem 1.5rem;
+    padding: 0.5rem 4rem; /* Padding for input */
+    font-size: 1rem;
+    border-right: none;
+    margin-right: 0 !important;
+    outline: none !important; /* Remove outline */
+    /* box-shadow: none !important; Remove default box shadow */
+    box-shadow: 0 0.20rem 0.20rem rgba(0, 0, 0, 0.2) !important; /* Add shadow */
+    transition: box-shadow 0.3s ease; 
+
+
+    background-color: #f5f5f5; /* Light gray background */
+    color: #333; /* Darker text color for contrast */
+    border: 1px solid #ccc; /* Thin black border */
+    border-right: none;
+    
+}
+
+.search-inp:focus {
+    background-color: #f5f5f5 !important; /* Maintain background color when focused */
+    color: #333 !important; /* Maintain text color */
+    border: 1px solid #ccc !important; /* Change border color on focus if needed */
+    border-right: none !important;
+}
+
+form .search-btn:focus,
+form .search-btn:active {
+    background-color: #fe4248 !important; /* Keep the same color on focus and active */
+    outline: none; /* Remove outline */
+    box-shadow: none; /* Remove box shadow */
+    color: #fff !important;
+    border: 1px solid #fe4248 !important; /* Remove default border */
+    border-left: none !important;
+}
+
+
+.d-flex {
+    display: flex;
+}
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+    form .search-btn {
+        padding: 0.4rem 0.6rem; /* Smaller padding */
+        font-size: 0.875rem; /* Smaller font size */
+    }
+
+    form .search-inp {
+        padding: 0.4rem 0.8rem; /* Smaller padding */
+        font-size: 0.875rem; /* Smaller font size */
+    }
+}
+
+/* Flash Messages */
+
+.alert {
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* Ensure progress bar is not affected by Bootstrap alert styling */
+.alert .progress {
+    height: 0.1875rem; /* Thin progress bar */
+    background-color: #e9ecef;
+    margin-top: 0.3125rem; /* Adjust for a smaller gap */
+    border-radius: 1px;
+    overflow: hidden;
+    padding: 0; /* Remove any padding */
+}
+
+.alert .progress-bar {
+    height: 100%;
+    background-color: #28a745; /* Green for success */
+    width: 100%;
+    transition: width linear;
+}
+
+#progress-bar-error {
+    background-color: #dc3545; /* Red for error */
+}
+
+/* Reduce the size of the close button inside alerts */
+/* Reduce the size of the close button inside alerts and remove box shadow */
+.alert .btn-close {
+    width: 0.75em;  /* Smaller width */
+    height: 0.75em; /* Smaller height */
+    padding: 0.25em; /* Adjust padding to make the button smaller */
+    font-size: 0.75rem; /* Reduce font size for the 'x' icon */
+    line-height: 1;  /* Ensure the icon is vertically centered */
+    box-shadow: none !important; /* Forcefully remove the box shadow */
+    outline: none !important;    /* Remove any outline */
+    /* background: transparent !important; Ensure no background color */
+    /* border: none !important; Remove any border */
+}
+
+/* Easter Egg Button */.easter-egg-btn {
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+    background-color: #000; /* Black button color */
+    color: white; /* Text color */
+    padding: 0.5rem 1rem; /* Default padding */
+    border-radius: 50px; /* Pill shape */
+    font-size: 0.8rem; /* Default font size */
+    text-decoration: none; /* Remove underline */
+    display: none; /* Initially hidden */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, opacity 0.5s ease-in-out; /* Smooth transition */
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.easter-egg-btn:hover {
+    background-color: #333; /* Darker shade on hover */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 480px) {
+    .easter-egg-btn {
+   display:none !important;
+    }
+}
+
+.easter-egg-message {
+    text-align: center;
+    margin: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.easter-egg-message h1 {
+    color: #fe4248;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #fe4248;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border:none;
+}
+
+.back-button:hover {
+    background-color: #e3363b;
+    border: none;
+}
+
+
+/* Privacy Image */
+
+.responsive-image {
+    width: 60%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Media Query for screens smaller than 740px */
+@media (max-width: 740px) {
+    .responsive-image {
+        width: 60%; /* Reduce width to 80% */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+/* Media Query for screens smaller than 480px */
+@media (max-width: 480px) {
+    .responsive-image {
+        width: 60%; /* Reduce width to 60% */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+
+
+
+
+

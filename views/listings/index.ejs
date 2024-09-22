@@ -1,96 +1,65 @@
 
 <% layout("/layouts/boilerplate")%>
 <style>
-    #filters{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
 
-    .filter{
-        text-align: center;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        opacity: 0.7;
-    }
 
-    .filter:hover {
-        opacity: 1;
-        cursor: pointer;
-    }
 
-    .filter p {
-        font-size: 0.8rem;
-    }
-
-    .tax-info {
-        display: none;
-    }
-
-    .tax-toggle {
-        border: 1px solid black;
-        border-radius: 1rem;
-        height: 3.25rem;
-        padding: 1rem;
-        margin-left: 2rem;
-        display: flex;
-        align-items: center;
-    }
 </style>
 
-<div id="filters">
-    <div class="filter">
-       <div><i class="fa-solid fa-fire"></i></div>
-       <p>Trending</p>
-    </div>
-<div >
-   <div class="filter">
-       <div><i class="fa-solid fa-bed"></i></div>
-       <p>Rooms</p>
-       </div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <p>Iconic Cities</p>
-     </div>
- <div >
-    <div class="filter">
-        <div><i class="fa-solid fa-mountain-sun"></i></div>
-        <p>Mountains</p>
+<div class="form-container">
+<form action="/listings/category" method="get" id="categoryForm">
+    <div id="filters">
+        <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
         </div>
-     </div>
-     <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-     </div>
- <div >
-    <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Amazing Pools</p>
+        <div class="filter <%= selectedCategory === 'rooms' ? 'selected' : '' %>" onclick="setCategory('rooms')">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
         </div>
-     </div>
-     <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
-        <p>Camping</p>
-     </div>
- <div >
-    <div class="filter">
-        <div><i class="fa-solid fa-cow"></i></div>
-        <p>Farms</p>
+        <div class="filter <%= selectedCategory === 'iconic cities' ? 'selected' : '' %>" onclick="setCategory('iconic cities')">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic Cities</p>
         </div>
-     </div>
-     <div class="filter">
-        <div><i class="fa-regular fa-snowflake"></i></div>
-        <p>Arctic</p>
+        <div class="filter <%= selectedCategory === 'mountains' ? 'selected' : '' %>" onclick="setCategory('mountains')">
+            <div><i class="fa-solid fa-mountain-sun"></i></div>
+            <p>Mountains</p>
         </div>
-        <div class="filter">
+        <div class="filter <%= selectedCategory === 'castles' ? 'selected' : '' %>" onclick="setCategory('castles')">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+        <div class="filter <%= selectedCategory === 'amazing pools' ? 'selected' : '' %>" onclick="setCategory('amazing pools')">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pools</p>
+        </div>
+        <div class="filter <%= selectedCategory === 'camping' ? 'selected' : '' %>" onclick="setCategory('camping')">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </div>
+        <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms')">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+        </div>
+        <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic')">
+            <div><i class="fa-regular fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+        <div class="filter <%= selectedCategory === 'domes' ? 'selected' : '' %>" onclick="setCategory('domes')">
             <div><i class="fa-solid fa-igloo"></i></div>
             <p>Domes</p>
-            </div>
-            <div class="filter">
-                <div><i class="fa-solid fa-ferry"></i></div>
-                <p>Boats</p>
-                </div>
+        </div>
+        <div class="filter <%= selectedCategory === 'boats' ? 'selected' : '' %>" onclick="setCategory('boats')">
+            <div><i class="fa-solid fa-ferry"></i></div>
+            <p>Boats</p>
+        </div>
+    </div>
+    <input type="hidden" name="category" id="selectedCategory" value="<%= selectedCategory %>">
+    <button type="submit" style="display: none;">Search</button>
+</form>
+
+
+
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -98,7 +67,10 @@
               </div>
         </div>
      </div>
+    </div>
 
+
+    <div class="listings-container mx-lg-5 mx-md-3 mx-sm-1">
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
         
         <% for (listing of allListings){ %>
@@ -119,7 +91,7 @@
               </div>
               </a>
               <% } %>
-       
+    </div>
     </div>
 <!-- 
     <script>
@@ -139,27 +111,78 @@
     </script> -->
 
 <script>
-    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-    taxSwitch.addEventListener("click", () => {
-        let taxInfo = document.getElementsByClassName("tax-info");
-        let prices = document.getElementsByClassName("price");
+   // Tax toggle functionality
+const taxSwitch = document.getElementById("flexSwitchCheckDefault");
 
-        for (let price of prices) {
-            let originalPrice = parseFloat(price.getAttribute("data-original-price"));
-            let displayPrice = price.querySelector(".display-price");
-            let taxInfo = price.nextElementSibling; // Get the tax-info span
+// Load the saved state from sessionStorage and apply it to the toggle switch
+const savedState = sessionStorage.getItem('taxToggleState');
+taxSwitch.checked = savedState === 'true'; // Set toggle based on saved state
 
-            if (taxSwitch.checked) {
-                let taxAmount = originalPrice * 0.18; // 18% tax
-                let totalPrice = originalPrice + taxAmount;
-                displayPrice.innerHTML = totalPrice.toLocaleString("en-IN");
-                taxInfo.style.display = "inline"; // Show the tax info
-            } else {
-                displayPrice.innerHTML = originalPrice.toLocaleString("en-IN");
-                taxInfo.style.display = "none"; // Hide the tax info
-            }
+// Function to update prices based on toggle state
+const updatePrices = () => {
+    const prices = document.getElementsByClassName("price");
+
+    for (let price of prices) {
+        const originalPrice = parseFloat(price.getAttribute("data-original-price"));
+        const displayPrice = price.querySelector(".display-price");
+        const taxInfo = price.nextElementSibling; // Get the tax-info span
+
+        if (taxSwitch.checked) {
+            const taxAmount = originalPrice * 0.18; // 18% tax
+            const totalPrice = originalPrice + taxAmount;
+            displayPrice.innerHTML = totalPrice.toLocaleString("en-IN");
+            taxInfo.style.display = "inline"; // Show the tax info
+        } else {
+            displayPrice.innerHTML = originalPrice.toLocaleString("en-IN");
+            taxInfo.style.display = "none"; // Hide the tax info
         }
-    });
+    }
+};
+
+// Initial price update based on toggle state
+updatePrices();
+
+// Add event listener to update sessionStorage and prices when the toggle state changes
+taxSwitch.addEventListener("change", () => {
+    sessionStorage.setItem('taxToggleState', taxSwitch.checked);
+    updatePrices(); // Update prices whenever the toggle is changed
+});
+
+// Function to set category
+function setCategory(category) {
+    // Set the selected category value in the hidden input
+    document.getElementById('selectedCategory').value = category;
+
+    // Remove the 'selected' class from all filters
+    let filters = document.getElementsByClassName('filter');
+    for (let filter of filters) {
+        filter.classList.remove('selected');
+    }
+
+    // Find the clicked filter by the category and add the 'selected' class
+    let selectedFilter = document.querySelector(`.filter[onclick="setCategory('${category}')"]`);
+    selectedFilter.classList.add('selected');
+
+    // Automatically submit the form
+    document.getElementById('categoryForm').submit();
+}
+
+// Toggle switch functionality
+const toggleSwitch = document.getElementById('flexSwitchCheckDefault');
+
+// Load the saved state from sessionStorage and apply it to the toggle switch
+const toggleSavedState = sessionStorage.getItem('taxToggleState');
+if (toggleSavedState === 'true') {
+    toggleSwitch.checked = true;  // Set toggle to ON if saved state is 'true'
+} else {
+    toggleSwitch.checked = false; // Set toggle to OFF otherwise
+}
+
+// Add event listener to update sessionStorage when the toggle state changes
+toggleSwitch.addEventListener('change', function() {
+    sessionStorage.setItem('taxToggleState', toggleSwitch.checked);
+});
+
 </script>
 
 

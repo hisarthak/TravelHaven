@@ -28,6 +28,53 @@ Original Listing Image <br>
     
 </div>
 
+<div class="mb-3">
+    <label class="form-label">Choose categories:</label>
+    <div>
+      <input type="checkbox" id="rooms" name="listing[category][]" value="rooms" <% if (listing.category.includes('rooms')) { %> checked <% } %>  onchange="updateHiddenInput()" >
+      <label for="rooms">Rooms</label>
+    </div>
+    <div>
+      <input type="checkbox" id="mountains" name="listing[category][]" value="mountains" <% if (listing.category.includes('mountains')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="mountains">Mountains</label>
+    </div>
+    <div>
+      <input type="checkbox" id="iconicCities" name="listing[category][]" value="iconic cities" <% if (listing.category.includes('iconic cities')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="iconicCities">Iconic Cities</label>
+    </div>
+    <div>
+      <input type="checkbox" id="castles" name="listing[category][]" value="castles" <% if (listing.category.includes('castles')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="castles">Castles</label>
+    </div>
+    <div>
+      <input type="checkbox" id="amazingPools" name="listing[category][]" value="amazing pools" <% if (listing.category.includes('amazing pools')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="amazingPools">Amazing Pools</label>
+    </div>
+    <div>
+      <input type="checkbox" id="camping" name="listing[category][]" value="camping" <% if (listing.category.includes('camping')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="camping">Camping</label>
+    </div>
+    <div>
+      <input type="checkbox" id="farms" name="listing[category][]" value="farms" <% if (listing.category.includes('farms')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="farms">Farms</label>
+    </div>
+    <div>
+      <input type="checkbox" id="arctic" name="listing[category][]" value="arctic"<% if (listing.category.includes('arctic')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="arctic">Arctic</label>
+    </div>
+    <div>
+      <input type="checkbox" id="domes" name="listing[category][]" value="domes" <% if (listing.category.includes('domes')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="domes">Domes</label>
+    </div>
+    <div>
+      <input type="checkbox" id="boats" name="listing[category][]" value="boats"<% if (listing.category.includes('boats')) { %> checked <% } %>  onchange="updateHiddenInput()">
+      <label for="boats">Boats</label>
+    </div>  
+<input name="categorySelected" id="categorySelected" value="1"  style="position: absolute; left: -9999px;" required>
+<div class="invalid-feedback" id="categoryFeedback">Select at least one category</div>
+</div>
+
+
 <div class="row">
     <div class="mb-3 col-md-4">
         <label for="price" class="form-label" >Price</label>
@@ -36,7 +83,7 @@ Original Listing Image <br>
     </div>
     
     <div class="mb-3 col-md-8">
-        <label for="country" class="form-label" >country</label>
+        <label for="country" class="form-label" >Country</label>
         <input name="listing[country]" value="<%=listing.country%>" class="form-control" required>
         <div class="invalid-feedback">Country should be valid</div>
     </div>
@@ -51,8 +98,28 @@ Original Listing Image <br>
     <div class="invalid-feedback">Location should be valid</div>
 </div>
 
-<button class="btn btn-dark edit-btn mt-3">Edit</button>
+<div class="row">
+    <div class="col-md-4 offset-md-4 text-center">
+      <button class="btn btn-dark edit-btn2 mt-3">Edit</button>
+    </div>
+  </div>
+  
     </form>
     </div>
     </div>
-    <script src="/js/script.js"></script>
+    
+    <script>
+        function updateHiddenInput() {
+          const checkboxes = document.querySelectorAll('input[name="listing[category][]"]');
+          const hiddenInput = document.getElementById('categorySelected');
+          const categoryFeedback = document.getElementById('categoryFeedback');
+        
+          // Check if any checkbox is checked
+          const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+          
+          // If checked, set hidden input value to '1', else set it to ''
+          hiddenInput.value = isChecked ? '1' : '';
+        }
+        
+        
+        </script>

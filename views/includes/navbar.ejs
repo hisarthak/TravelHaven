@@ -1,80 +1,48 @@
-<style>
-
-.search-btn {
-  background-color: #fe4248;
-  color: #fff;
-  border-radius: 25px;
-  padding: 0 1rem; /* Adjust padding for centering */
-  position: relative; /* Needed for tooltip positioning */
-}
-
-.search-btn:hover {
-  background-color: #fe4248;
-  color: #fff;
-}
-
-.search-btn i {
-  display: inline;
-  margin-right: 0.5rem;
-}
-
-.search-inp {
-  border-radius: 25px;
-  padding: 0.5rem 3rem; /* Padding for input */
-  font-size: 1rem;
-}
-
-
-  /* .search-btn {
-    background-color:#fe4248 ;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-  }
-
-  .search-btn:hover {
-    background-color:#fe4248 ;
-    color: #fff;
-  }
-
-  .search-btn i {
-    display: inline;
-    margin-right: 0.5rem;
-   
-  }
-
-  .search-inp {
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    font-size: 1rem;
-  } */
-</style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand" href="/listings" title="TravelHaven Home"><img src="/android-chrome-192x192.png" class="icon"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link" href="/listings" title="TravelHaven Home">Explore</a>
         </div>
         <div class="navbar-nav ms-auto">
           <form class="d-flex" role="search" action="/listings/search" method="GET">
-            <input class="form-control me-2 search-inp" type="search" name="query" placeholder="Search destinations" aria-label="Search">
-            <button class="btn search-btn" type="submit" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <!-- Search input with a fallback for undefined searchQuery -->
+            <input 
+              class="form-control me-2 search-inp searchinput" 
+              type="search" 
+              name="query" 
+              placeholder="Search destinations" 
+              aria-label="Search" 
+              value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"> 
+            <button class="btn search-btn" type="submit" title="Search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
           </form>
-        </div> 
+        </div>
+        
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new"><b>List Your Place</b></a>
-          <% if(!currUser) { %>
-          <a class="nav-link "  href="/signup"><b>Signup</b></a>
-          <a class="nav-link" href="/login"><b style="color: green">Log in</b></a>
-          <% } %> <% if(currUser){ %>
-          <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a>
+          <% if (!currUser) { %>
+            <a class="nav-link" href="/signup"><b>Signup</b></a>
+            <a class="nav-link" href="/login"><b style="color: green">Log in</b></a>
+          <% } else if (currUser) { %>
+            <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a>
           <% } %>
         </div>
       </div>
     </div>
   </nav>
+  
+    <script>
+document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
+    const input = document.querySelector('input[name="query"]');
+    if (input.value.trim() === '') {
+        event.preventDefault(); // Prevent form submission
+    }
+});
+</script>

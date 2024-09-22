@@ -26,6 +26,52 @@
     <input placeholder="enter image URL/Link" name="listing[image]"   class="form-control" type="file" required>  
 </div>
 
+<div class="mb-3">
+    <label class="form-label">Choose categories:</label>
+    <div>
+      <input type="checkbox" id="rooms" name="listing[category][]" value="rooms" onchange="updateHiddenInput()" >
+      <label for="rooms">Rooms</label>
+    </div>
+    <div>
+      <input type="checkbox" id="mountains" name="listing[category][]" value="mountains" onchange="updateHiddenInput()">
+      <label for="mountains">Mountains</label>
+    </div>
+    <div>
+      <input type="checkbox" id="iconicCities" name="listing[category][]" value="iconic cities" onchange="updateHiddenInput()">
+      <label for="iconicCities">Iconic Cities</label>
+    </div>
+    <div>
+      <input type="checkbox" id="castles" name="listing[category][]" value="castles" onchange="updateHiddenInput()">
+      <label for="castles">Castles</label>
+    </div>
+    <div>
+      <input type="checkbox" id="amazingPools" name="listing[category][]" value="amazing pools" onchange="updateHiddenInput()">
+      <label for="amazingPools">Amazing Pools</label>
+    </div>
+    <div>
+      <input type="checkbox" id="camping" name="listing[category][]" value="camping" onchange="updateHiddenInput()">
+      <label for="camping">Camping</label>
+    </div>
+    <div>
+      <input type="checkbox" id="farms" name="listing[category][]" value="farms"  onchange="updateHiddenInput()">
+      <label for="farms">Farms</label>
+    </div>
+    <div>
+      <input type="checkbox" id="arctic" name="listing[category][]" value="arctic" onchange="updateHiddenInput()">
+      <label for="arctic">Arctic</label>
+    </div>
+    <div>
+      <input type="checkbox" id="domes" name="listing[category][]" value="domes" onchange="updateHiddenInput()">
+      <label for="domes">Domes</label>
+    </div>
+    <div>
+      <input type="checkbox" id="boats" name="listing[category][]" value="boats" onchange="updateHiddenInput()">
+      <label for="boats">Boats</label>
+    </div>  
+<input name="categorySelected" id="categorySelected" value="" required style="position: absolute; left: -9999px;">
+<div class="invalid-feedback" id="categoryFeedback">Select at least one category</div>
+</div>
+
 <div class="row">
     <div class="mb-3 col-md-4">
         <label for="price" class="form-label" >Price</label>
@@ -45,7 +91,7 @@
 
 <div class="mb-3">
     <label for="location" class="form-label" >Location</label>
-    <input placeholder="Jaipur, Rajasthan" name="listing[location]"  class="form-control" required >
+    <input placeholder="Jaipur, Rajasthan" name="listing[location]"  class="form-control" required>
     <div class="invalid-feedback">Location should be valid</div>
 </div>
 
@@ -55,4 +101,19 @@
     </form>
 </div>
 </div>
+<script src="/js/script.js"></script>
+<script>
+function updateHiddenInput() {
+  const checkboxes = document.querySelectorAll('input[name="listing[category][]"]');
+  const hiddenInput = document.getElementById('categorySelected');
+  const categoryFeedback = document.getElementById('categoryFeedback');
 
+  // Check if any checkbox is checked
+  const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+  
+  // If checked, set hidden input value to '1', else set it to ''
+  hiddenInput.value = isChecked ? '1' : '';
+}
+
+
+</script>

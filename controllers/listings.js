@@ -4,13 +4,9 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken});
 
 module.exports.index = async (req, res)=>{
+    const selectedCategory = req.query.category || '';
     const allListings = await Listing.find({});
-    let i=1;
-    for (const listing of allListings) {
-        console.log(`${i} = ${listing.image.url}`);
-        i++;
-      };
-    res.render("listings/index.ejs", {allListings});
+    res.render("listings/index.ejs", {allListings, selectedCategory });
      };
 
 module.exports.renderNewForm = (req,res)=>{
@@ -35,31 +31,48 @@ module.exports.showListing = async (req,res)=>{
       res.render("listings/show.ejs", {listing});
     }
 
-module.exports.createListing = async (req, res, next)=>{
-    let response = await geocodingClient
-    .forwardGeocode({
-        query: req.body.listing.location,
-        limit: 1
-      })
-        .send();
-
-    let url = req.file.path;
-    let filename = req.file.filename;
-    // console.log(url, "..", filename);
-        // if(!req.body.listing){
-        //     throw new ExpressError(400, "Send valid data for listing");
-        // }
+module.exports.createListing = async (req, res, next) => {
+        // Geocoding the location
+        let response = await geocodingClient
+            .forwardGeocode({
+                query: req.body.listing.location,
+                limit: 1
+            })
+            .send();
+    
+        // Extracting image details
+        let url = req.file.path;
+        let filename = req.file.filename;
+    
+        // Get the selected categories from the form
+        const category = req.body.listing.category; // Make sure to access it correctly
+    
+        // Validate listing data
+        if (!req.body.listing) {
+            return res.status(400).send("Send valid data for listing");
+        }
+    
+        // Check if the 'trending' category is included in the user selection
+        if (category && category.includes('trending')) {
+            return res.status(403).send('You cannot add items to the trending category.');
+        }
+    
+        // Create new listing with categories
         const newListing = new Listing(req.body.listing);
         newListing.owner = req.user._id;
-        newListing.image = {url, filename};
+        newListing.image = { url, filename };
         newListing.geometry = response.body.features[0].geometry;
-       let savedListing =  await newListing.save();
-       console.log(savedListing);
+    
+        // Save the listing to the database
+        let savedListing = await newListing.save();
+        console.log(savedListing);
+    
+        // Flash success message and redirect
         req.flash("success", "New Listing Created!");
         res.redirect("/listings");
+    };
     
-    }
-
+   
 module.exports.renderEditForm = async (req, res)=>{
     let {id} = req.params;
     const listing = await Listing.findById(id);
@@ -83,7 +96,20 @@ module.exports.updateListing =  async (req, res)=>{
       })
         .send();
         let {id} = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
+
+        const category = req.body.listing.category; // Make sure to access it correctly
+    
+        // Validate listing data
+        if (!req.body.listing) {
+            return res.status(400).send("Send valid data for listing");
+        }
+    
+        // Check if the 'trending' category is included in the user selection
+        if (category && category.includes('trending')) {
+            return res.status(403).send('You cannot add items to the trending category.');
+        }
+        // console.log(req.body.listing);
+    let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing},);
  
     listing.geometry = response.body.features[0].geometry;
 
@@ -110,6 +136,7 @@ module.exports.destroyListing = async (req,res)=>{
 
 module.exports.searchListing =  async (req, res) => {
     const searchQuery = req.query.query;
+    const selectedCategory = req.query.category || '';
 
       // Search the listings based on the search query
       const results = await Listing.find({
@@ -121,6 +148,20 @@ module.exports.searchListing =  async (req, res) => {
       });
   
       // Render the search results (assuming you have a search-results view)
-      res.render("listings/search.ejs", { searchResults: results || [] });
+      res.render("listings/search.ejs", { searchResults: results || [], selectedCategory, searchQuery });
 
   }
+
+  module.exports.listingCategory =  async (req, res) => {
+
+    const selectedCategory = req.query.category || '';
+  
+    // Search the listings based on the selected category
+    const results = await Listing.find({
+        category: selectedCategory // Match listings by category
+    });
+  
+    // Render the search results page (make sure you have a search.ejs or similar view)
+    res.render('listings/search.ejs', { searchResults: results || [] , selectedCategory});
+  }
+

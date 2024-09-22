@@ -18,12 +18,19 @@ router
       wrapAsync(listingController.createListing)
     );
 
+    
+// Category Route 
+router.get('/category',wrapAsync(listingController.listingCategory));
 
 // New Route 
 router.get("/new", isLoggedIn, listingController.renderNewForm);    
 
 // Search Route
 router.get("/search", wrapAsync(listingController.searchListing));
+
+
+
+
 
 // Show, Update and Delete Route
 router.route("/:id")

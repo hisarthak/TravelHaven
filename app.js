@@ -20,6 +20,7 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const legalRouter = require("./routes/legal.js");
 
 // const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust';
 const dbUrl = process.env.ATLASDB_URL;
@@ -79,10 +80,17 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
+    // console.log(req.user);
     res.locals.currUser = req.user;
     // console.log(res.locals.currUser);
     next();
 });
+
+// app.get('/listings/category', async (req, res) => {
+//     console.log(req.query); // Check what parameters are being sent
+//     // Proceed with your logic...
+// });
+
 
 // app.get("/demouser", async(req, res)=> {
 //     let fakeUser = new User({
@@ -104,11 +112,18 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+// app.use((req,res, next)=>{
+//     console.log(req.query);
+//     console.log(req.path);
+//     next();
+// })
+
 // ADD THIS ROUTE to direct the root URL to the homepage (listings page)
 app.get("/", (req, res) => {
     res.redirect("/listings"); // Redirect root URL to /listings
 });
 
+app.use("/legal" , legalRouter);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
@@ -120,6 +135,7 @@ app.all("*", (req,res,next)=>{
 app.use((err,req,res,next)=>{
     let {statusCode=500, message="Something went wrong"}= err;
     res.status(statusCode).render("error.ejs", {err});
+    // console.log(err);
     // res.status(statusCode).send(message);
 });
 
