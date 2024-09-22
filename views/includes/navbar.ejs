@@ -10,7 +10,7 @@
           <a class="nav-link" href="/listings" title="TravelHaven Home">Explore</a>
         </div>
         <div class="navbar-nav ms-auto">
-          <form   id="search-form" class="d-flex" role="search" action="/listings/search" method="GET">
+          <form class="d-flex" role="search" action="/listings/search" method="GET">
             <!-- Search input with a fallback for undefined searchQuery -->
             <input 
               class="form-control me-2 search-inp searchinput" 
@@ -39,38 +39,10 @@
   </nav>
   
     <script>
-// document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
-//     const input = document.querySelector('input[name="query"]');
-//     if (input.value.trim() === '') {
-//         event.preventDefault(); // Prevent form submission
-//     }
-// });
-
-
-// Store the collapse state before the form is submitted
-document.getElementById('search-form').addEventListener('submit', function(event) {
+document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
     const input = document.querySelector('input[name="query"]');
-    
     if (input.value.trim() === '') {
-        event.preventDefault(); // Prevent form submission if input is empty
-    } else {
-        // If the navbar is collapsed (not shown), store it in sessionStorage
-        const navbarCollapse = document.getElementById('navbarNavAltMarkup');
-        const isCollapsed = navbarCollapse.classList.contains('show'); // If navbar is collapsed
-        sessionStorage.setItem('navbarCollapsed', isCollapsed);
+        event.preventDefault(); // Prevent form submission
     }
 });
-
-// Restore navbar state after search
-window.addEventListener('load', function() {
-    const navbarCollapse = document.getElementById('navbarNavAltMarkup');
-    const wasCollapsed = sessionStorage.getItem('navbarCollapsed') === 'true';
-    
-    if (wasCollapsed) {
-        // Add 'show' class to navbar if it was open before the search
-        navbarCollapse.classList.add('show');
-    }
-});
-
-
 </script>
