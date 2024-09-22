@@ -3,10 +3,14 @@ const Review = require("./models/review");
 const ExpressError = require("./utils/ExpressError.js");
 const {listingSchema, reviewSchema} = require("./schema.js");
 
-// module.exports.redirectUrlSignUp = (req,res, next) =>{
-//     req.session.redirectUrl = req.originalUrl;
-//     next();
-// }
+module.exports.redirectUrl = (req, res, next) => {
+    // Check if the user is not authenticated, it's a GET request, and the request is not for the login or signup page
+    if (!req.isAuthenticated() && req.method === "GET" && req.originalUrl !== '/login' && req.originalUrl !== '/signup') {
+        req.session.redirectUrl = req.originalUrl;  // Store the current URL in the session
+    }
+    next();
+};
+
 
 module.exports.isLoggedIn = (req, res, next) => {
     if(!req.isAuthenticated()) {
@@ -17,9 +21,12 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 };
 
+
 module.exports.saveRedirectUrl = (req, res, next) => {
     if(req.session.redirectUrl) {
+        console.log(req.session.redirectUrl);
         res.locals.redirectUrl = req.session.redirectUrl;
+        console.log(res.locals.redirectUrl);
     }
     next();
 };

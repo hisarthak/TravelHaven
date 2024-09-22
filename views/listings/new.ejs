@@ -96,13 +96,27 @@
 </div>
 
 <br><br>
-<button class="btn btn-dark add-btn">Add</button>
+<button id="addListingBtn" class="btn btn-dark add-btn" 
+    style="opacity: <% if (!isLoggedIn) { %> 0.5 <% } else { %> 1 <% } %>;">
+    Add
+</button>
+
+
 <br><br><br>
     </form>
 </div>
 </div>
 <script src="/js/script.js"></script>
 <script>
+
+document.getElementById('addListingBtn').addEventListener('click', function(event) {
+        <% if (!isLoggedIn) { %>
+            event.preventDefault(); // Prevent default action
+            alert('Please log in or sign up to create a listing.'); // Show alert
+            this.style.opacity = '0.5'; // Reduce opacity on click
+        <% } %>
+    });
+
 function updateHiddenInput() {
   const checkboxes = document.querySelectorAll('input[name="listing[category][]"]');
   const hiddenInput = document.getElementById('categorySelected');

@@ -15,9 +15,8 @@ module.exports.signup = async(req,res)=>{
                 return next(err);
             }
             req.flash("success", "Welcome to TravelHaven!");
-            res.redirect("/listings");
-            // let redirectUrl = res.locals.redirectUrl || "/listings";
-            // res.redirect(redirectUrl);
+            let redirectUrl = res.locals.redirectUrl || "/listings";
+            res.redirect(redirectUrl);
         })
        
     } catch(e){
@@ -27,6 +26,7 @@ module.exports.signup = async(req,res)=>{
 }
 
 module.exports.renderLoginForm = (req, res) =>{
+    console.log(res.locals.redirectUrl);
     res.render("users/login.ejs");
 }
 

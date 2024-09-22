@@ -9,9 +9,12 @@ module.exports.index = async (req, res)=>{
     res.render("listings/index.ejs", {allListings, selectedCategory });
      };
 
-module.exports.renderNewForm = (req,res)=>{
-        res.render("listings/new.ejs");
-    }
+     module.exports.renderNewForm = (req, res) => {
+        if (!req.isAuthenticated()) {
+            req.flash('error', 'Please log in or sign up to create a new listing.');
+        }
+        res.render("listings/new.ejs", { isLoggedIn: req.isAuthenticated(), error: req.flash('error') });
+    };
 
 module.exports.showListing = async (req,res)=>{
         let {id} = req.params;

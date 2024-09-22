@@ -16,10 +16,14 @@
         <p><b>Congratulations! You discovered a hidden surprise on our website.</b></p>
         <p>An Easter egg is a message, image, or feature hidden in software, a video game, a film, or another—usually electronic—medium. The term used in this manner was coined around 1979 by Steve Wright, the then-Director of Software Development in the Atari Consumer Division, to describe a hidden message in the Atari video game Adventure, in reference to an Easter egg hunt.</p>
         <p><b>Thank you for exploring TravelHaven.</b></p>
-        <form action="/listings" method="GET" style="display: inline;">
-            <button type="submit" class="back-button">Back to Home</button>
-        </form>
+        <button class="back-button" onclick="goBack()">Back to Last Page</button>
         
     </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
