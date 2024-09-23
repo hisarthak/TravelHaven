@@ -35,16 +35,12 @@ const listing = <%- JSON.stringify(listing) %>;
 
 
 <div class="col-8 offset-3 mb-3">
-    <% if(currUser) {%>
+
         <hr>
     <h4>Leave a Review</h4>
     <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
-<!-- <div class="col-8 offset-3 mb-3">
-    <label for="rating" class="form-label ">Rating</label>
-    <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
-</div> -->
 <div class="col-8 offset-3 mb-3">
-  <label for="rating" class="form-label">Rating: &nbsp;</label>
+  <label for="rating" class="form-label"><b>Rating:</b>&nbsp;</label>
   <fieldset class="starability-slot">
     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
     
@@ -65,33 +61,17 @@ const listing = <%- JSON.stringify(listing) %>;
   </fieldset>
 </div>
 
-  <!-- <div class="rating-container">
-  <h3>Rate this Listing</h3>
-  <div class="starability">
-    <input type="radio" id="star1" name="rating" value="5" />
-    <label for="star1"></label>
-    <input type="radio" id="star2" name="rating" value="4" />
-    <label for="star2"></label>
-    <input type="radio" id="star3" name="rating" value="3" />
-    <label for="star3"></label>
-    <input type="radio" id="star4" name="rating" value="2" />
-    <label for="star4"></label>
-    <input type="radio" id="star5" name="rating" value="1" />
-    <label for="star5"></label>
-  </div>
-</div> -->
-
 <div class="mb-3 mt-3">
-    <label for="comment" class="form-label">Comments</label>
-    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+    <label for="comment" class="form-label"><b>Comments</b></label>
+    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required  placeholder="<%= currUser ? 'Write your comments here...' : 'Please log in or sign up to give reviews' %>"></textarea>
     <div class="invalid-feedback">
         Please add some comments for review
     </div>
 </div>
-<button class="btn btn-outline-dark">Submit</button>
+<button class="btn btn-outline-dark" <% if (!currUser) { %>style="opacity: 0.5; pointer-events: none;"<% } %> id="submitBtn">Submit</button>
     </form>
     <hr>
-<% } %>
+
    
 <% if(listing.reviews.length > 0) { %>
     <div class="row">
@@ -130,5 +110,6 @@ const listing = <%- JSON.stringify(listing) %>;
 
 </div>
 <script src="/js/map.js"></script>
+
  
 
