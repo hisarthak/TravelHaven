@@ -48,6 +48,10 @@ body{
     border-radius: 1.25rem; /* Rounded edges for pill shape */
 }
 
+.navbtn {
+margin-left: 2rem;
+}
+
 .nav-link:hover {
     background-color: rgba(128, 128, 128, 0.2); /* Light grey background */
     /* border: 1px solid grey; Grey border */
@@ -69,6 +73,11 @@ body{
         margin-left: 1rem;
         padding: 0.6rem 0.7rem;
     
+      }
+
+      .navbtn {
+        margin-left: 1rem;
+        padding:0
       }
       
       .navbar-nav .nav-item {
@@ -727,6 +736,70 @@ form .search-btn:active {
         height: auto; /* Maintain aspect ratio */
     }
 }
+
+/* Options button(logout) */
+
+.circular-button {
+    display: inline-flex;             /* Use flexbox for centering */
+    justify-content: center;         /* Center content horizontally */
+    align-items: center;             /* Center content vertically */
+    width: 2.5rem;                   /* Set width */
+    height: 2.5rem;                  /* Set height */
+    border-radius: 50%;              /* Make it circular */
+    background-color: #fe4248;      /* Background color */
+    color: white;                    /* Text color */
+    border: none;                    /* Remove default border */
+    font-size: 1.25rem;              /* Font size */
+    font-weight: bold;               /* Font weight */
+    cursor: pointer;                 /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+
+
+/* Optionally, customize padding and appearance of the list-group-item */
+#optionsCard .list-group-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Scoped styles for #optionsCard to avoid affecting other Bootstrap components */
+#optionsCard {
+    width: 5rem ;
+    position: absolute;
+    top: 100%; /* Position below the button */
+    right: 0; /* Align card to the right edge of the button */
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+}
+
+@media (max-width: 768px) {
+    #optionsCard {
+        width: 5rem ;
+        position: absolute;
+        top: 100%; /* Position below the button */
+        left: 0; /* Align card to the right edge of the button */
+        z-index: 1000;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    }
+    
+}
+
+/* Scoped styles for list items within the #optionsCard */
+#optionsCard .list-group-item {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+#optionsCard .list-group-item:hover {
+    background-color: #f0f0f0; /* Light hover effect */
+}
+
+#optionsCard a{
+    text-decoration: none;
+    color: black
+}
+
 
 
 

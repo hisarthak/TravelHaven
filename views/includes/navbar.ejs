@@ -31,7 +31,17 @@
             <a class="nav-link" href="/signup"><b>Signup</b></a>
             <a class="nav-link" href="/login"><b style="color: green">Log in</b></a>
           <% } else if (currUser) { %>
-            <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a>
+            <!-- <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a> -->
+            <div  class="navbtn" style="position: relative; display: flex;">
+          
+              <a  id="optionsButton" class="circular-button" title="<%=currUser.username%>" style="text-decoration: none;"><%=currUser.username.charAt(0).toUpperCase()%></a>  
+              <div id="optionsCard" class="card" style="display: none;">
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><a href="/logout" id="logout">Logout</a></li>
+              </ul>
+          </div>
+      </div>
+            
           <% } %>
         </div>
       </div>
@@ -45,4 +55,28 @@ document.querySelector('form[role="search"]').addEventListener('submit', functio
         event.preventDefault(); // Prevent form submission
     }
 });
+
+const optionsButton = document.getElementById('optionsButton');
+const optionsCard = document.getElementById('optionsCard');
+
+// Toggle card visibility on button click
+optionsButton.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to the document
+    if (optionsCard.style.display === 'none' || optionsCard.style.display === '') {
+        optionsCard.style.display = 'flex';
+    } else {
+        optionsCard.style.display = 'none';
+    }
+});
+
+// Hide card when clicking outside of it
+document.addEventListener('click', () => {
+    optionsCard.style.display = 'none';
+});
+
+// Prevent card from hiding when clicking inside the card
+optionsCard.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to the document
+});
+
 </script>
