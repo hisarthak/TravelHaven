@@ -1,4 +1,4 @@
-.starability-result {
+/* .starability-result {
   position: relative;
   width: 150px;
   height: 30px;
@@ -194,4 +194,104 @@
 .starability-slot > input:focus ~ label {
   -webkit-transition: background-position .7s;
   transition: background-position .7s;
+} */
+
+/* Base style for the review stars */
+.starability-result {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem; /* Adjust to match input stars */
+  direction: ltr; /* Align stars from left to right */
 }
+
+/* Add 5 stars as content */
+.starability-result::before {
+  content: "★★★★★"; /* All 5 stars */
+  color: lightgray; /* Unselected stars */
+  display: block;
+}
+
+/* Overlay stars with black based on rating */
+.starability-result::after {
+  content: "★★★★★"; /* All 5 stars */
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black; /* Color for selected stars */
+  overflow: hidden;
+  display: block;
+  white-space: nowrap; /* Prevent line break */
+}
+
+/* Fill percentage based on rating */
+.starability-result[data-rating="5"]::after {
+  width: 100%; /* 5 stars filled */
+}
+
+.starability-result[data-rating="4"]::after {
+  width: 80%; /* 4 stars filled */
+}
+
+.starability-result[data-rating="3"]::after {
+  width: 60%; /* 3 stars filled */
+}
+
+.starability-result[data-rating="2"]::after {
+  width: 40%; /* 2 stars filled */
+}
+
+.starability-result[data-rating="1"]::after {
+  width: 20%; /* 1 star filled */
+}
+
+
+.starability-slot {
+  display: flex;
+  font-size: 2rem; /* Adjust the star size */
+  direction: rtl; /* Align stars from right to left */
+  justify-content: flex-end;
+}
+
+.starability-slot input[type="radio"] {
+  display: none; /* Hide the radio buttons */
+}
+
+.starability-slot label {
+  color: lightgray;
+  cursor: pointer;
+  margin: 0 -2px; /* Slight negative margin to overlap stars */
+  padding: 0;     /* Remove padding */
+  
+}
+
+/* Hover effect for unchecked stars */
+.starability-slot label:hover,
+.starability-slot label:hover ~ label {
+  color: black; /* Make stars black on hover */
+}
+
+/* Keep checked stars black after selection */
+.starability-slot input[type="radio"]:checked + label,
+.starability-slot input[type="radio"]:checked + label ~ label {
+  color: black; /* Keep selected and preceding stars black */
+}
+
+/* Prevent checked stars from changing color on hover */
+.starability-slot input[type="radio"]:checked + label:hover,
+.starability-slot input[type="radio"]:checked + label:hover ~ label {
+  color: black; /* Prevent hovered checked stars from changing */
+}
+
+/* Only allow unchecked stars to change color on hover */
+.starability-slot label:hover ~ input[type="radio"]:checked + label {
+  color: black; /* Checked stars remain black */
+}
+
+@media (max-width: 230px) {
+  .starability-slot {
+    font-size: 1.5rem; /* Decrease star size */
+  }
+}
+
+
+

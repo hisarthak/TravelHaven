@@ -35,32 +35,39 @@
         <%- body %>
         </div>
         <%-include("../includes/footer.ejs")%>
-        <a href="/legal/hidden" id="easterEggButton" class="easter-egg-btn" style="display: none;"><i class="fa-solid fa-arrow-up"></i>&nbsp;Back to top</a>
+        <a id="backToTop" class="back-to-top" style="display: none;"><i class="fa-solid fa-arrow-up"></i>&nbsp;Back to top</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/js/script.js"></script>
     <script src="/js/flash.js"></script>
-   
-        <script>
-          // Get the button element
-const easterEggBtn = document.querySelector('.easter-egg-btn');
+    <script>
+        const backToTop = document.querySelector('.back-to-top');
 
 // Function to check scroll position
 function checkScroll() {
-    // Calculate the scroll position
     const scrollPosition = window.scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
-    // Show the button if the user is near the bottom of the page
-    if (scrollPosition >= documentHeight - 110) { // Show the button when within 200px from the bottom
-        easterEggBtn.style.display = 'flex'; // Show the button
+    if (scrollPosition >= documentHeight - 110) {
+        backToTop.style.display = 'flex'; // Show the button
     } else {
-        easterEggBtn.style.display = 'none'; // Hide the button when scrolling upwards
+        backToTop.style.display = 'none'; // Hide the button when scrolling upwards
     }
+}
+
+// Function to scroll to the top of the page
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling
+    });
 }
 
 // Add the scroll event listener
 window.addEventListener('scroll', checkScroll);
 
-        </script>
-</body>
-</html>
+// Add the click event listener to the button
+backToTop.addEventListener('click', scrollToTop);
+
+    </script>
+   
+       

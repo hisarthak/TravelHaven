@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate")%>
+
     <header>
         <h1>TravelHaven Terms of Service</h1>
         <p><strong>Effective Date:</strong>September 22, 2024</p>
@@ -114,5 +115,29 @@
         <h2>13. Contact Us</h2>
         <p>If you have any questions about these Terms, please contact us at: sarthak231102@gmail.com </p>
     </section>
+    <a href="/legal/hidden" id="easterEggButton" class="easter-egg-btn" style="display: none;"><i class="fa-solid fa-arrow-up"></i>&nbsp;Back to top</a>
 
+    <script>
+        // Get the button element
+const easterEggBtn = document.querySelector('.easter-egg-btn');
 
+// Function to check scroll position
+function checkScroll() {
+  // Calculate the scroll position
+  const scrollPosition = window.scrollY + window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+
+  // Show the button if the user is near the bottom of the page
+  if (scrollPosition >= documentHeight - 110) { // Show the button when within 200px from the bottom
+      easterEggBtn.style.display = 'flex'; // Show the button
+  } else {
+      easterEggBtn.style.display = 'none'; // Hide the button when scrolling upwards
+  }
+}
+
+// Add the scroll event listener
+window.addEventListener('scroll', checkScroll);
+
+      </script>
+</body>
+</html>

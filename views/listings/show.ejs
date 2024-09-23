@@ -28,7 +28,7 @@ const listing = <%- JSON.stringify(listing) %>;
     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
 
     <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-        <button class="btn btn-dark offset-5">Delete</button>
+        <button class="btn btn-dark offset-5 deletebtn">Delete</button>
     </form>
 </div>
 <% } %>
@@ -44,21 +44,43 @@ const listing = <%- JSON.stringify(listing) %>;
     <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
 </div> -->
 <div class="col-8 offset-3 mb-3">
-    <label for="rating" class="form-label ">Rating</label>
-<fieldset class="starability-slot">
+  <label for="rating" class="form-label">Rating: &nbsp;</label>
+  <fieldset class="starability-slot">
     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-    <label for="first-rate1" title="Terrible">1 star</label>
-    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-    <label for="first-rate2" title="Not good">2 stars</label>
+    
+    <input type="radio" id="first-rate1" name="review[rating]" value="5" />
+    <label for="first-rate1" title="Terrible">★</label>
+
+    <input type="radio" id="first-rate2" name="review[rating]" value="4" />
+    <label for="first-rate2" title="Not good">★</label>
+
     <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-    <label for="first-rate3" title="Average">3 stars</label>
-    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-    <label for="first-rate4" title="Very good">4 stars</label>
-    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-    <label for="first-rate5" title="Amazing">5 stars</label>
+    <label for="first-rate3" title="Average">★</label>
+
+    <input type="radio" id="first-rate4" name="review[rating]" value="2" />
+    <label for="first-rate4" title="Very good">★</label>
+
+    <input type="radio" id="first-rate5" name="review[rating]" value="1" />
+    <label for="first-rate5" title="Amazing">★</label>
   </fieldset>
+</div>
+
+  <!-- <div class="rating-container">
+  <h3>Rate this Listing</h3>
+  <div class="starability">
+    <input type="radio" id="star1" name="rating" value="5" />
+    <label for="star1"></label>
+    <input type="radio" id="star2" name="rating" value="4" />
+    <label for="star2"></label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3"></label>
+    <input type="radio" id="star4" name="rating" value="2" />
+    <label for="star4"></label>
+    <input type="radio" id="star5" name="rating" value="1" />
+    <label for="star5"></label>
   </div>
+</div> -->
+
 <div class="mb-3 mt-3">
     <label for="comment" class="form-label">Comments</label>
     <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
@@ -78,16 +100,15 @@ const listing = <%- JSON.stringify(listing) %>;
         <div class="col-12 col-md-6 col-lg-4 mb-3">
           <div class="card h-100">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">@<%= review.author.username %></h5>
-              <div class="d-flex align-items-center mb-2">
-                <p class="starability-result me-2" data-rating="<%= review.rating %>"></p>
-                <p class="mb-0"><%= review.rating %> / 5</p>
+              <h5 class="card-title small" style="margin-left: 0.1rem;">@<%= review.author.username %></h5>
+              <div class="d-flex align-items-center" style="margin-bottom: -1rem">
+                <p class="starability-result me-2" style="margin-left: 0.1rem;" data-rating="<%= review.rating %>"></p>
               </div>
-              <p class="card-text revComm"><%= review.comment %></p>
+              <p class="card-text revComm" style="margin-left: 0.2rem;"><%= review.comment %></p>
 
               <% if(currUser && currUser._id.equals(review.author._id)) { %>
-                <form class="mb-3" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                  <button class="btn btn-sm btn-dark revDelBtn">Delete</button>
+                <form class="mb-3" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" style="margin-top: auto;">
+                  <button class="btn btn-sm btn-dark revDelBtn" style="margin-left: 0.2rem;">Delete</button>
                 </form>
               <% } %>
 

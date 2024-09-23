@@ -255,6 +255,26 @@ font-weight: 400 !important;
     min-width: 5rem;
 } 
 
+@media (max-width: 300px) {
+    .btns {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center; /* Center align buttons */
+    }
+  
+    .edit-btn,
+    .deletebtn {
+      width: auto; /* Allow auto width for smaller screens */
+    }
+  }
+
+  @media (max-width: 165px) {
+    .edit-btn,
+    .deletebtn {
+      font-size: 0.1rem; /* Decrease font size */
+      padding: 0.2rem 0.3rem; /* Decrease padding */
+    }
+  }
+
 .edit-btn2 {
     background-color: #fe424d !important;
     border: none !important;
@@ -622,7 +642,7 @@ form .search-btn:active {
     /* border: none !important; Remove any border */
 }
 
-/* Easter Egg Button */.easter-egg-btn {
+/* Easter Egg Button */.easter-egg-btn,.back-to-top {
     position: fixed;
     right: 1rem;
     bottom: 2rem;
@@ -637,15 +657,20 @@ form .search-btn:active {
     justify-content: center;
     transition: background-color 0.3s, opacity 0.5s ease-in-out; /* Smooth transition */
     z-index: 1000; /* Ensure it's on top */
+    cursor: pointer;
 }
 
-.easter-egg-btn:hover {
+.easter-egg-btn{
+    z-index: 1100 !important;
+}
+
+.back-to-top,.easter-egg-btn:hover {
     background-color: #333; /* Darker shade on hover */
 }
 
 /* Media Query for Smaller Screens */
 @media (max-width: 480px) {
-    .easter-egg-btn {
+    .back-to-top,.easter-egg-btn {
    display:none !important;
     }
 }
