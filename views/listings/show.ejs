@@ -72,8 +72,35 @@ const listing = <%- JSON.stringify(listing) %>;
     </form>
     <hr>
 
- 
+   
+<% if(listing.reviews.length > 0) { %>
+    <div class="row">
+      <p><b>All Reviews</b></p>
+      <% for(review of listing.reviews) { %>
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title small" style="margin-left: 0.1rem;">@<%= review.author.username %></h5>
+              <div class="d-flex align-items-center" style="margin-bottom: -1rem">
+                <p class="starability-result me-2" style="margin-left: 0.1rem;" data-rating="<%= review.rating %>"></p>
+              </div>
+              <p class="card-text revComm" style="margin-left: 0.2rem;"><%= review.comment %></p>
 
+              <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                <form class="mb-3" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" style="margin-top: auto;">
+                  <button class="btn btn-sm btn-dark revDelBtn" style="margin-left: 0.2rem;">Delete</button>
+                </form>
+              <% } %>
+
+              <!-- <form class="mt-auto" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id%>?_method=DELETE">
+                <button class="btn btn-sm btn-dark">Delete</button>
+              </form> -->
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
   
 <div class="col-8  mb-3">
     <h3>Where you'll be</h3>

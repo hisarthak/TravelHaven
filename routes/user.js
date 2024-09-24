@@ -18,7 +18,7 @@ router.route("/login")
     passport.authenticate("local", {
     failureRedirect: "/login",
     failureFlash: true,
-}),userController.login);
+}),wrapAsync(userController.login));
 
 
 
