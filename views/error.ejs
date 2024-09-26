@@ -7,3 +7,42 @@
       </div>
       <h1>Page not found</h1>
 </div>
+<script>
+const randomNumber = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
+let attempts = 0;
+const maxAttempts = 10;
+let guessedCorrectly = false;
+
+console.log("Welcome to the Number Guessing Game!");
+console.log("I have selected a random number between 1 and 100.");
+console.log(`You have ${maxAttempts} attempts to guess the number.`);
+console.log("Type 'guess(yourNumber)' to make a guess. For example, type 'guess(45)' to guess the number 45.");
+
+// Function to guess the number
+function guess(userGuess) {
+    if (guessedCorrectly) {
+        console.log("You've already guessed the correct number! Start a new game.");
+        return;
+    }
+
+    attempts++;
+
+    if (isNaN(userGuess)) {
+        console.log("Please enter a valid number!");
+    } else if (userGuess === randomNumber) {
+        console.log(`Congratulations! You guessed the number ${randomNumber} in ${attempts} attempts.`);
+        guessedCorrectly = true;
+    } else if (userGuess > randomNumber) {
+        console.log("Too high! Try again.");
+    } else if (userGuess < randomNumber) {
+        console.log("Too low! Try again.");
+    }
+
+    // Check if out of attempts
+    if (attempts === maxAttempts && !guessedCorrectly) {
+        console.log(`Game Over! The correct number was ${randomNumber}. Better luck next time.`);
+    }
+}
+
+// To start guessing, type `guess(yourNumber)` in the console
+</script>
