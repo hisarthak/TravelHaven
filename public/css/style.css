@@ -64,7 +64,7 @@ margin-left: 2rem;
         opacity: 0.95;
         border-bottom-left-radius: 10px; /* Rounded bottom left corner */
         border-bottom-right-radius: 10px; /* Rounded bottom right corner */
-        border-bottom: 2px solid #ccc; /* Light gray border at the bottom */
+        border-bottom: 1px solid #ccc; /* Light gray border at the bottom */
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
         z-index: 1000; /* Ensure it appears above other elements */
