@@ -60,12 +60,16 @@ margin-left: 2rem;
 
 @media (max-width: 768px) {
     .navbar-collapse {
-        background-color: #f2f2f2; /* Light gray background */
+        background-color: white; /* Light gray background */
+        opacity: 0.95;
         border-bottom-left-radius: 10px; /* Rounded bottom left corner */
         border-bottom-right-radius: 10px; /* Rounded bottom right corner */
         border-bottom: 2px solid #ccc; /* Light gray border at the bottom */
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
         z-index: 1000; /* Ensure it appears above other elements */
         padding: 0.3rem;
+        margin-top: 27px;
     }
 
     .navbar-nav .nav-link {
@@ -85,6 +89,12 @@ margin-left: 2rem;
         padding: 0.625rem; /* Space inside each item */
         border-bottom: 1px solid #ccc; /* Optional: Add a border between items */
       }
+}
+
+@media(max-width: 480px) {
+    .navbar-collapse{
+        margin-top: 29px;
+    }
 }
 
 /* Website Icon */
