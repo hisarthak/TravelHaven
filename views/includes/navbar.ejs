@@ -2,13 +2,14 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="/listings" title="TravelHaven Home"><img src="/android-chrome-192x192.png" class="icon"></a>
+      <a class="navbar-brand nav-title"  href="/listings" style="color: #fe424d !important; font-weight: 700; cursor: pointer; text-decoration: none; font-family: Quicksand, sans-serif;">TravelHaven</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="/listings" title="TravelHaven Home">Explore</a>
-        </div>
+        <!-- <div class="navbar-nav" >
+          <a class="nav-link" href="/listings" title="TravelHaven Home"style="color: #fe424d !important; font-weight: 900">TravelHaven</a>
+        </div> -->
         <div class="navbar-nav ms-auto">
           <form class="d-flex" role="search" action="/listings/search" method="GET">
             <!-- Search input with a fallback for undefined searchQuery -->
@@ -26,10 +27,10 @@
         </div>
         
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new"><b>List Your Place</b></a>
+          <a class="nav-link" href="/listings/new" style="font-size: 0.93rem; font-weight: 700;">List your place</a>
           <% if (!currUser) { %>
-            <a class="nav-link" href="/signup"><b>Signup</b></a>
-            <a class="nav-link" href="/login"><b style="color: green">Log in</b></a>
+            <a class="nav-link" href="/signup"  style="font-size: 0.93rem; font-weight: 500;" >Signup</a>
+            <a class="nav-link" href="/login"  style="font-size: 0.93rem; font-weight: 500;;">Log in</a>
           <% } else if (currUser) { %>
             <!-- <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a> -->
             <div  class="navbtn" style="position: relative; display: flex;">

@@ -100,7 +100,8 @@ module.exports.updateListing =  async (req, res)=>{
         .send();
         let {id} = req.params;
 
-        const category = req.body.listing.category; // Make sure to access it correctly
+        const category = req.body.listing.category;
+       
     
         // Validate listing data
         if (!req.body.listing) {
@@ -111,7 +112,7 @@ module.exports.updateListing =  async (req, res)=>{
         if (category && category.includes('trending')) {
             return res.status(403).send('You cannot add items to the trending category.');
         }
-        // console.log(req.body.listing);
+        console.log(req.body.listing);
     let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing},);
  
     listing.geometry = response.body.features[0].geometry;

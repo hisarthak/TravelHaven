@@ -5,10 +5,10 @@ const mapToken = "<%=process.env.MAP_TOKEN%>"
 const listing = <%- JSON.stringify(listing) %>;
 </script>
 <div class="row mt-3">
-    <div class="col-8 offset-3 show-card">
-        <h3><%= listing.title %></h3>
+    <div class="col-6 offset-2 show-card" style="display: flex;">
+        <h3 style="display: flex;"><%= listing.title %></h3>
         </div>
-<div class="card col-6 offset-3 show-card listing-card">
+<div class="card col-8 offset-2  show-card listing-card">
     <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="...">
     <div class="card-body">
       <p class="card-text">Owned by <i><%=listing.owner.username %></i></p>
@@ -24,17 +24,17 @@ const listing = <%- JSON.stringify(listing) %>;
 </div>
 <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
 
-<div class="btns">
-    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
+<div class="btns col-8 offset-2">
+    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1  edit-btn">Edit</a>
 
     <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-        <button class="btn btn-dark offset-5 deletebtn">Delete</button>
+        <button class="btn btn-dark  deletebtn">Delete</button>
     </form>
 </div>
 <% } %>
 
 
-<div class="col-8 offset-3 mb-3">
+<div class="col-8 offset-2 mb-3">
 
         <hr>
     <h4>Leave a Review</h4>
@@ -101,12 +101,15 @@ const listing = <%- JSON.stringify(listing) %>;
       <% } %>
     </div>
   <% } %>
+
+<hr>
   
-<div class="col-8  mb-3">
-    <h3>Where you'll be</h3>
-    <div id="map">
-    </div>
-</div>
+
+  <div class="col-12 mb-3">
+      <h3>Where you'll be</h3>
+      <div id="map"></div>
+  </div>
+
 
 </div>
 <script src="/js/map.js"></script>

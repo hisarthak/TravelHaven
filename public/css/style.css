@@ -38,6 +38,10 @@ body{
     font-size: 2rem;
 }
 
+.nav-title{
+
+}
+
 .nav-link {
     position: relative;
     display: inline-block;
@@ -48,8 +52,11 @@ body{
     border-radius: 1.25rem; /* Rounded edges for pill shape */
 }
 
-.navbtn {
-margin-left: 2rem;
+@media(max-width: 300px){
+    .nav-title{
+        display: none;
+    }
+    
 }
 
 .nav-link:hover {
@@ -225,6 +232,7 @@ font-weight: 400 !important;
 /* New Page */
 .revDelBtn {
     margin-left: 0.5rem;
+   
 }
 
 .revComm {
@@ -308,7 +316,7 @@ font-weight: 400 !important;
 /* Show Page */
 
 .show-img{
-    height: 30vh;
+    height: 50vh;
 }
 
 
@@ -321,23 +329,59 @@ font-weight: 400 !important;
 
 /* Map */
 
+.mapboxgl-popup {
+    max-width: 300px !important;
+    padding: 1.5rem !important;/* Set a max width for the popup */
+    font-size: 1rem !important;
+}
+
+.mapboxgl-popup-close-button {
+    display: none !important; /* Hides the close button */
+}
+
+@media (max-width: 768px) {
+    .mapboxgl-popup {
+        max-width: 80% !important; /* Make it wider on smaller screens */
+        /* overflow: visible; */
+    }
+}
+
+@media (max-width: 480px) {
+    .mapboxgl-popup {
+        max-width: 90%; /* Almost full width on very small screens */
+        font-size: 0.7rem; /* Slightly smaller font size */
+    }
+
+    .mapboxgl-popup-content {
+        padding: 10px; /* Less padding for smaller screens */
+    }
+}
+
+.map-container {
+    position: relative; /* Position relative for absolute positioning of popup */
+    border-radius: 10px; /* Apply border radius to the container */
+    overflow: hidden; /* Hide overflow */
+}
+
 #map {
-    height: 50vh; /* Default height */
-    width: 80%;   /* Default width */
+    height: 60vh; /* Default height */
+    width: 100%;   /* Default width */  
+    overflow: visible;
   }
   
   @media (max-width: 768px) {
     #map {
-      height: 40vh; /* Smaller height for medium screens */
+      height: 50vh; /* Smaller height for medium screens */
       width: 100%;  /* Full width on smaller screens */
     }
   }
   
   @media (max-width: 480px) {
     #map {
-      height: 30vh; /* Even smaller height for very small screens */
+      height: 40vh; /* Even smaller height for very small screens */
     }
   }
+
   
 
     /* Search.ejs and Index.ejs */
