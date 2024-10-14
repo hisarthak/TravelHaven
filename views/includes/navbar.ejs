@@ -52,7 +52,8 @@
   </nav>
   
     <script>
-window.addEventListener('resize', function() {
+
+function updateAnchorText() {
     const anchor = document.getElementById('brand-name');
 
     if (window.innerWidth <= 767) {
@@ -60,7 +61,16 @@ window.addEventListener('resize', function() {
     } else {
         anchor.textContent = "ravelHaven"; // Restore the original text for larger screens
     }
-});
+}
+
+// Call immediately to set the text based on the initial screen size
+updateAnchorText(); 
+
+// Call the function on window resize
+window.addEventListener('resize', updateAnchorText);
+
+
+
 
 document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
     const input = document.querySelector('input[name="query"]');

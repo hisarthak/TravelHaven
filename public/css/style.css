@@ -38,9 +38,7 @@ body{
     font-size: 2rem;
 }
 
-.nav-title{
 
-}
 
 .nav-link {
     position: relative;
@@ -76,7 +74,7 @@ body{
         border-right: 1px solid #ccc;
         z-index: 1000; /* Ensure it appears above other elements */
         padding: 0.3rem;
-        margin-top: 27px;
+        margin-top: 25px;
     }
 
     .navbar-nav .nav-link {
@@ -100,7 +98,7 @@ body{
 
 @media(max-width: 480px) {
     .navbar-collapse{
-        margin-top: 28px;
+        margin-top: 25px;
     }
 }
 
@@ -355,12 +353,6 @@ font-weight: 400 !important;
     .mapboxgl-popup-content {
         padding: 10px; /* Less padding for smaller screens */
     }
-}
-
-.map-container {
-    position: relative; /* Position relative for absolute positioning of popup */
-    border-radius: 10px; /* Apply border radius to the container */
-    overflow: hidden; /* Hide overflow */
 }
 
 #map {
