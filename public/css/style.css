@@ -74,6 +74,7 @@ body{
         border-right: 1px solid #ccc;
         z-index: 1000; /* Ensure it appears above other elements */
         padding: 0.3rem;
+        padding-top: 1rem;
         margin-top: 25px;
     }
 
@@ -96,9 +97,9 @@ body{
       }
 }
 
-@media(max-width: 480px) {
+@media(max-width: 300px) {
     .navbar-collapse{
-        margin-top: 25px;
+        margin-top: 29px;
     }
 }
 

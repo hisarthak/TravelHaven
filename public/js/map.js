@@ -36,4 +36,23 @@ marker.getElement().addEventListener('mouseleave', () => {
     popup.remove(); // Remove the popup from the map
 });
 
+function updateMarkerVisibility() {
+    const bounds = map.getBounds(); // Get the current bounds of the map
+    const markerLngLat = marker.getLngLat(); // Get marker's coordinates
+
+    // Check if marker is within bounds
+    if (bounds.contains(markerLngLat)) {
+        marker.getElement().style.display = 'block'; // Show the marker
+    } else {
+        marker.getElement().style.display = 'none'; // Hide the marker
+    }
+}
+
+// Call this function on map load and whenever the map is moved or zoomed
+map.on('load', updateMarkerVisibility);
+map.on('move', updateMarkerVisibility);
+map.on('zoom', updateMarkerVisibility);
+
+
+
     
