@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings" title="TravelHaven Home"><img src="/android-chrome-192x192.png" class="icon" style="color: #fe424d;"></a>
+      <a class="navbar-brand" href="/listings" title="TravelHaven Home"><img src="/android-chrome-192x192.png" class="icon"></a>
       <a class="navbar-brand nav-title" id="brand-name" href="/listings" title="TravelHaven Home" style="color: #fe424d !important; font-weight: 700; cursor: pointer; text-decoration: none; font-family: Quicksand, sans-serif; margin-left: -1.6rem !important; margin-top: 0.4rem !important">ravelHaven</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,6 @@
   </nav>
   
     <script>
-
 window.addEventListener('resize', function() {
     const anchor = document.getElementById('brand-name');
 
@@ -62,16 +61,6 @@ window.addEventListener('resize', function() {
         anchor.textContent = "ravelHaven"; // Restore the original text for larger screens
     }
 });
-
-// Ensure the correct text is displayed on page load based on the initial screen size
-document.addEventListener('DOMContentLoaded', function() {
-    const anchor = document.getElementById('brand-name');
-
-    if (window.innerWidth <= 768) {
-        anchor.textContent = "TravelHaven"; // Change the text if screen size is already 768px or less
-    }
-});
-
 
 document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
     const input = document.querySelector('input[name="query"]');
