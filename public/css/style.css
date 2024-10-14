@@ -109,9 +109,24 @@ body{
       width: 2.2rem;             /* Default size */
       height: auto;            /* Maintain aspect ratio */
       object-fit: cover;       /* Ensure the image covers the given dimensions */
-      border-radius: 0.625rem;      /* Curvy edges */
+      border-radius: 0.625rem; 
+      margin-left: 1rem;
   }
-  
+
+  @media (max-width: 992px ){
+ .icon{
+    margin-left: 0.6rem;
+ }
+  }
+
+  @media (max-width:776px ){
+    .icon{
+   margin-left: 0rem;
+    }
+  }
+
+
+
   
   @media (max-width: 480px) {
       .icon {
@@ -448,6 +463,7 @@ font-weight: 400 !important;
         justify-content: space-between; /* Maintain space between filters and toggle */
         align-items: center;
         flex-wrap: wrap; /* Allow wrapping for responsiveness */
+       
     }
     
     /* Media query adjustments */
