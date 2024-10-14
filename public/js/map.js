@@ -21,19 +21,22 @@ const marker = new mapboxgl.Marker({ color: "red" })
     .setLngLat(listing.geometry.coordinates)
     .addTo(map);
 
-// Create a popup
+    // Create a popup
 const popup = new mapboxgl.Popup({ offset: 25 })
-    .setHTML(`<p>Exact location will be shared upon booking.</p>`);
+.setHTML(`<p>Exact location will be shared upon booking.</p>`);
 
-// Show popup on mouse enter
-marker.getElement().addEventListener('mouseenter', () => {
-    popup.setLngLat(listing.geometry.coordinates) // Set the popup position
-        .addTo(map); // Add the popup to the map
+// Initially show the popup when the map is loaded
+popup.setLngLat(listing.geometry.coordinates).addTo(map);
+
+// Mouse events for the map
+map.getContainer().addEventListener('mouseenter', () => {
+    popup.remove(); // Hide popup when entering the map
 });
 
-// Hide popup on mouse leave
-marker.getElement().addEventListener('mouseleave', () => {
-    popup.remove(); // Remove the popup from the map
+map.getContainer().addEventListener('mouseleave', () => {
+    if (!marker.getElement().matches(':hover')) { // Check if the mouse is not over the marker
+        popup.setLngLat(listing.geometry.coordinates).addTo(map); // Show popup when leaving the map
+    }
 });
 
 function updateMarkerVisibility() {

@@ -356,6 +356,12 @@ font-weight: 400 !important;
     }
 }
 
+@media (max-width: 360px) {
+    .mapboxgl-popup{
+        visibility: hidden;
+    }
+}
+
 #map {
     height: 60vh; /* Default height */
     width: 100%;   /* Default width */  
