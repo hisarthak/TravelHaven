@@ -108,11 +108,26 @@ const listing = <%- JSON.stringify(listing) %>;
   <div class="col-12 mb-3">
       <h3>Where you'll be</h3>
       <div id="map"></div>
+      <p id="location-message" style="display: none; font-size: small;">*Exact location will be shared upon booking.</p>
   </div>
 
 
 </div>
 <script src="/js/map.js"></script>
+<script>function toggleLocationMessage() {
+  const messageElement = document.getElementById('location-message');
+  if (window.innerWidth < 1080) {
+      messageElement.style.display = 'block'; // Show message
+  } else {
+      messageElement.style.display = 'none'; // Hide message
+  }
+}
+
+// Call the function on resize
+window.addEventListener('resize', toggleLocationMessage);
+
+// Initial check on page load
+toggleLocationMessage();</script>
 
  
 
