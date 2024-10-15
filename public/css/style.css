@@ -107,10 +107,11 @@ body{
         border-bottom: 1px solid #ccc; /* Light gray border at the bottom */
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
-        z-index: 1000; /* Ensure it appears above other elements */
+        z-index: 9000 !important; /* Ensure it appears above other elements */
         padding: 0.3rem;
         padding-top: 1rem;
-        margin-top: 25px;
+        margin-top: 27px;
+       
     }
 
     .navbar-nav .nav-link {
@@ -132,7 +133,7 @@ body{
       }
 }
 
-@media(max-width: 300px) {
+@media(max-width: 480px) {
     .navbar-collapse{
         margin-top: 29px;
     }
@@ -1042,7 +1043,7 @@ form .search-btn:active {
     width: 2rem;
     border-radius: 50%;
     font-weight: 600;
-    z-index: 5000;
+    z-index: 1000;
     /* margin-left: -0.5rem; */
     transition: opacity 0.2s ease-in-out; /* Smooth transition for opacity */
   }
@@ -1098,7 +1099,7 @@ form .search-btn:active {
     top: 0.1;            /* Align it at the top of the viewport */
     left: 0;           /* Align it to the left of the viewport */
        /* Full width of the viewport */
-    z-index: 5000;
+    z-index: 1000;
     background-color: white;
     margin-top: -0.5rem;
     margin-left: 2rem;
@@ -1111,7 +1112,7 @@ form .search-btn:active {
     top: 0.1;            /* Align it at the top of the viewport */
     right: 0;           /* Align it to the left of the viewport */
        /* Full width of the viewport */
-    z-index: 5000;
+    z-index: 1000;
     background-color: white;
     margin-top: -0.5rem;
     margin-right: 2.2rem;
