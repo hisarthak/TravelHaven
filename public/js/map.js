@@ -48,6 +48,7 @@ function updateMarkerVisibility() {
         marker.getElement().style.display = 'block'; // Show the marker
     } else {
         marker.getElement().style.display = 'none'; // Hide the marker
+        
     }
 }
 

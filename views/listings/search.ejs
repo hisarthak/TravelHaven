@@ -1,58 +1,84 @@
 <% layout("/layouts/boilerplate")%>
 <div class="form-container">
-<form action="/listings/category" method="get" id="categoryForm">
-    <div id="filters">
-        <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'rooms' ? 'selected' : '' %>" onclick="setCategory('rooms')">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'iconic cities' ? 'selected' : '' %>" onclick="setCategory('iconic cities')">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <p>Iconic Cities</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'mountains' ? 'selected' : '' %>" onclick="setCategory('mountains')">
-            <div><i class="fa-solid fa-mountain-sun"></i></div>
-            <p>Mountains</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'castles' ? 'selected' : '' %>" onclick="setCategory('castles')">
-            <div><i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'amazing pools' ? 'selected' : '' %>" onclick="setCategory('amazing pools')">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <p>Amazing Pools</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'camping' ? 'selected' : '' %>" onclick="setCategory('camping')">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms')">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <p>Farms</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic')">
-            <div><i class="fa-regular fa-snowflake"></i></div>
-            <p>Arctic</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'domes' ? 'selected' : '' %>" onclick="setCategory('domes')">
-            <div><i class="fa-solid fa-igloo"></i></div>
-            <p>Domes</p>
-        </div>
-        <div class="filter <%= selectedCategory === 'boats' ? 'selected' : '' %>" onclick="setCategory('boats')">
-            <div><i class="fa-solid fa-ferry"></i></div>
-            <p>Boats</p>
-        </div>
-    </div>
-    <input type="hidden" name="category" id="selectedCategory" value="<%= selectedCategory %>">
-    <button type="submit" style="display: none;">Search</button>
-</form>
+    <form action="/listings/category" method="get" id="categoryForm">
+        <button id="scroll-left" class="scroll-btn lthan" type="button" disabled>&lt;</button>
+        <div id="filters-container">
+        <div id="filters">
+            <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')">
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'amazing pools' ? 'selected' : '' %>" onclick="setCategory('amazing pools')">
+                <div><i class="fa-solid fa-water-ladder"></i></div>
+                <p>Amazing Pools</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms')">
+                <div><i class="fa-solid fa-cow"></i></div>
+                <p>Farms</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'castles' ? 'selected' : '' %>" onclick="setCategory('castles')">
+                <div><i class="fa-solid fa-chess-rook"></i></div>
+                <p>Castles</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic')">
+                <div><i class="fa-regular fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'iconic cities' ? 'selected' : '' %>" onclick="setCategory('iconic cities')">
+                <div><i class="fa-solid fa-tree-city"></i></div>
+                <p>Top Cities</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'rooms' ? 'selected' : '' %>" onclick="setCategory('rooms')">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </div>
+             
+            <div class="filter <%= selectedCategory === 'boats' ? 'selected' : '' %>" onclick="setCategory('boats')">
+                <div><i class="fa-solid fa-ship"></i></div>
+                <p>Boats</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'domes' ? 'selected' : '' %>" onclick="setCategory('domes')">
+                <div><i class="fa-solid fa-igloo"></i></div>
+                <p>Domes</p>
+            </div>
+           
+            <div class="filter <%= selectedCategory === 'mountains' ? 'selected' : '' %>" onclick="setCategory('mountains')">
+                <div><i class="fa-solid fa-mountain"></i></div>
+                <p>Mountains</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'camping' ? 'selected' : '' %>" onclick="setCategory('camping')">
+                <div><i class="fa-solid fa-tents"></i></div>
+                <p>Camping</p>
+            </div> 
 
-
-
+            <div class="filter <%= selectedCategory === 'new' ? 'selected' : '' %>" onclick="setCategory('new')">
+                <div><i class="fa-solid fa-key"></i></div>
+                <p>New</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'cabin' ? 'selected' : '' %>" onclick="setCategory('cabin')">
+                <div><i class="fa-solid fa-house"></i></div>
+                <p>Cabin</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'national park' ? 'selected' : '' %>" onclick="setCategory('national park')">
+                <div><i class="fa-solid fa-tree"></i></div>
+                <p>National Park</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'beach' ? 'selected' : '' %>" onclick="setCategory('beach')">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                <p>Beach</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'treehouses' ? 'selected' : '' %>" onclick="setCategory('treehouses')">
+                <div><i class="fa-solid fa-warehouse"></i></div>
+                <p>Treehouses</p>
+            </div>
+            </div>
+           
+        </div>
+        <button id="scroll-right" class="scroll-btn gthan" type="button" disabled>&gt;</button>
+        <input type="hidden" name="category" id="selectedCategory" value="<%= selectedCategory %>">
+        <button type="submit" style="display: none;">Search</button>
+        
+    </form>
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -129,8 +155,29 @@ taxSwitch.addEventListener("change", () => {
     updatePrices(); // Update prices whenever the toggle is changed
 });
 
+ function savedScroll () {
+    const scrollContainer = document.getElementById('filters-container');
+    
+    // Check if there's a saved scroll position in localStorage
+    const savedScrollPosition = localStorage.getItem('scrollPosition');
+    
+    if (savedScrollPosition) {
+        // Restore the scroll position (without clearing it immediately)
+        scrollContainer.scrollLeft = parseInt(savedScrollPosition, 10);
+    }
+};
+
+
+savedScroll();
+
+
+
 // Function to set category
 function setCategory(category) {
+    const scrollContainer = document.getElementById('filters-container');
+    localStorage.setItem('scrollPosition', scrollContainer.scrollLeft);
+    
+   
     // Set the selected category value in the hidden input
     document.getElementById('selectedCategory').value = category;
 
@@ -163,6 +210,69 @@ if (toggleSavedState === 'true') {
 toggleSwitch.addEventListener('change', function() {
     sessionStorage.setItem('taxToggleState', toggleSwitch.checked);
 });
+
+
+function scrollsign() {
+    const scrollContainer = document.getElementById('filters-container');
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+    
+    // Scroll amount (adjust based on preference)
+    const scrollAmount = 150; // pixels
+
+    // Disable buttons based on the initial scroll position
+    function updateButtonState() {
+        // Immediately disable or enable the buttons based on scroll position
+        scrollLeftBtn.disabled = scrollContainer.scrollLeft === 0;
+        scrollRightBtn.disabled = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth;
+    }
+
+    // Scroll left button click event
+    scrollLeftBtn.addEventListener('click', function() {
+        scrollContainer.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    // Scroll right button click event
+    scrollRightBtn.addEventListener('click', function() {
+        scrollContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    // Listen to the scroll event and update button states accordingly
+    scrollContainer.addEventListener('scroll', function() {
+        updateButtonState();
+    });
+
+    // Restore the saved scroll position (if any) from localStorage
+    const savedScrollPosition = localStorage.getItem('scrollPosition');
+    if (savedScrollPosition) {
+        scrollContainer.scrollLeft = parseInt(savedScrollPosition, 10);
+    }
+
+    // Update button state immediately after script is executed
+    updateButtonState();
+}
+
+// Save scroll position before leaving the page or reloading
+window.addEventListener('beforeunload', function () {
+    const scrollContainer = document.getElementById('filters-container');
+    // Save the current scroll position in localStorage
+    localStorage.setItem('scrollPosition', scrollContainer.scrollLeft);
+});
+
+// Immediately call the scrollsign function when the script loads
+scrollsign();
+
+
+
+
+
+
 
 
 

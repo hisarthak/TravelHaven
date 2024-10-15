@@ -50,8 +50,12 @@ const listingSchema = new Schema({
             "arctic",
             "domes",
             "boats",
-            "trending"
-           
+            "trending",
+            "cabin",
+            "national park",
+            "beach",
+            "treehouses", 
+            "new"
         ],
         required: true, // Ensures that category is mandatory
     },

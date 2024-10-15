@@ -70,6 +70,22 @@ Original Listing Image <br>
       <input type="checkbox" id="boats" name="listing[category][]" value="boats"<% if (listing.category.includes('boats')) { %> checked <% } %>  onchange="updateHiddenInput()">
       <label for="boats">Boats</label>
     </div>  
+    <div>
+      <input type="checkbox" id="treehouses" name="listing[category][]" value="treehouses"<% if (listing.category.includes('treehouses')) { %> checked <% } %> onchange="updateHiddenInput()">
+      <label for="treehouses">Treehouse</label>
+    </div>  
+    <div>
+      <input type="checkbox" id="cabin" name="listing[category][]" value="cabin" <% if (listing.category.includes('cabin')) { %> checked <% } %>onchange="updateHiddenInput()">
+      <label for="cabin">Cabin</label>
+    </div>  
+    <div>
+      <input type="checkbox" id="national park" name="listing[category][]" value="national park"<% if (listing.category.includes('national park')) { %> checked <% } %> onchange="updateHiddenInput()">
+      <label for="national park">National park</label>
+    </div>  
+    <div>
+      <input type="checkbox" id="beach" name="listing[category][]" value="beach" <% if (listing.category.includes('beach')) { %> checked <% } %>onchange="updateHiddenInput()">
+      <label for="beach">Beach</label>
+    </div>   
 <input name="categorySelected" id="categorySelected" value="1"  style="position: absolute; left: -9999px;" required>
 <div class="invalid-feedback" id="categoryFeedback">Select at least one category</div>
 </div>

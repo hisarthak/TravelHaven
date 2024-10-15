@@ -380,7 +380,8 @@ font-weight: 400 !important;
 #map {
     height: 60vh; /* Default height */
     width: 100%;   /* Default width */  
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 1%;
   }
   
   @media (max-width: 768px) {
@@ -447,26 +448,66 @@ font-weight: 400 !important;
     }
 
     
+    
     .tax-toggle {
         border: 1px solid black;
+     
         border-radius: 1rem;
-        height: auto; /* Allow height adjustment */
+        height: auto; 
         padding: 1rem;
         display: flex;
         align-items: center;
-        max-width: 20rem; /* Adjust max-width as needed */
-        margin: 0 auto; /* Center it within its container */
+        max-width: 16rem; 
+        margin: 0 auto; 
+        z-index: 1;
+        text-wrap: nowrap;
     }
+
+    
+
+    
+
+    @media(max-width: 1300px){
+        .tax-toggle {
+            position: absolute; /* Position absolutely to control its placement */
+            top: 200px; /* Distance from the top */
+            left: 50%; /* Position it in the center */
+            transform: translateX(-50%); /* Center the toggle */
+            flex-wrap: nowrap !important;
+            width: auto !important;
+            text-wrap: nowrap;
+        }
+
+        .listings-container{
+            margin-top: 3.5rem;
+        }
+    }
+    
+
+    
     
     .form-container {
         display: flex;
         justify-content: space-between; /* Maintain space between filters and toggle */
         align-items: center;
-        flex-wrap: wrap; /* Allow wrapping for responsiveness */
+        flex-wrap: wrap;
        
     }
     
     /* Media query adjustments */
+
+
+    @media(max-width: 270px){
+        .tax-toggle{
+            
+            font-size: small;
+        }
+    }
+    @media(max-width: 240px){
+        .tax-toggle{
+          padding: 0.1rem;
+        }
+    }
     @media (max-width: 48rem) { /* Approximately 768px */
         .form-container {
             flex-direction: column; /* Stack items vertically */
@@ -869,9 +910,168 @@ form .search-btn:active {
     color: black
 }
 
+.container{
+    margin-left: 3vw !important;
+}
+
+@media (max-width: 580px){
+    .container{
+        margin-left: 0vw !important;
+    }
+}
+
+/* Set a fixed width for the scrollable container */
+#filters-container {
+    width: 900px; /* or any fixed width like 600px */
+    overflow-x: scroll !important; /* Always show a horizontal scrollbar */
+    white-space: nowrap; /* Prevent wrapping of filter items */
+    /* border: 1px solid black; */
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: -0.5rem;   
+}
 
 
 
 
 
+@media( max-width:1200px ) {
+    #filters-container {
+        width: 900px;
+      
+    }
+}
 
+@media( max-width:1028px ) {
+    #filters-container {
+    width: 750px;
+    }
+}
+
+
+
+@media( max-width: 1008px) {
+    #filters-container {
+    width: 660px ;
+    }
+}
+
+@media( max-width: 768px) {
+    #filters-container {
+    width: 480px ;
+    }
+}
+
+@media( max-width: 556px) {
+    #filters-container {
+    width: 450px ;
+    }
+}
+
+@media( max-width: 521px) {
+    #filters-container {
+    width: 400px ;
+    }
+}
+
+@media( max-width: 470px) {
+    #filters-container {
+    width: 350px ;
+    }
+}
+
+@media( max-width: 420px) {
+    #filters-container {
+    width: 300px ;
+    }
+}
+
+@media( max-width: 370px) {
+    #filters-container {
+    width: 250px ;
+    }
+}
+
+@media( max-width: 320px) {
+    #filters-container {
+    width: 200px ;
+    }
+}
+
+@media( max-width: 270px) {
+    #filters-container {
+    width: 100px ;
+    }
+}
+
+   
+
+
+
+
+
+  
+  /* Force filters into a single row without wrapping */
+  #filters {
+    display: inline-flex; /* Ensures the filters are in a row and behave like inline elements */
+    width: max-content; /* Makes sure the filters are as wide as their content */
+  }
+  
+  .filter {
+    flex-shrink: 0; /* Prevent shrinking */
+    /* margin-right: 1rem; Space between filters */
+    text-align: center;
+    cursor: pointer;
+    /* min-width: 3.5rem; */
+  }
+
+  
+  /* Optional: Customize scrollbar appearance */
+  #filters-container::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  #filters-container::-webkit-scrollbar-thumb {
+    display: none;
+  }
+  
+
+  /* Style for the buttons */
+.scroll-btn {
+    background-color: white !important;
+    border: 1px solid grey;
+    cursor: pointer;
+    padding-bottom: 0.25rem;
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    font-weight: 600;
+    z-index: 1;
+    /* margin-left: -0.5rem; */
+    transition: opacity 0.2s ease-in-out; /* Smooth transition for opacity */
+  }
+
+  .scroll-btn:hover {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3); /* 4px ~ 0.25rem and 15px ~ 0.9375rem */
+}
+  
+
+  
+
+  /* Optional: Hide the default buttons when not needed */
+  .scroll-btn:disabled {
+   opacity: 0;
+   cursor: default;
+  }
+
+  .lthan {
+    margin-right : -1rem;
+  }
+
+  .gthan {
+    margin-left: -1rem;
+  }
+  
+  
