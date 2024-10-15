@@ -418,7 +418,21 @@ font-weight: 400 !important;
         opacity: 0.7;
         border-bottom: 0.1rem solid transparent; /* Add transparent border by default */
         padding-bottom: 0.1rem; /* Add padding to compensate for border space */
+        min-width: 5rem;
     }
+
+    @media(max-width:440px){
+        .filter{
+            min-width: 3rem;
+        }
+    }
+
+    @media(max-width:300px){
+        .filter{
+            min-width: 1rem;
+        }
+    }
+
 
      .filter:hover {
         opacity: 1;
@@ -465,6 +479,18 @@ font-weight: 400 !important;
         margin: 0 auto; 
         z-index: 1;
         text-wrap: nowrap;
+        position: absolute; /* Position absolutely to control its placement */
+        top: 200px; /* Distance from the top */
+        left: 50%; /* Position it in the center */
+        transform: translateX(-50%); /* Center the toggle */
+        flex-wrap: nowrap !important;
+        width: auto !important;
+        text-wrap: nowrap;
+    }
+
+    .listings-container{
+        margin-top: 3.5rem;
+        /* min-height: 200vh; */
     }
 
     
@@ -473,19 +499,10 @@ font-weight: 400 !important;
 
     @media(max-width: 1300px){
         .tax-toggle {
-            position: absolute; /* Position absolutely to control its placement */
-            top: 200px; /* Distance from the top */
-            left: 50%; /* Position it in the center */
-            transform: translateX(-50%); /* Center the toggle */
-            flex-wrap: nowrap !important;
-            width: auto !important;
-            text-wrap: nowrap;
+         
         }
 
-        .listings-container{
-            margin-top: 3.5rem;
-            /* min-height: 200vh; */
-        }
+       
     }
     
 
@@ -520,7 +537,6 @@ font-weight: 400 !important;
         }
     
         .tax-toggle {
-            margin-top: 1rem; /* Space between the filters and toggle switch */
             width: auto; /* Allow it to fit the content */
             text-align: left; /* Align text to the left */
         }
@@ -931,15 +947,27 @@ form .search-btn:active {
     overflow-x: scroll !important; /* Always show a horizontal scrollbar */
     white-space: nowrap; /* Prevent wrapping of filter items */
     /* border: 1px solid black; */
-    position: relative;
+    
     vertical-align: middle;
     display: inline-block;
     margin-right: -0.5rem;   
+        position: fixed;   /* Makes the container fixed */
+        top: 0.1;            /* Align it at the top of the viewport */
+        left: 50%;           /* Align it to the left of the viewport */
+        transform: translateX(-50%); /* Shift the container by 50% of its width to center it */
+        width: 100%; 
+        padding-left: 50px; /* Optional: Adds some padding */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */       /* Adjust the width of the container based on content */    /* Full width of the viewport */
+        z-index: 999;
+        background-color: white;
+        margin-top: -3rem;
+        /* border-bottom: 1px solid #ccc; */
+     
 }
 
 
 
-
+/* 
 
 @media( max-width:1200px ) {
     #filters-container {
@@ -968,7 +996,9 @@ form .search-btn:active {
     }
 }
 
-@media( max-width: 556px) {
+
+
+ @media( max-width: 556px) {
     #filters-container {
     width: 450px ;
     }
@@ -1008,7 +1038,7 @@ form .search-btn:active {
     #filters-container {
     width: 100px ;
     }
-}
+}  */
 
    
 
@@ -1053,31 +1083,80 @@ form .search-btn:active {
     width: 2rem;
     border-radius: 50%;
     font-weight: 600;
-    z-index: 1;
+    z-index: 5000;
     /* margin-left: -0.5rem; */
     transition: opacity 0.2s ease-in-out; /* Smooth transition for opacity */
   }
 
-  .scroll-btn:hover {
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3); /* 4px ~ 0.25rem and 15px ~ 0.9375rem */
-}
   
 
+
+
+.listings-container{
+    margin-top: 8rem;
+ }
+ 
+ .tax-toggle{
+    margin-top: -2rem;
+ }
+
+ @media(max-width: 768px){
+    .tax-toggle{
+    margin-top: -1.2rem
+    }
+ }
   
+
+ .scroll-btn:hover {
+    font-weight: 800;
+  }
+
 
   /* Optional: Hide the default buttons when not needed */
   .scroll-btn:disabled {
    /* opacity: 0; */
    cursor: default;
-   box-shadow: none;
+   font-weight: 600px !important;
   }
 
+  .first-filter{
+    margin-left: 1rem;
+  }
+
+  @media(max-width:556px){
+    .scroll-btn{
+        display: none;
+    }
+
+    .first-filter{
+        margin-left: -3rem;
+    }
+  }
+
+
   .lthan {
-    margin-right : -1rem;
+    position: fixed;   /* Makes the container fixed */
+    top: 0.1;            /* Align it at the top of the viewport */
+    left: 0;           /* Align it to the left of the viewport */
+       /* Full width of the viewport */
+    z-index: 5000;
+    background-color: white;
+    margin-top: -0.5rem;
+    margin-left: 2rem;
+    box-shadow: -28px 3px 0px 17px  white; /* Creates white shadow effect to the left */
   }
 
   .gthan {
-    margin-left: -1rem;
+   
+    position: fixed;   /* Makes the container fixed */
+    top: 0.1;            /* Align it at the top of the viewport */
+    right: 0;           /* Align it to the left of the viewport */
+       /* Full width of the viewport */
+    z-index: 5000;
+    background-color: white;
+    margin-top: -0.5rem;
+    margin-right: 2.2rem;
+    box-shadow: 28px 3px 0px 17px white; /* Creates white shadow effect to the left */
   }
   
   

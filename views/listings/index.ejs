@@ -11,7 +11,8 @@
         <button id="scroll-left" class="scroll-btn lthan" type="button" disabled>&lt;</button>
         <div id="filters-container">
         <div id="filters">
-            <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')" style="margin-left: 1rem;">
+            
+            <div class="filter first-filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')" >
                 <div><i class="fa-solid fa-fire"></i></div>
                 <p>Trending</p>
             </div>
@@ -77,11 +78,11 @@
                 <p>National Park</p>
             </div>
             
-            <div class="filter <%= selectedCategory === 'treehouses' ? 'selected' : '' %>" onclick="setCategory('treehouses')">
+            <div class="filter <%= selectedCategory === 'treehouses' ? 'selected' : '' %>" onclick="setCategory('treehouses')" style="margin-right: 5rem;">
                 <div><i class="fa-solid fa-warehouse"></i></div>
                 <p>Treehouses</p>
             </div>
-            </div>
+           </div>
            
         </div>
         <button id="scroll-right" class="scroll-btn gthan" type="button" disabled>&gt;</button>
