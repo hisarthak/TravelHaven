@@ -1062,7 +1062,7 @@ form .search-btn:active {
 
   /* Optional: Hide the default buttons when not needed */
   .scroll-btn:disabled {
-   opacity: 0;
+   /* opacity: 0; */
    cursor: default;
   }
 
