@@ -450,9 +450,10 @@ font-weight: 400 !important;
         border-bottom: 0.1rem solid transparent; /* Add transparent border by default */
         padding-bottom: 0.1rem; /* Add padding to compensate for border space */
         min-width: 5rem;
+
     }
 
-    @media(max-width:440px){
+    /* @media(max-width:440px){
         .filter{
             min-width: 3rem;
         }
@@ -462,7 +463,7 @@ font-weight: 400 !important;
         .filter{
             min-width: 1rem;
         }
-    }
+    } */
 
 
      .filter:hover {
@@ -536,13 +537,6 @@ font-weight: 400 !important;
 
     
 
-    @media(max-width: 1300px){
-        .tax-toggle {
-         
-        }
-
-       
-    }
     
 
     
@@ -579,10 +573,7 @@ font-weight: 400 !important;
             width: auto; /* Allow it to fit the content */
             text-align: left; /* Align text to the left */
         }
-    
-        #filters {
-            margin-bottom: 1rem; /* Space below the filters */
-        }
+
     }
     
 
@@ -999,99 +990,21 @@ form .search-btn:active {
         z-index: 999;
         background-color: white;
         margin-top: -3rem;
+        padding-bottom: 0 !important;
         /* border-bottom: 1px solid #ccc; */
      
 }
 
 @media(max-width:768px) {
     #filters-container{
-  height: 6.25rem;
+  height: 5.9rem;
   overflow-y: hidden;
     }
 }
 
 
 
-/* 
 
-@media( max-width:1200px ) {
-    #filters-container {
-        width: 900px;
-      
-    }
-}
-
-@media( max-width:1028px ) {
-    #filters-container {
-    width: 750px;
-    }
-}
-
-
-
-@media( max-width: 1008px) {
-    #filters-container {
-    width: 660px ;
-    }
-}
-
-@media( max-width: 768px) {
-    #filters-container {
-    width: 480px ;
-    }
-}
-
-
-
- @media( max-width: 556px) {
-    #filters-container {
-    width: 450px ;
-    }
-}
-
-@media( max-width: 521px) {
-    #filters-container {
-    width: 400px ;
-    }
-}
-
-@media( max-width: 470px) {
-    #filters-container {
-    width: 350px ;
-    }
-}
-
-@media( max-width: 420px) {
-    #filters-container {
-    width: 300px ;
-    }
-}
-
-@media( max-width: 370px) {
-    #filters-container {
-    width: 250px ;
-    }
-}
-
-@media( max-width: 320px) {
-    #filters-container {
-    width: 200px ;
-    }
-}
-
-@media( max-width: 270px) {
-    #filters-container {
-    width: 100px ;
-    }
-}  */
-
-   
-
-
-
-
-
-  
   /* Force filters into a single row without wrapping */
   #filters {
     display: inline-flex; /* Ensures the filters are in a row and behave like inline elements */
@@ -1109,7 +1022,8 @@ form .search-btn:active {
   
   /* Optional: Customize scrollbar appearance */
   #filters-container::-webkit-scrollbar {
-    height: 4px;
+  
+    display: none;
   }
   
   #filters-container::-webkit-scrollbar-thumb {
