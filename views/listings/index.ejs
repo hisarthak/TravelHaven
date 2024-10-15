@@ -11,7 +11,7 @@
         <button id="scroll-left" class="scroll-btn lthan" type="button" disabled>&lt;</button>
         <div id="filters-container">
         <div id="filters">
-            <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')">
+            <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')" style="margin-left: 1rem;">
                 <div><i class="fa-solid fa-fire"></i></div>
                 <p>Trending</p>
             </div>
@@ -19,17 +19,17 @@
                 <div><i class="fa-solid fa-water-ladder"></i></div>
                 <p>Amazing Pools</p>
             </div>
-            <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms')">
-                <div><i class="fa-solid fa-cow"></i></div>
-                <p>Farms</p>
+            <div class="filter <%= selectedCategory === 'beach' ? 'selected' : '' %>" onclick="setCategory('beach')">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                <p>Beach</p>
             </div>
             <div class="filter <%= selectedCategory === 'castles' ? 'selected' : '' %>" onclick="setCategory('castles')">
                 <div><i class="fa-solid fa-chess-rook"></i></div>
                 <p>Castles</p>
             </div>
-            <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic')">
-                <div><i class="fa-regular fa-snowflake"></i></div>
-                <p>Arctic</p>
+            <div class="filter <%= selectedCategory === 'new' ? 'selected' : '' %>" onclick="setCategory('new')">
+                <div><i class="fa-solid fa-key"></i></div>
+                <p>New</p>
             </div>
             <div class="filter <%= selectedCategory === 'iconic cities' ? 'selected' : '' %>" onclick="setCategory('iconic cities')">
                 <div><i class="fa-solid fa-tree-city"></i></div>
@@ -58,10 +58,16 @@
                 <p>Camping</p>
             </div> 
 
-            <div class="filter <%= selectedCategory === 'new' ? 'selected' : '' %>" onclick="setCategory('new')">
-                <div><i class="fa-solid fa-key"></i></div>
-                <p>New</p>
+            <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms')">
+                <div><i class="fa-solid fa-cow"></i></div>
+                <p>Farms</p>
             </div>
+            <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic')">
+                <div><i class="fa-regular fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+
+            
             <div class="filter <%= selectedCategory === 'cabin' ? 'selected' : '' %>" onclick="setCategory('cabin')">
                 <div><i class="fa-solid fa-house"></i></div>
                 <p>Cabin</p>
@@ -70,10 +76,7 @@
                 <div><i class="fa-solid fa-tree"></i></div>
                 <p>National Park</p>
             </div>
-            <div class="filter <%= selectedCategory === 'beach' ? 'selected' : '' %>" onclick="setCategory('beach')">
-                <div><i class="fa-solid fa-umbrella-beach"></i></div>
-                <p>Beach</p>
-            </div>
+            
             <div class="filter <%= selectedCategory === 'treehouses' ? 'selected' : '' %>" onclick="setCategory('treehouses')">
                 <div><i class="fa-solid fa-warehouse"></i></div>
                 <p>Treehouses</p>
@@ -137,207 +140,153 @@
            }
         })
     </script> -->
-
-<script>
-   // Tax toggle functionality
-const taxSwitch = document.getElementById("flexSwitchCheckDefault");
-
-// Load the saved state from sessionStorage and apply it to the toggle switch
-const savedState = sessionStorage.getItem('taxToggleState');
-taxSwitch.checked = savedState === 'true'; // Set toggle based on saved state
-
-// Function to update prices based on toggle state
-const updatePrices = () => {
-    const prices = document.getElementsByClassName("price");
-
-    for (let price of prices) {
-        const originalPrice = parseFloat(price.getAttribute("data-original-price"));
-        const displayPrice = price.querySelector(".display-price");
-        const taxInfo = price.nextElementSibling; // Get the tax-info span
-
-        if (taxSwitch.checked) {
-            const taxAmount = originalPrice * 0.18; // 18% tax
-            const totalPrice = originalPrice + taxAmount;
-            displayPrice.innerHTML = totalPrice.toLocaleString("en-IN");
-            taxInfo.style.display = "inline"; // Show the tax info
-        } else {
-            displayPrice.innerHTML = originalPrice.toLocaleString("en-IN");
-            taxInfo.style.display = "none"; // Hide the tax info
-        }
-    }
-};
-
-// Initial price update based on toggle state
-updatePrices();
-
-// Add event listener to update sessionStorage and prices when the toggle state changes
-taxSwitch.addEventListener("change", () => {
-    sessionStorage.setItem('taxToggleState', taxSwitch.checked);
-    updatePrices(); // Update prices whenever the toggle is changed
-});
-
-function savedScroll() {
-    const scrollContainer = document.getElementById('filters-container');
-    
-    // Check if there's a saved scroll position in localStorage
-    const savedScrollPosition = localStorage.getItem('scrollPosition');
-    
-    if (savedScrollPosition) {
-        // Restore the scroll position (without clearing it immediately)
-        scrollContainer.scrollLeft = parseInt(savedScrollPosition, 10);
-    }
-};
-
-
-savedScroll();
-
-// Function to set category
-function setCategory(category) {
-    const scrollContainer = document.getElementById('filters-container');
-    
-    // Save the current scroll position to localStorage
-    localStorage.setItem('scrollPosition', scrollContainer.scrollLeft);
-    // Set the selected category value in the hidden input
-    document.getElementById('selectedCategory').value = category;
-
-    // Remove the 'selected' class from all filters
-    let filters = document.getElementsByClassName('filter');
-    for (let filter of filters) {
-        filter.classList.remove('selected');
-    }
-
-    // Find the clicked filter by the category and add the 'selected' class
-    let selectedFilter = document.querySelector(`.filter[onclick="setCategory('${category}')"]`);
-    selectedFilter.classList.add('selected');
-
-    // Automatically submit the form
-    document.getElementById('categoryForm').submit();
-}
-
-// Toggle switch functionality
-const toggleSwitch = document.getElementById('flexSwitchCheckDefault');
-
-// Load the saved state from sessionStorage and apply it to the toggle switch
-const toggleSavedState = sessionStorage.getItem('taxToggleState');
-if (toggleSavedState === 'true') {
-    toggleSwitch.checked = true;  // Set toggle to ON if saved state is 'true'
-} else {
-    toggleSwitch.checked = false; // Set toggle to OFF otherwise
-}
-
-// Add event listener to update sessionStorage when the toggle state changes
-toggleSwitch.addEventListener('change', function() {
-    sessionStorage.setItem('taxToggleState', toggleSwitch.checked);
-});
-
-
-//  function scrollsign() {
-//     const scrollContainer = document.getElementById('filters-container');
-//     const scrollLeftBtn = document.getElementById('scroll-left');
-//     const scrollRightBtn = document.getElementById('scroll-right');
-    
-//     // Scroll amount (adjust based on preference)
-//     const scrollAmount = 150; // pixels
-
-//     // Scroll left button click event
-//     scrollLeftBtn.addEventListener('click', function() {
-//         scrollContainer.scrollBy({
-//             left: -scrollAmount,
-//             behavior: 'smooth'
-//         });
-//     });
-
-//     // Scroll right button click event
-//     scrollRightBtn.addEventListener('click', function() {
-//         scrollContainer.scrollBy({
-//             left: scrollAmount,
-//             behavior: 'smooth'
-//         });
-//     });
-
-//     // Disable buttons at scroll limits
-//     scrollContainer.addEventListener('scroll', function() {
-//         // Enable/disable the left button
-//         if (scrollContainer.scrollLeft === 0) {
-//             scrollLeftBtn.disabled = true;
-//         } else {
-//             scrollLeftBtn.disabled = false;
-//         }
-
-//         // Enable/disable the right button
-//         if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
-//             scrollRightBtn.disabled = true;
-//         } else {
-//             scrollRightBtn.disabled = false;
-//         }
-//     });
-
-//     // Initial button state
-//     scrollLeftBtn.disabled = scrollContainer.scrollLeft === 0;
-//     scrollRightBtn.disabled = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth;
-// };
-function scrollsign() {
-    const scrollContainer = document.getElementById('filters-container');
-    const scrollLeftBtn = document.getElementById('scroll-left');
-    const scrollRightBtn = document.getElementById('scroll-right');
-    
-    // Scroll amount (adjust based on preference)
-    const scrollAmount = 150; // pixels
-
-    // Disable buttons based on the initial scroll position
-    function updateButtonState() {
-        // Immediately disable or enable the buttons based on scroll position
-        scrollLeftBtn.disabled = scrollContainer.scrollLeft === 0;
-        scrollRightBtn.disabled = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth;
-    }
-
-    // Scroll left button click event
-    scrollLeftBtn.addEventListener('click', function() {
-        scrollContainer.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-    });
-
-    // Scroll right button click event
-    scrollRightBtn.addEventListener('click', function() {
-        scrollContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    });
-
-    // Listen to the scroll event and update button states accordingly
-    scrollContainer.addEventListener('scroll', function() {
-        updateButtonState();
-    });
-
-    // Restore the saved scroll position (if any) from localStorage
-    const savedScrollPosition = localStorage.getItem('scrollPosition');
-    if (savedScrollPosition) {
-        scrollContainer.scrollLeft = parseInt(savedScrollPosition, 10);
-    }
-
-    // Update button state immediately after script is executed
-    updateButtonState();
-}
-
-// Save scroll position before leaving the page or reloading
-window.addEventListener('beforeunload', function () {
-    const scrollContainer = document.getElementById('filters-container');
-    // Save the current scroll position in localStorage
-    localStorage.setItem('scrollPosition', scrollContainer.scrollLeft);
-});
-
-// Immediately call the scrollsign function when the script loads
-scrollsign();
-
-
-
-
-
-
-
-</script>
-
+    <script>
+        // Tax toggle functionality
+     const taxSwitch = document.getElementById("flexSwitchCheckDefault");
+     
+     // Load the saved state from sessionStorage and apply it to the toggle switch
+     const savedState = sessionStorage.getItem('taxToggleState');
+     taxSwitch.checked = savedState === 'true'; // Set toggle based on saved state
+     
+     // Function to update prices based on toggle state
+     const updatePrices = () => {
+         const prices = document.getElementsByClassName("price");
+     
+         for (let price of prices) {
+             const originalPrice = parseFloat(price.getAttribute("data-original-price"));
+             const displayPrice = price.querySelector(".display-price");
+             const taxInfo = price.nextElementSibling; // Get the tax-info span
+     
+             if (taxSwitch.checked) {
+                 const taxAmount = originalPrice * 0.18; // 18% tax
+                 const totalPrice = originalPrice + taxAmount;
+                 displayPrice.innerHTML = totalPrice.toLocaleString("en-IN");
+                 taxInfo.style.display = "inline"; // Show the tax info
+             } else {
+                 displayPrice.innerHTML = originalPrice.toLocaleString("en-IN");
+                 taxInfo.style.display = "none"; // Hide the tax info
+             }
+         }
+     };
+     
+     // Initial price update based on toggle state
+     updatePrices();
+     
+     // Add event listener to update sessionStorage and prices when the toggle state changes
+     taxSwitch.addEventListener("change", () => {
+         sessionStorage.setItem('taxToggleState', taxSwitch.checked);
+         updatePrices(); // Update prices whenever the toggle is changed
+     });
+     
+     function savedScroll() {
+         const scrollContainer = document.getElementById('filters-container');
+         
+         // Check if there's a saved scroll position in sessionStorage
+         const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+         
+         if (savedScrollPosition) {
+             // Restore the scroll position (without clearing it immediately)
+             scrollContainer.scrollLeft = parseInt(savedScrollPosition, 10);
+         }
+     };
+     
+     savedScroll();
+     
+     // Function to set category
+     function setCategory(category) {
+         const scrollContainer = document.getElementById('filters-container');
+         
+         // Save the current scroll position to sessionStorage
+         sessionStorage.setItem('scrollPosition', scrollContainer.scrollLeft);
+         // Set the selected category value in the hidden input
+         document.getElementById('selectedCategory').value = category;
+     
+         // Remove the 'selected' class from all filters
+         let filters = document.getElementsByClassName('filter');
+         for (let filter of filters) {
+             filter.classList.remove('selected');
+         }
+     
+         // Find the clicked filter by the category and add the 'selected' class
+         let selectedFilter = document.querySelector(`.filter[onclick="setCategory('${category}')"]`);
+         selectedFilter.classList.add('selected');
+     
+         // Automatically submit the form
+         document.getElementById('categoryForm').submit();
+     }
+     
+     // Toggle switch functionality
+     const toggleSwitch = document.getElementById('flexSwitchCheckDefault');
+     
+     // Load the saved state from sessionStorage and apply it to the toggle switch
+     const toggleSavedState = sessionStorage.getItem('taxToggleState');
+     if (toggleSavedState === 'true') {
+         toggleSwitch.checked = true;  // Set toggle to ON if saved state is 'true'
+     } else {
+         toggleSwitch.checked = false; // Set toggle to OFF otherwise
+     }
+     
+     // Add event listener to update sessionStorage when the toggle state changes
+     toggleSwitch.addEventListener('change', function() {
+         sessionStorage.setItem('taxToggleState', toggleSwitch.checked);
+     });
+     
+     function scrollsign() {
+         const scrollContainer = document.getElementById('filters-container');
+         const scrollLeftBtn = document.getElementById('scroll-left');
+         const scrollRightBtn = document.getElementById('scroll-right');
+         
+         // Scroll amount (adjust based on preference)
+         const scrollAmount = 150; // pixels
+     
+         // Disable buttons based on the initial scroll position
+         function updateButtonState() {
+             // Immediately disable or enable the buttons based on scroll position
+             scrollLeftBtn.disabled = scrollContainer.scrollLeft === 0;
+             scrollRightBtn.disabled = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth;
+         }
+     
+         // Scroll left button click event
+         scrollLeftBtn.addEventListener('click', function() {
+             scrollContainer.scrollBy({
+                 left: -scrollAmount,
+                 behavior: 'smooth'
+             });
+         });
+     
+         // Scroll right button click event
+         scrollRightBtn.addEventListener('click', function() {
+             scrollContainer.scrollBy({
+                 left: scrollAmount,
+                 behavior: 'smooth'
+             });
+         });
+     
+         // Listen to the scroll event and update button states accordingly
+         scrollContainer.addEventListener('scroll', function() {
+             updateButtonState();
+         });
+     
+         // Restore the saved scroll position (if any) from sessionStorage
+         const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+         if (savedScrollPosition) {
+             scrollContainer.scrollLeft = parseInt(savedScrollPosition, 10);
+         }
+     
+         // Update button state immediately after script is executed
+         updateButtonState();
+     }
+     
+     // Save scroll position before leaving the page or reloading
+     window.addEventListener('beforeunload', function () {
+         const scrollContainer = document.getElementById('filters-container');
+         // Save the current scroll position in sessionStorage
+         sessionStorage.setItem('scrollPosition', scrollContainer.scrollLeft);
+     });
+     
+     // Immediately call the scrollsign function when the script loads
+     scrollsign();
+     
+     </script>
+     
 

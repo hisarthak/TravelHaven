@@ -7,7 +7,7 @@
     <form method="POST" action="/listings/<%=listing._id %>?_method=PUT" novalidate class="needs-validation"  enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-<input name="listing[title]" value="<%=listing.title%>" class="form-control" required>
+<input name="listing[title]" value="<%=listing.title%>" class="form-control" placeholder="Add a catchy title" required>
 <div class="invalid-feedback">Please enter the title</div>
 </div>
 
@@ -85,7 +85,8 @@ Original Listing Image <br>
     <div>
       <input type="checkbox" id="beach" name="listing[category][]" value="beach" <% if (listing.category.includes('beach')) { %> checked <% } %>onchange="updateHiddenInput()">
       <label for="beach">Beach</label>
-    </div>   
+    </div>  
+     
 <input name="categorySelected" id="categorySelected" value="1"  style="position: absolute; left: -9999px;" required>
 <div class="invalid-feedback" id="categoryFeedback">Select at least one category</div>
 </div>
@@ -94,13 +95,13 @@ Original Listing Image <br>
 <div class="row">
     <div class="mb-3 col-md-4">
         <label for="price" class="form-label" >Price</label>
-        <input name="listing[price]"  value="<%=listing.price%>" class="form-control" required >
+        <input name="listing[price]"  value="<%=listing.price%>" class="form-control" placeholder="Enter price per night" required >
         <div class="invalid-feedback">Price should be valid</div> 
     </div>
     
     <div class="mb-3 col-md-8">
         <label for="country" class="form-label" >Country</label>
-        <input name="listing[country]" value="<%=listing.country%>" class="form-control" required>
+        <input name="listing[country]" value="<%=listing.country%>" class="form-control" placeholder="Enter your country" required>
         <div class="invalid-feedback">Country should be valid</div>
     </div>
 
@@ -110,7 +111,7 @@ Original Listing Image <br>
 
 <div class="mb-3">
     <label for="location" class="form-label" >Location</label>
-    <input name="listing[location]" value="<%=listing.location%>" class="form-control" required >
+    <input name="listing[location]" value="<%=listing.location%>" class="form-control" placeholder="City, State" required >
     <div class="invalid-feedback">Location should be valid</div>
 </div>
 

@@ -55,9 +55,13 @@ module.exports.createListing = async (req, res, next) => {
             return res.status(400).send("Send valid data for listing");
         }
     
-        // Check if the 'trending' category is included in the user selection
+        
         if (category && category.includes('trending')) {
             return res.status(403).send('You cannot add items to the trending category.');
+        }
+
+        if (category && category.includes('new')) {
+            return res.status(403).send('You cannot add items to the new category.');
         }
     
         // Create new listing with categories
@@ -112,6 +116,11 @@ module.exports.updateListing =  async (req, res)=>{
         if (category && category.includes('trending')) {
             return res.status(403).send('You cannot add items to the trending category.');
         }
+
+        if (category && category.includes('new')) {
+            return res.status(403).send('You cannot add items to the new category.');
+        }
+    
         console.log(req.body.listing);
     let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing},);
  
