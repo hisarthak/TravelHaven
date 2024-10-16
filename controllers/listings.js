@@ -168,10 +168,10 @@ module.exports.searchListing =  async (req, res) => {
   module.exports.listingCategory =  async (req, res) => {
 
     const selectedCategory = req.query.category || '';
-    const allListings = await Listing.find({});
-
+   
     if(selectedCategory=="explore"){
-        res.render("listings/index.ejs", {allListings, selectedCategory });
+       
+        res.redirect("/listings")
     }
   
     // Search the listings based on the selected category
