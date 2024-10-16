@@ -5,6 +5,11 @@
         <button id="scroll-left" class="scroll-btn lthan" type="button" disabled>&lt;</button>
         <div id="filters-container">
         <div id="filters">
+
+            <div class="filter first-filter <%= selectedCategory === 'explore' ? 'selected' : '' %>" onclick="setCategory('explore')">
+                <div><i class="fa-solid fa-compass"></i></div>
+                <p>Explore</p>
+            </div>
             
             <div class="filter first-filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending')" >
                 <div><i class="fa-solid fa-fire"></i></div>

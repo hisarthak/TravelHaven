@@ -4,7 +4,7 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken});
 
 module.exports.index = async (req, res)=>{
-    const selectedCategory = req.query.category || '';
+    const selectedCategory = req.query.category || 'explore';
     const allListings = await Listing.find({});
     res.render("listings/index.ejs", {allListings, selectedCategory });
      };
@@ -168,6 +168,11 @@ module.exports.searchListing =  async (req, res) => {
   module.exports.listingCategory =  async (req, res) => {
 
     const selectedCategory = req.query.category || '';
+    const allListings = await Listing.find({});
+
+    if(selectedCategory=="explore"){
+        res.render("listings/index.ejs", {allListings, selectedCategory });
+    }
   
     // Search the listings based on the selected category
     const results = await Listing.find({
