@@ -1016,6 +1016,11 @@ form .search-btn:active {
     /* min-width: 3.5rem; */
   }
 
+  .filter.selected {
+    cursor: default; /* Change to your desired cursor style */
+}
+
+
   
   /* Optional: Customize scrollbar appearance */
   #filters-container::-webkit-scrollbar {
