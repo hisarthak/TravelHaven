@@ -593,8 +593,14 @@ font-weight: 400 !important;
     @media(max-width: 240px){
         .tax-toggle{
           padding: 0.1rem;
+          word-wrap: break-word; /* Or use 'overflow-wrap: break-word;' */
+          white-space: normal;
+          top: 1;
+          margin-top: -2.5rem !important;
         }
     }
+
+   
     @media (max-width: 48rem) { /* Approximately 768px */
         .form-container {
             flex-direction: column; /* Stack items vertically */

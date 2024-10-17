@@ -1,5 +1,15 @@
 <% layout("/layouts/boilerplate")%>
+<style>
+   @media(max-width:250px){
+    .texts{
+        font-size: 7px !important;
+    }
 
+    h1, h2, h3, h4{
+        font-size: small !important;
+    }}
+</style>
+<div class="container texts">
     <header>
         <h1>TravelHaven Terms of Service</h1>
         
@@ -116,7 +126,7 @@
         <p>If you have any questions about these Terms, please contact us at: sarthak231102@gmail.com </p>
     </section>
     <a href="/legal/hidden" id="easterEggButton" class="easter-egg-btn" style="display: none;"><i class="fa-solid fa-arrow-up"></i>&nbsp;Back to top</a>
-
+</div>
     <script>
         // Get the button element
 const easterEggBtn = document.querySelector('.easter-egg-btn');
