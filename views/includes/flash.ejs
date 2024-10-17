@@ -1,5 +1,5 @@
 <% if(success && success.length) { %>
-    <div id="flash-success" class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+    <div id="flash-success" class="alert alert-success alert-dismissible fade show" role="alert">
         <%= success %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <!-- Progress bar -->
@@ -10,7 +10,7 @@
 <% } %>
 
 <% if(error && error.length) { %>
-    <div id="flash-error" class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+    <div id="flash-error" class="alert alert-danger alert-dismissible fade show" role="alert">
         <%= error %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <!-- Progress bar -->

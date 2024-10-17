@@ -772,11 +772,20 @@ form .search-btn:active {
 
 .alert {
     box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2); /* Soft shadow */
+    /* position: absolute; /* Use absolute positioning */
+    top: 20%; /* Adjust this value to position the flash message */
+    left: 50%;
+    transform: translate(-50%, 0); /* Center horizontally */
+    z-index: 6000; /* Ensure it overlaps other elements */
+    width: 50%; /* Adjust width as needed */
+    max-width: 600px; /* Optional max width */
+    text-align: center; 
 }
+
 
 /* Ensure progress bar is not affected by Bootstrap alert styling */
 .alert .progress {
-    height: 0.1875rem; /* Thin progress bar */
+    height: 0.0625rem; /* Thin progress bar */
     background-color: #e9ecef;
     margin-top: 0.3125rem; /* Adjust for a smaller gap */
     border-radius: 1px;
@@ -798,9 +807,9 @@ form .search-btn:active {
 /* Reduce the size of the close button inside alerts */
 /* Reduce the size of the close button inside alerts and remove box shadow */
 .alert .btn-close {
-    width: 0.75em;  /* Smaller width */
-    height: 0.75em; /* Smaller height */
-    padding: 0.25em; /* Adjust padding to make the button smaller */
+    width: 0.75rem;  /* Smaller width */
+    height: 0.75rem; /* Smaller height */
+    padding: 0.25rem; /* Adjust padding to make the button smaller */
     font-size: 0.75rem; /* Reduce font size for the 'x' icon */
     line-height: 1;  /* Ensure the icon is vertically centered */
     box-shadow: none !important; /* Forcefully remove the box shadow */
