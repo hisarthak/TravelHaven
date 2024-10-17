@@ -770,17 +770,26 @@ form .search-btn:active {
 
 /* Flash Messages */
 
+.flash-container {
+    position: fixed; /* Fixed position for flash messages */
+    top: 11%; /* Distance from the top */
+    left: 80%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to center */
+    width: 100%; /* Full width */
+    z-index: 6000; /* Ensure it overlays other elements */
+    pointer-events: auto; /* Allow interaction */
+}
+
 .alert {
     box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2); /* Soft shadow */
-    /* position: absolute; /* Use absolute positioning */
-    top: 20%; /* Adjust this value to position the flash message */
-    left: 50%;
-    transform: translate(-50%, 0); /* Center horizontally */
-    z-index: 6000; /* Ensure it overlaps other elements */
+    margin: 0; /* No margin to prevent layout shifts */
     width: 50%; /* Adjust width as needed */
     max-width: 600px; /* Optional max width */
-    text-align: center; 
+    display: inline-block; /* Prevents full width */
+    text-align: center; /* Center text */
+    transition: opacity 0.5s ease; /* Smooth transition */
 }
+
 
 
 /* Ensure progress bar is not affected by Bootstrap alert styling */
