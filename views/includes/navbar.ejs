@@ -35,7 +35,7 @@
             <!-- <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a> -->
             <div  class="navbtn" style="position: relative; display: flex;">
           
-              <a  id="optionsButton" class="circular-button" title="<%=currUser.username%>" style="text-decoration: none;"><%=currUser.username.charAt(0).toUpperCase()%></a>  
+              <a  id="optionsButton" class="circular-button" title="<%=currUser.username%>" style="text-decoration: none; margin-right: 1.3rem; margin-left: 0.5rem"><%=currUser.username.charAt(0).toUpperCase()%></a>  
               <div id="optionsCard" class="card" style="display: none;">
               <ul class="list-group list-group-flush">
                 <a href="/logout" id="logout"  class="list-group-item" >
@@ -74,8 +74,12 @@ window.addEventListener('resize', updateAnchorText);
 
 document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
     const input = document.querySelector('input[name="query"]');
+    const btn = document.querySelector(".search-btn");
     if (input.value.trim() === '') {
+      btn.style.boxShadow = "0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)";
         event.preventDefault(); // Prevent form submission
+    } else {
+      btn.style.boxShadow = "0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)";
     }
 });
 

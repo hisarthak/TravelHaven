@@ -35,6 +35,7 @@ body{
 .navbar{
     height: 5rem;
     background-color: white;
+    position: relative;
 }
 
 
@@ -72,9 +73,9 @@ body{
         margin: 0 auto; 
         z-index: 1;
         text-wrap: nowrap;
-        position: absolute; /* Position absolutely to control its placement */
-        top: 15px; /* Distance from the top */
-        left: 55.5%; /* Position it in the center */
+        position: fixed; /* Position absolutely to control its placement */
+        top: 13px !important; /* Distance from the top */
+        left: 55.5% !important; /* Position it in the center */
         transform: translateX(-50%); /* Center the toggle */
         flex-wrap: nowrap !important;
         width: auto !important;
@@ -89,9 +90,10 @@ body{
 }
 
 .nav-link:hover {
-    background-color: rgba(128, 128, 128, 0.2); /* Light grey background */
+    background-color:rgba(211, 211, 211, 0.25);    /* Light grey background */
     /* border: 1px solid grey; Grey border */
 }
+
 
 
 @media (max-width: 768px) {
@@ -106,7 +108,7 @@ body{
         z-index: 9000 !important; /* Ensure it appears above other elements */
         padding: 0.3rem;
         padding-top: 1rem;
-        margin-top: 27px;
+        margin-top: 72px;
        
     }
 
@@ -117,6 +119,28 @@ body{
     
       }
 
+      .navbar-brand {
+    position: fixed; 
+    top:  17px;
+    left: 10px; 
+    z-index: 1000; 
+}
+
+      .navbar-toggler {
+        position: fixed !important; /* Fixes the position */
+        top: 22px !important; /* Adjusts the distance from the top */
+        right: 10px !important; /* Adjusts the distance from the right */
+        z-index: 6000 !important; /* Ensures it stays above other elements */
+        
+    }
+
+      .navbar-toggler:focus{
+       box-shadow: none !important;
+      }
+
+    .nav-link:hover{
+        background-color: transparent !important;
+    }
       .navbtn {
         margin-left: 1rem;
         padding:0
@@ -131,7 +155,7 @@ body{
 
 @media(max-width: 480px) {
     .navbar-collapse{
-        margin-top: 28px;
+        margin-top: 72px;
     }
 }
 
@@ -686,7 +710,7 @@ input[type="checkbox"] {
     padding: 0.5rem 1rem; /* Adjust padding */
     border: 1px solid #fe4248; /* Remove default border */
     border-left: none !important;
-    transition: box-shadow 0.3s ease, backgroond-color 0.3s; /* Smooth transition */
+    transition: box-shadow 0.3s ease; /* Smooth transition */
     margin-left:0 !important;
     position: relative; /* Needed for tooltip positioning */
     box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2); /* Add shadow */
