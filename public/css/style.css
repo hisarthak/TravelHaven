@@ -797,8 +797,8 @@ form .search-btn:active {
 .flash-container {
     position: fixed; /* Fixed position for flash messages */
     top: 12%; /* Distance from the top */
-    left: 80%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust to center */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-25%); /* Adjust to center */
     width: 100%; /* Full width */
     z-index: 6000; /* Ensure it overlays other elements */
     pointer-events: auto; /* Allow interaction */
