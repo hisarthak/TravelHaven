@@ -251,10 +251,13 @@
  
      // Disable buttons based on the initial scroll position
      function updateButtonState() {
-         // Immediately disable or enable the buttons based on scroll position
-         scrollLeftBtn.disabled = scrollContainer.scrollLeft === 0;
-         scrollRightBtn.disabled = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth;
-     }
+    const buffer = 10; // You can adjust this value to control how early the button disables
+    // Disable the left button if we're at the start
+    scrollLeftBtn.disabled = scrollContainer.scrollLeft === 0;
+    // Disable the right button a little earlier by subtracting the buffer from the calculation
+    scrollRightBtn.disabled = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - buffer;
+}
+
  
      // Scroll left button click event
      scrollLeftBtn.addEventListener('click', function() {
