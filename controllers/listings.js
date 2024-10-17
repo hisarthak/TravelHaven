@@ -169,9 +169,9 @@ module.exports.searchListing =  async (req, res) => {
 
     const selectedCategory = req.query.category || '';
    
-    if(selectedCategory=="explore"){
+    if(selectedCategory==="explore"){
        
-        res.redirect("/listings")
+        return res.redirect("/listings")
     }
   
     // Search the listings based on the selected category
