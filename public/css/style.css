@@ -907,7 +907,13 @@ form .search-btn:active {
 
 /* Media Query for Smaller Screens */
 @media (max-width: 480px) {
-    .back-to-top,.easter-egg-btn {
+    .back-to-top {
+   display:none !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .easter-egg-btn {
    display:none !important;
     }
 }
