@@ -95,8 +95,16 @@ body{
 }
 
 
+@media(width: 768px){
+    .nav-title{
+        display: none;
+    }
+}
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+
+    
+   
     .navbar-collapse {
         background-color: white; /* Light gray background */
         opacity: 0.95;
@@ -150,11 +158,15 @@ body{
         padding: 0.625rem; /* Space inside each item */
         border-bottom: 1px solid #ccc; /* Optional: Add a border between items */
       }
+    
 }
+
+
+
 
 @media(max-width: 480px) {
     .navbar-collapse{
-        margin-top: 72px;
+        margin-top: 72px ;
     }
 }
 
