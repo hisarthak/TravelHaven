@@ -101,7 +101,9 @@ body{
     }
 }
 
-@media (max-width: 767px) {
+
+
+@media (max-width: 767.9px) {
 
     
    
@@ -136,17 +138,18 @@ body{
     z-index: 1000; 
 }
 
-      .navbar-toggler {
-        position: fixed !important; /* Fixes the position */
-        top: 22px !important; /* Adjusts the distance from the top */
-        right: 10px !important; /* Adjusts the distance from the right */
-        z-index: 6000 !important; /* Ensures it stays above other elements */
-        
-    }
+.navbar-toggler {
+    position: fixed !important; /* Fixes the position */
+    top: 22px !important; /* Adjusts the distance from the top */
+    right: 10px !important; /* Adjusts the distance from the right */
+    z-index: 6000 !important; /* Ensures it stays above other elements */
+}
 
-      .navbar-toggler:focus{
-       box-shadow: none !important;
-      }
+.navbar-toggler:focus{
+    box-shadow: none !important;
+   }
+      
+
 
       .navbtn {
         margin-left: 1rem;
@@ -678,6 +681,12 @@ font-weight: 400 !important;
     font-size: 2rem;                 /* Optional: Increase font size */
     color: #444;                       /* Optional: Change text color */
     padding: 1.25rem; 
+}
+
+@media(max-width:200px){
+    .center-message{
+        font-size: 1rem;
+    }
 }
 
 /* checkbox style */
