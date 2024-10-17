@@ -745,6 +745,7 @@ form .search-inp {
     font-size: 1rem;
     border-right: none;
     margin-right: 0 !important;
+    margin-left: 1rem;
     outline: none !important; /* Remove outline */
     /* box-shadow: none !important; Remove default box shadow */
     box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2) !important; /* Add shadow */
@@ -789,6 +790,7 @@ form .search-btn:active {
     form .search-inp {
         padding: 0.4rem 0.8rem; /* Smaller padding */
         font-size: 0.875rem; /* Smaller font size */
+        margin-left: 0;
     }
 }
 
