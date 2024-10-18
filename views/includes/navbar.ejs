@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings" title="TravelHaven Home"><img src="/android-chrome-192x192.png" class="icon" ></a>
+      <a class="navbar-brand" href="/listings" title="TravelHaven Home"><img src="/TravelHavenLogo.png" class="icon" ></a>
       <a class="navbar-brand nav-title " id="brand-name" href="/listings" title="TravelHaven Home" >ravelHaven</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
             <!-- <a class="nav-link" href="/logout"><b style="color: red">Log out</b></a> -->
             <div  class="navbtn" style="position: relative; display: flex;">
           
-              <a  id="optionsButton" class="circular-button" title="<%=currUser.username%>" style="text-decoration: none; margin-right: 1.3rem; margin-left: 0.5rem"><%=currUser.username.charAt(0).toUpperCase()%></a>  
+              <a  id="optionsButton" class="circular-button" title="<%=currUser.username%>" style=""><%=currUser.username.charAt(0).toUpperCase()%></a>  
               <div id="optionsCard" class="card" style="display: none;">
               <ul class="list-group list-group-flush">
                 <a href="/logout" id="logout"  class="list-group-item" >
