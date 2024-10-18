@@ -987,6 +987,17 @@ form .search-btn:active {
     font-weight: bold;               /* Font weight */
     cursor: pointer;                 /* Change cursor on hover */
     transition: background-color 0.3s; /* Smooth hover effect */
+    text-decoration: none;
+    margin-right: 1.3rem;
+    margin-left: 0.5rem
+}
+
+@media(max-width: 767.9px){
+    .circular-button{
+        margin-left: -0.5rem !important;
+        margin-bottom: 0.4rem;
+        margin-top: 0.2rem;    
+    }
 }
 
 

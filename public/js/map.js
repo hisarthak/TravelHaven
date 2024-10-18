@@ -17,10 +17,12 @@
 
 
 // Create the default marker
-const marker = new mapboxgl.Marker({ color: "red" })
-    .setLngLat(listing.geometry.coordinates)
-    .addTo(map);
+const coordinates = listing.geometry.coordinates; // [longitude, latitude]
+const offsetLatitude = 0.0030; // Adjust this value based on how much you want to move the marker up
 
+const marker = new mapboxgl.Marker({ color: "red" })
+    .setLngLat([coordinates[0], coordinates[1] + offsetLatitude])
+    .addTo(map);
     // Create a popup
 const popup = new mapboxgl.Popup({ offset: 25 })
 .setHTML(`<p>Exact location will be shared upon booking.</p>`);
