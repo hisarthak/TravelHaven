@@ -10,7 +10,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
-              <form class="d-flex" role="search" action="/listings/search" method="GET"<% if(demo){ data-intro="Search for your desired accommodations here."}%>>
+              <form class="d-flex" role="search" action="/listings/search" method="GET">
                   <input class="form-control me-2 search-inp searchinput" type="search" name="query" placeholder="Search destinations" aria-label="Search" value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>">
                   <button class="btn search-btn" type="submit" title="Search">
                       <i class="fa-solid fa-magnifying-glass"></i>
@@ -19,7 +19,7 @@
           </div>
 
           <div class="navbar-nav ms-auto">
-              <a class="nav-link" href="/listings/new" style="font-size: 0.93rem; font-weight: 700;" <% if(demo){data-intro="List your own place by clicking here."}%>>List your place</a>
+              <a class="nav-link" href="/listings/new" style="font-size: 0.93rem; font-weight: 700;">List your place</a>
               <% if (!currUser) { %>
                   <a class="nav-link" href="/signup" style="font-size: 0.93rem; font-weight: 500;">Signup</a>
                   <a class="nav-link" href="/login" style="font-size: 0.93rem; font-weight: 500; margin-right: 1.3rem">Log in</a>
@@ -105,4 +105,43 @@ optionsCard.addEventListener('click', (e) => {
     e.stopPropagation(); // Prevent click from bubbling to the document
 });
 
+const intro = introJs();
+    
+    // Define the steps for the intro
+    intro.setOptions({
+        steps: [
+            {
+                intro: "Welcome to TravelHaven! Let's take a quick tour."
+            },
+
+            {
+                element: 'form[role="search"]',
+                intro: 'Search for your desired accommodations here.',
+            },
+
+            {
+                element: 'a[href="/listings/new"]',
+                intro: 'List your own place by clicking here.',
+            },
+
+            {
+                element: '#filters',
+                intro: "Here you can filter listings by category.",
+            },
+            {
+                element: '.listing-card',
+                intro: "These are the listings available. Click on a listing to see more details."
+            },
+            {
+                element: '#flexSwitchCheckDefault',
+                intro: "You can toggle the display of total prices including tax here."
+            },
+            {
+                intro: "Enjoy exploring our listings!",
+                position: 'top'
+            }
+        ]
+    });
+    // Start the intro
+    intro.start();
 </script>
