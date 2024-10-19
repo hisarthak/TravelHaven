@@ -1,6 +1,6 @@
 # TravelHaven
 
-![TravelHaven Logo](public/TravelHavenFav.png) <!-- Add your logo image link if you have one -->
+<img src="public/TravelHavenFav.png" alt="Travel Haven" width="100" height="100"/><!-- Add your logo image link if you have one -->
 
 TravelHaven is a user-friendly accommodation exploration platform that allows travelers to discover unique places to stay. Built with modern web technologies, TravelHaven showcases a variety of listings and offers a seamless experience for users looking to find their next adventure.
 
@@ -66,18 +66,21 @@ To run TravelHaven locally, follow these steps:
    git clone https://github.com/your-username/travelhaven.git
 
 2. Navigate to the project directory:
-cd travelhaven
+   ```bash
+   cd travelhaven
 
 
 3. Install dependencies:
-npm install
+   ```bash
+   npm install
 
 
 4. Set up your environment variables:
 Create a .env file in the root directory and include the required configurations.
 
 5. Start the application:
-npm start
+   ```bash
+   npm start
 
 ## Acknowledgments
 
