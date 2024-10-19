@@ -1,121 +1,149 @@
-<% layout("/layouts/boilerplate")%>
-<!-- Include Intro.js CSS and JS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.4.0/introjs.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.4.0/intro.min.js"></script>
 
+<% layout("/layouts/boilerplate")%>
 <style>
-  /* Add any additional styles here */
+
+
+
 </style>
 
 <div class="form-container">
     <form action="/listings/category" method="get" id="categoryForm">
         <button id="scroll-left" class="scroll-btn lthan" type="button" disabled>&lt;</button>
         <div id="filters-container">
-            <div id="filters">
-                <div class="filter first-filter <%= selectedCategory === 'explore' ? 'selected' : '' %>" onclick="setCategory('explore', this)">
-                    <div><i class="fa-solid fa-compass"></i></div>
-                    <p>Explore</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending', this)">
-                    <div><i class="fa-solid fa-fire"></i></div>
-                    <p>Trending</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'amazing pools' ? 'selected' : '' %>" onclick="setCategory('amazing pools', this)">
-                    <div><i class="fa-solid fa-water-ladder"></i></div>
-                    <p>Amazing Pools</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'beach' ? 'selected' : '' %>" onclick="setCategory('beach', this)">
-                    <div><i class="fa-solid fa-umbrella-beach"></i></div>
-                    <p>Beach</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'castles' ? 'selected' : '' %>" onclick="setCategory('castles', this)">
-                    <div><i class="fa-solid fa-chess-rook"></i></div>
-                    <p>Castles</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'new' ? 'selected' : '' %>" onclick="setCategory('new', this)">
-                    <div><i class="fa-solid fa-key"></i></div>
-                    <p>New</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'iconic cities' ? 'selected' : '' %>" onclick="setCategory('iconic cities', this)">
-                    <div><i class="fa-solid fa-tree-city"></i></div>
-                    <p>Iconic Cities</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'rooms' ? 'selected' : '' %>" onclick="setCategory('rooms', this)">
-                    <div><i class="fa-solid fa-bed"></i></div>
-                    <p>Rooms</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'boats' ? 'selected' : '' %>" onclick="setCategory('boats', this)">
-                    <div><i class="fa-solid fa-ship"></i></div>
-                    <p>Boats</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'domes' ? 'selected' : '' %>" onclick="setCategory('domes', this)">
-                    <div><i class="fa-solid fa-igloo"></i></div>
-                    <p>Domes</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'mountains' ? 'selected' : '' %>" onclick="setCategory('mountains', this)">
-                    <div><i class="fa-solid fa-mountain"></i></div>
-                    <p>Mountains</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'camping' ? 'selected' : '' %>" onclick="setCategory('camping', this)">
-                    <div><i class="fa-solid fa-tents"></i></div>
-                    <p>Camping</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms', this)">
-                    <div><i class="fa-solid fa-cow"></i></div>
-                    <p>Farms</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic', this)">
-                    <div><i class="fa-regular fa-snowflake"></i></div>
-                    <p>Arctic</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'cabin' ? 'selected' : '' %>" onclick="setCategory('cabin', this)">
-                    <div><i class="fa-solid fa-house"></i></div>
-                    <p>Cabin</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'national park' ? 'selected' : '' %>" onclick="setCategory('national park', this)">
-                    <div><i class="fa-solid fa-tree"></i></div>
-                    <p>National Park</p>
-                </div>
-                <div class="filter <%= selectedCategory === 'treehouses' ? 'selected' : '' %>" onclick="setCategory('treehouses', this)" style="margin-right: 5rem;">
-                    <div><i class="fa-solid fa-warehouse"></i></div>
-                    <p>Treehouses</p>
-                </div>
+        <div id="filters">
+            <div class="filter first-filter <%= selectedCategory === 'explore' ? 'selected' : '' %>" onclick="setCategory('explore', this)">
+                <div><i class="fa-solid fa-compass"></i></div>
+                <p>Explore</p>
             </div>
+            <div class="filter <%= selectedCategory === 'trending' ? 'selected' : '' %>" onclick="setCategory('trending', this)" >
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'amazing pools' ? 'selected' : '' %>" onclick="setCategory('amazing pools', this)">
+                <div><i class="fa-solid fa-water-ladder"></i></div>
+                <p>Amazing Pools</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'beach' ? 'selected' : '' %>" onclick="setCategory('beach', this)">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                <p>Beach</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'castles' ? 'selected' : '' %>" onclick="setCategory('castles', this)">
+                <div><i class="fa-solid fa-chess-rook"></i></div>
+                <p>Castles</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'new' ? 'selected' : '' %>" onclick="setCategory('new', this)">
+                <div><i class="fa-solid fa-key"></i></div>
+                <p>New</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'iconic cities' ? 'selected' : '' %>" onclick="setCategory('iconic cities', this)">
+                <div><i class="fa-solid fa-tree-city"></i></div>
+                <p>Iconic Cities</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'rooms' ? 'selected' : '' %>" onclick="setCategory('rooms', this)">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </div>
+             
+            <div class="filter <%= selectedCategory === 'boats' ? 'selected' : '' %>" onclick="setCategory('boats',this)">
+                <div><i class="fa-solid fa-ship"></i></div>
+                <p>Boats</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'domes' ? 'selected' : '' %>" onclick="setCategory('domes', this)">
+                <div><i class="fa-solid fa-igloo"></i></div>
+                <p>Domes</p>
+            </div>
+           
+            <div class="filter <%= selectedCategory === 'mountains' ? 'selected' : '' %>" onclick="setCategory('mountains', this)">
+                <div><i class="fa-solid fa-mountain"></i></div>
+                <p>Mountains</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'camping' ? 'selected' : '' %>" onclick="setCategory('camping', this)">
+                <div><i class="fa-solid fa-tents"></i></div>
+                <p>Camping</p>
+            </div> 
+
+            <div class="filter <%= selectedCategory === 'farms' ? 'selected' : '' %>" onclick="setCategory('farms', this)">
+                <div><i class="fa-solid fa-cow"></i></div>
+                <p>Farms</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'arctic' ? 'selected' : '' %>" onclick="setCategory('arctic', this)">
+                <div><i class="fa-regular fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+
+            
+            <div class="filter <%= selectedCategory === 'cabin' ? 'selected' : '' %>" onclick="setCategory('cabin', this)">
+                <div><i class="fa-solid fa-house"></i></div>
+                <p>Cabin</p>
+            </div>
+            <div class="filter <%= selectedCategory === 'national park' ? 'selected' : '' %>" onclick="setCategory('national park', this)">
+                <div><i class="fa-solid fa-tree"></i></div>
+                <p>National Park</p>
+            </div>
+            
+            <div class="filter <%= selectedCategory === 'treehouses' ? 'selected' : '' %>" onclick="setCategory('treehouses', this)" style="margin-right: 5rem;">
+                <div><i class="fa-solid fa-warehouse"></i></div>
+                <p>Treehouses</p>
+            </div>
+           </div>
+           
         </div>
         <button id="scroll-right" class="scroll-btn gthan" type="button" disabled>&gt;</button>
         <input type="hidden" name="category" id="selectedCategory" value="<%= selectedCategory %>">
         <button type="submit" style="display: none;">Search</button>
+        
     </form>
-    <div class="tax-toggle">
-        <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+              </div>
         </div>
+     </div>
     </div>
-</div>
 
-<div class="listings-container mx-lg-5 mx-md-3 mx-sm-1">
-    <div class="custom-row custom-cols mt-3">
-        <% for (listing of allListings) { %>
+  
+
+
+    <div class="listings-container mx-lg-5 mx-md-3 mx-sm-1">
+        <div class="custom-row custom-cols mt-3">
+        
+        <% for (listing of allListings){ %>
             <a href="/listings/<%= listing._id %>" class="listing-link">
-                <div class="card col listing-card">
-                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-image" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <b><%= listing.title %></b><br>
-                            <span class="price" data-original-price="<%= listing.price %>">
-                                &#8377; <span class="display-price"><%= listing.price.toLocaleString("en-IN") %></span> / night
-                            </span>
-                            <span class="tax-info" style="display:none;">&nbsp; (<i>including 18% GST</i>)</span>
-                        </p>
-                    </div>
+            <div class="card col listing-card" >
+                <img src="<%=listing.image.url%>" class="card-img-top" alt="listing-image" style="height: 20rem;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+        
+                <p class="card-text">
+                    <b><%= listing.title %></b><br>
+                    <span class="price" data-original-price="<%= listing.price %>">
+                        &#8377; <span class="display-price"><%= listing.price.toLocaleString("en-IN") %></span> / night
+                    </span>
+                    <span class="tax-info" style="display:none;">&nbsp; (<i>including 18% GST</i> )</span>
+                </p>
                 </div>
-            </a>
-        <% } %>
+              </div>
+              </a>
+              <% } %>
     </div>
-</div>
-
+    </div>
+<!-- 
+    <script>
+        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+        taxSwitch.addEventListener("click", () =>{
+           let taxInfo = document.getElementsByClassName("tax-info");
+           console.log(taxInfo);
+           for(info of taxInfo){
+            if(info.style.display != "inline"){
+                info.style.display = "inline";
+            } else{
+                info.style.display = "none";
+            }
+           
+           }
+        })
+    </script> -->
     <script>
       // Tax toggle functionality
  const taxSwitch = document.getElementById("flexSwitchCheckDefault");
