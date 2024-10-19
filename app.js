@@ -101,7 +101,6 @@ app.get("/" , async (req, res)=>{
     res.render("listings/index.ejs", {allListings, selectedCategory });
      });
 
-
 app.use("/legal" , legalRouter);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
