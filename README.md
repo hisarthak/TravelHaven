@@ -1,6 +1,6 @@
 # TravelHaven
 
-<img src="public/TravelHavenFav.png" alt="Travel Haven" width="100" height="100"/>
+<img src="public/TravelHavenFav.png" alt="Travel Haven" width="75" height="75"/>
 
 TravelHaven is a user-friendly accommodation exploration platform that allows travelers to discover unique places to stay. Built with modern web technologies, TravelHaven showcases a variety of listings and offers a seamless experience for users looking to find their next adventure.
 
@@ -16,22 +16,24 @@ TravelHaven is a user-friendly accommodation exploration platform that allows tr
 
 ## Live Demo
 
-You can check out a live demo of TravelHaven [here](https://delta-demo-kdz1.onrender.com).
+You can check out a live demo of TravelHaven <a href="https://delta-demo-kdz1.onrender.com" target="_blank">here</a>.
 
 ## Website Showcase
 
-Here are some images of TravelHaven:
-Homepage
-<img src="public/Homepage.png" alt="Travel Haven" height="100"/>
-<br></br>
-Listing
-<img src="public/ListingPage.png" alt="Travel Haven" width="100" height="100"/>
-<br></br>
-Review and Comments
-<img src="public/Reviews.png" alt="Travel Haven" width="100" height="100"/>
-<br></br>
-Location on map
-<img src="public/Mapbox.png" alt="Travel Haven" width="100" height="100"/>
+Below are some images showcasing the features of TravelHaven:
+
+### Homepage
+<img src="public/Homepage.png" alt="Travel Haven - Homepage"/>
+
+### Listing Page
+<img src="public/ListingPage.png" alt="Travel Haven - Listing Page"/>
+
+### Reviews and Comments
+<img src="public/Reviews.png" alt="Travel Haven - Reviews and Comments"/>
+
+### Map View
+<img src="public/Mapbox.png" alt="Travel Haven - Location on Map"/>
+
 
 
 ## Technologies Used
