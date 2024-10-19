@@ -15,7 +15,7 @@ module.exports.signup = async(req,res)=>{
                 return next(err);
             }
             req.flash("success", "Welcome to TravelHaven!");
-            let redirectUrl = res.locals.redirectUrl || "/listings";
+            let redirectUrl = res.locals.redirectUrl || "/";
             res.redirect(redirectUrl);
         })
        
@@ -31,7 +31,7 @@ module.exports.renderLoginForm = (req, res) =>{
 
 module.exports.login = async(req, res)=>{
     req.flash("success", "Welcome back to TravelHaven!");
-    let redirectUrl = res.locals.redirectUrl || "/listings";
+    let redirectUrl = res.locals.redirectUrl || "/";
     res.redirect(redirectUrl);
   }
 
@@ -41,6 +41,6 @@ module.exports.logout = (req, res) => {
             next(err);
         }
         req.flash("success", "You are logged out!");
-        res.redirect("/listings");
+        res.redirect("/");
     })
 }

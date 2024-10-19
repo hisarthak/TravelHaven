@@ -16,6 +16,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js");
+const Listing = require("./models/listing");
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -119,9 +120,15 @@ app.use(express.static(path.join(__dirname, "/public")));
 // })
 
 // ADD THIS ROUTE to direct the root URL to the homepage (listings page)
-app.get("/", (req, res) => {
-    res.redirect("/listings"); // Redirect root URL to /listings
-});
+// app.get("/", (req, res) => {
+//     res.redirect("/listings"); // Redirect root URL to /listings
+// });
+
+app.get("/" , async (req, res)=>{
+    const selectedCategory = req.query.category || 'explore';
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs", {allListings, selectedCategory });
+     });
 
 app.use("/legal" , legalRouter);
 app.use("/listings", listingRouter);

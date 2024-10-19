@@ -7,5 +7,5 @@ module.exports.terms = (req, res) => {
 };
 
 module.exports.hidden = (req, res) => {
-    res.render('easter-egg.ejs'); // Render the privacy.ejs template
+    res.render('hidden.ejs'); // Render the privacy.ejs template
 };

@@ -3,11 +3,11 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken});
 
-module.exports.index = async (req, res)=>{
-    const selectedCategory = req.query.category || 'explore';
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings, selectedCategory });
-     };
+// module.exports.index = async (req, res)=>{
+//     const selectedCategory = req.query.category || 'explore';
+//     const allListings = await Listing.find({});
+//     res.render("listings/index.ejs", {allListings, selectedCategory });
+//      };
 
      module.exports.renderNewForm = (req, res) => {
         if (!req.isAuthenticated()) {
@@ -28,7 +28,7 @@ module.exports.showListing = async (req,res)=>{
         .populate("owner");
         if(!listing) {
             req.flash("error", "Listing you requested for does not exist");
-            res.redirect("/listings");
+            res.redirect("/");
         }
         // console.log(listing);
       res.render("listings/show.ejs", {listing});
@@ -76,7 +76,7 @@ module.exports.createListing = async (req, res, next) => {
     
         // Flash success message and redirect
         req.flash("success", "New Listing Created!");
-        res.redirect("/listings");
+        res.redirect("/");
     };
     
    
@@ -85,7 +85,7 @@ module.exports.renderEditForm = async (req, res)=>{
     const listing = await Listing.findById(id);
     if(!listing) {
         req.flash("error", "Listing you requested for does not exist");
-        res.redirect("/listings");
+        res.redirect("/");
     }
 
     let originalImageUrl = listing.image.url;
@@ -144,7 +144,7 @@ module.exports.destroyListing = async (req,res)=>{
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
     req.flash("success", "Listing Deleted!");
-    res.redirect("/listings");
+    res.redirect("/");
 }
 
 module.exports.searchListing =  async (req, res) => {
@@ -171,7 +171,7 @@ module.exports.searchListing =  async (req, res) => {
    
     if(selectedCategory==="explore"){
        
-        return res.redirect("/listings")
+        return res.redirect("/")
     }
   
     // Search the listings based on the selected category
