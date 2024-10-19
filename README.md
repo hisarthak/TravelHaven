@@ -1,25 +1,36 @@
 # TravelHaven
 
-TravelHaven is a platform designed to help users discover and book unique accommodations around the world. Whether you're looking for a cozy apartment, a beachside villa, or a rustic cabin in the woods, TravelHaven connects travelers with hosts who offer a variety of listings to suit every budget and preference.
+![TravelHaven Logo](link_to_logo_image) <!-- Add your logo image link if you have one -->
 
-## Features
+TravelHaven is a user-friendly accommodation exploration platform that allows travelers to discover unique places to stay. Built with modern web technologies, TravelHaven showcases a variety of listings and offers a seamless experience for users looking to find their next adventure.
 
-- **User Authentication**: Sign up, log in, and manage your profile.
-- **Search and Filter**: Browse available listings by location, price, and category.
-- **Booking System**: Easily book accommodations and manage reservations.
-- **Listing Properties**: Hosts can create, update, and delete their listings.
-- **Reviews and Ratings**: Users can leave reviews and ratings for their stays.
-- **Responsive Design**: Optimized for both desktop and mobile devices.
+## Key Features
+
+- **User Authentication**: Secure sign-up and login processes, allowing users to manage their profiles with ease.
+- **Dynamic Listings**: Explore a diverse range of accommodation options, filtered by categories to meet individual preferences.
+- **User Profiles**: Personalize your experience by viewing and editing your profile details.
+- **Responsive Design**: Optimized for both desktop and mobile devices, ensuring a smooth user experience on any screen.
+
+### Screenshots
+
+Here are some screenshots of TravelHaven:
+
+![Homepage](assets/homepage_screenshot.png) <!-- Replace with your image path -->
+![Listings Page](assets/listings_page_screenshot.png) <!-- Replace with your image path -->
+![User Profile](assets/user_profile_screenshot.png) <!-- Replace with your image path -->
 
 ## Technologies Used
 
-- **Frontend**: [Your choice of frontend framework, e.g., React, EJS]
-- **Backend**: [Your backend technology, e.g., Node.js, Express]
-- **Database**: [Your database, e.g., MongoDB, PostgreSQL]
-- **Hosting**: [Where your app is hosted, e.g., Render, AWS]
+- **Frontend**: [React](https://reactjs.org/) or [EJS](https://ejs.co/)
+- **Backend**: [Node.js](https://nodejs.org/) with [Express](https://expressjs.com/)
+- **Database**: [MongoDB](https://www.mongodb.com/) or [PostgreSQL](https://www.postgresql.org/)
+- **Hosting**: Deployed on [Render](https://render.com/) or [AWS](https://aws.amazon.com/)
 
-## Installation
+## Getting Started
+
+To run TravelHaven locally, follow these steps:
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/travelhaven.git
+
