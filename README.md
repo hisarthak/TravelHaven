@@ -6,8 +6,8 @@ TravelHaven is a user-friendly accommodation exploration platform that allows tr
 
 ## Key Features
 
-- **Dynamic Listings**: Explore a diverse range of accommodation options, filtered by categories to meet individual preferences.
 - **Responsive Design**: Optimized for both desktop and mobile devices, ensuring a smooth user experience on any screen.
+- **Dynamic Listings**: Explore a diverse range of accommodation options, filtered by categories to meet individual preferences.
 - **Search Listings**: Easily search listings by title or location to find the perfect accommodation for your needs.
 - **User Reviews**: Provide feedback by leaving reviews.
 - **Edit Listings**: Manage your own listings by editing the details to keep your information up-to-date.
@@ -16,22 +16,39 @@ TravelHaven is a user-friendly accommodation exploration platform that allows tr
 
 ## Live Demo
 
-You can check out a live demo of TravelHaven [here](link_to_live_demo).
+You can check out a live demo of TravelHaven [here](https://delta-demo-kdz1.onrender.com).
 
 ### Screenshots
 
 Here are some screenshots of TravelHaven:
 
-![Homepage](assets/homepage_screenshot.png) <!-- Replace with your image path -->
-![Listings Page](assets/listings_page_screenshot.png) <!-- Replace with your image path -->
-![User Profile](assets/user_profile_screenshot.png) <!-- Replace with your image path -->
+![Homepage](public/Homepage.png) <!-- Replace with your image path -->
+![Listings Page](public/ListingPage.png) <!-- Replace with your image path -->
+![Review and Comments](public/Reviews.png) <!-- Replace with your image path -->
+![Map](public/Mapbox.png)
+
 
 ## Technologies Used
 
-- **Frontend**: [EJS](https://ejs.co/)
-- **Backend**: [Node.js](https://nodejs.org/) with [Express](https://expressjs.com/)
-- **Database**: [MongoDB](https://www.mongodb.com/)
-- **Hosting**: Deployed on [Render](https://render.com/)
+## Technologies Used
+
+- **Frontend:**
+  - HTML5
+  - CSS3
+  - JavaScript
+  - EJS
+  - **Mapbox**: For integrating maps and geolocation features.
+
+- **Backend:**
+  - Node.js
+  - Express.js
+  
+- **Database:**
+  - MongoDB
+
+- **Deployment:**
+  - Render
+
 
 ## Getting Started
 
@@ -62,9 +79,10 @@ Create a .env file in the root directory and include the required configurations
 5. Start the application:
 npm start
 
-## Live Demo
+## Acknowledgments
 
-You can check out a live demo of TravelHaven [here](link_to_live_demo). <!-- Replace with your live demo link -->
+- Inspired by popular accommodation-sharing platforms.
+- Special thanks to the libraries and frameworks that made this project possible.
 
 
 
