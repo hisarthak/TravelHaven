@@ -10,7 +10,7 @@ TravelHaven is a user-friendly accommodation exploration platform that allows tr
 - **Search Listings**: Easily search listings by title or location to find the perfect accommodation for your needs.
 - **User Reviews**: Provide feedback by leaving reviews.
 - **Edit Listings**: Manage your own listings by editing the details to keep your information up-to-date.
-- **Map View**: View the exact location of listings on a map to better understand their surroundings and accessibility
+- **Map View**: View the location of listings on a map to better understand their surroundings and accessibility
 - **Responsive Design**: Optimized for both desktop and mobile devices, ensuring a smooth user experience on any screen.
 - **User Authentication**: Secure sign-up and login processes, allowing users to manage their profiles with ease.
 
