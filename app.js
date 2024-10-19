@@ -87,24 +87,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.get('/listings/category', async (req, res) => {
-//     console.log(req.query); // Check what parameters are being sent
-//     // Proceed with your logic...
-// });
-
-
-// app.get("/demouser", async(req, res)=> {
-//     let fakeUser = new User({
-//         email: "student@gmal.com",
-//         username: "delta-student",
-//     });
-
-//     let registeredUser = await User.register(fakeUser, "helloworld");
-//     res.send(registeredUser);
-// });
-
-
-
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -112,17 +94,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
-
-// app.use((req,res, next)=>{
-//     console.log(req.query);
-//     console.log(req.path);
-//     next();
-// })
-
-// ADD THIS ROUTE to direct the root URL to the homepage (listings page)
-// app.get("/", (req, res) => {
-//     res.redirect("/listings"); // Redirect root URL to /listings
-// });
 
 app.get("/" , async (req, res)=>{
     const selectedCategory = req.query.category || 'explore';
@@ -146,20 +117,6 @@ app.use((err,req,res,next)=>{
     // res.status(statusCode).send(message);
 });
 
-
-// app.get("/testListing", async (req,res)=>{
-//     let sampleListing = new Listing({
-//         title: "My New Villa",
-//         description: "By the beach",
-//         price: 1200,
-//         location: "Calangute, Goa",
-//         country: "India",
-//     });
-
-//     await sampleListing.save();
-//     console.log("Sample was saved");
-//     res.send("Successful testing");
-// });
 
 app.listen("8080", ()=>{
     console.log("server is listening to port 8080");
