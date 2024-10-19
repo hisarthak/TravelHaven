@@ -14,28 +14,6 @@ TravelHaven is a user-friendly accommodation exploration platform that allows tr
 - **Responsive Design**: Optimized for both desktop and mobile devices, ensuring a smooth user experience on any screen.
 - **User Authentication**: Secure sign-up and login processes, allowing users to manage their profiles with ease.
 
-## Live Demo
-
-You can check out a live demo of TravelHaven <a href="https://delta-demo-kdz1.onrender.com" target="_blank">here</a>.
-
-## Website Showcase
-
-Below are some images showcasing the features of TravelHaven:
-
-### Homepage
-<img src="public/Homepage.png" alt="Travel Haven - Homepage"/>
-
-### Sample Listing View
-<img src="public/ListingPage.png" alt="Travel Haven - Listing Page"/>
-
-### Reviews and Comments
-<img src="public/Reviews.png" alt="Travel Haven - Reviews and Comments" style="width:100%; height:60%;"/>
-
-### Map View
-<img src="public/Mapbox.png" alt="Travel Haven - Location on Map" style= "width:100%;"/>
-
-
-
 ## Technologies Used
 
 - **Frontend:**
@@ -57,6 +35,26 @@ Below are some images showcasing the features of TravelHaven:
 
 - **Deployment:**
   - Render
+
+## Live Demo
+
+You can check out a live demo of TravelHaven <a href="https://delta-demo-kdz1.onrender.com" target="_blank">here</a>.
+
+## Website Showcase
+
+Below are some images showcasing the features of TravelHaven:
+
+### Homepage
+<img src="public/Homepage.png" alt="Travel Haven - Homepage"/>
+
+### Sample Listing View
+<img src="public/ListingPage.png" alt="Travel Haven - Listing Page"/>
+
+### Reviews and Comments
+<img src="public/Reviews.png" alt="Travel Haven - Reviews and Comments" style="width:100%; height:60%;"/>
+
+### Map View
+<img src="public/Mapbox.png" alt="Travel Haven - Location on Map" style= "width:100%;"/>
 
 ## Getting Started
 
