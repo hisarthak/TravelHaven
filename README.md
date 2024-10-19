@@ -38,25 +38,25 @@ Below are some images showcasing the features of TravelHaven:
 
 ## Technologies Used
 
-## Technologies Used
-
 - **Frontend:**
   - HTML5
   - CSS3
   - JavaScript
   - EJS
-  - Mapbox
+  - Mapbox (for displaying map locations)
 
 - **Backend:**
   - Node.js
   - Express.js
   
 - **Database:**
-  - MongoDB
+  - MongoDB (via MongoDB Atlas)
+
+- **Media Managment**
+  - Cloudinary (for image storage)
 
 - **Deployment:**
   - Render
-
 
 ## Getting Started
 
@@ -71,7 +71,7 @@ To run TravelHaven locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/travelhaven.git
+   https://github.com/SarthakPandey1008/TravelHaven.git
 
 2. Navigate to the project directory:
    ```bash
@@ -82,7 +82,17 @@ To run TravelHaven locally, follow these steps:
    npm install
 
 4. Set up your environment variables:
-Create a .env file in the root directory and include the required configurations.
+   ```bash
+   CLOUD_NAME=your-cloudinary-cloud-name
+   CLOUD_API_KEY=your-cloudinary-api-key
+   CLOUD_API_SECRET=your-cloudinary-api-secret
+
+   MAP_TOKEN=your-mapbox-access-token
+
+   ATLASDB_URL=your-mongodb-connection-string
+
+   SECRET=your-session-secret
+
 
 5. Start the application:
    ```bash
