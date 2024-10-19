@@ -25,14 +25,14 @@ Below are some images showcasing the features of TravelHaven:
 ### Homepage
 <img src="public/Homepage.png" alt="Travel Haven - Homepage"/>
 
-### Listing Page
+### Sample Listing View
 <img src="public/ListingPage.png" alt="Travel Haven - Listing Page"/>
 
 ### Reviews and Comments
 <img src="public/Reviews.png" alt="Travel Haven - Reviews and Comments" style="width:100%; height:60%;"/>
 
 ### Map View
-<img src="public/Mapbox.png" alt="Travel Haven - Location on Map" style= "width:100% height: 60%;"/>
+<img src="public/Mapbox.png" alt="Travel Haven - Location on Map" style= "width:100%;"/>
 
 
 
