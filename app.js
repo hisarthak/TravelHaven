@@ -100,7 +100,7 @@ app.get("/" , async (req, res)=>{
     const allListings = await Listing.find({});
     res.render("listings/index.ejs", {allListings, selectedCategory });
      });
-     
+
 
 app.use("/legal" , legalRouter);
 app.use("/listings", listingRouter);
@@ -114,8 +114,6 @@ app.all("*", (req,res,next)=>{
 app.use((err,req,res,next)=>{
     let {statusCode=500, message="Something went wrong"}= err;
     res.status(statusCode).render("error.ejs", {err});
-    // console.log(err);
-    // res.status(statusCode).send(message);
 });
 
 
