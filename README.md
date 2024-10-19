@@ -2,7 +2,8 @@
 
 <img src="public/TravelHavenFav.png" alt="Travel Haven" width="75" height="75"/>
 
-TravelHaven is a user-friendly accommodation exploration platform that allows travelers to discover unique places to stay. Built with modern web technologies, TravelHaven showcases a variety of listings and offers a seamless experience for users looking to find their next adventure.
+[TravelHaven](https://travelhaven.co.in) is a user-friendly accommodation exploration platform that allows travelers to discover unique places to stay. Built with modern web technologies, TravelHaven showcases a variety of listings and offers a seamless experience for users looking to find their next adventure.
+You can visit the website at [travelhaven.co.in](https://travelhaven.co.in).
 
 ## Key Features
 
@@ -35,10 +36,6 @@ TravelHaven is a user-friendly accommodation exploration platform that allows tr
 
 - **Deployment:**
   - Render
-
-## Live Demo
-
-You can check out a live demo of TravelHaven <a href="https://delta-demo-kdz1.onrender.com" target="_blank">here</a>.
 
 ## Website Showcase
 
