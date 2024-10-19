@@ -33,6 +33,7 @@ module.exports.listingSchema = Joi.object({
     categorySelected: Joi.string().allow("", null), // Add this line for categorySelected   
 });
 
+
 module.exports.reviewSchema = Joi.object({
     review: Joi.object({
        rating: Joi.number().required().min(1).max(5),
