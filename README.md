@@ -81,7 +81,7 @@ To run TravelHaven locally, follow these steps:
 
 4. Set up your environment variables:
 
- To run this project, you need to set up your environment variables by creating a .env file in the root directory of the project
+   To run this project, you need to set up your environment variables by creating a .env file in the root directory of the project
    ```bash
    CLOUD_NAME=your-cloudinary-cloud-name
    CLOUD_API_KEY=your-cloudinary-api-key
