@@ -1179,6 +1179,10 @@ form .search-btn:active {
     .first-filter{
         margin-left: -2rem;
     }
+
+    .last-filter{
+        margin-right: 1rem !important;
+    }
   }
 
 
