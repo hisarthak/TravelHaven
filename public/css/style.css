@@ -1171,7 +1171,7 @@ form .search-btn:active {
     margin-left: 1rem;
   }
 
-  @media(max-width:576px){
+  @media(max-width:768px){
     .scroll-btn{
         display: none;
     }

@@ -70,8 +70,8 @@ To run TravelHaven locally, follow these steps:
    https://github.com/SarthakPandey1008/TravelHaven.git
 
 2. Navigate to the project directory:
-   ```bash
-   cd travelhaven
+  ```bash
+  cd travelhaven
 
 3. Install dependencies:
    ```bash
