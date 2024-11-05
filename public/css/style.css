@@ -563,6 +563,8 @@ font-weight: 400 !important;
         text-wrap: nowrap;
     }
 
+  
+
     .listings-container{
         margin-top: 3.5rem;
         /* min-height: 200vh; */
@@ -767,11 +769,11 @@ form .search-btn:hover {
 
 form .search-inp {
     border-radius: 1.5rem 0rem 0rem 1.5rem;
-    padding: 0.5rem 4rem; /* Padding for input */
+    padding: 0.5rem 4rem;
     font-size: 1rem;
     border-right: none;
     margin-right: 0 !important;
-    margin-left: 1rem;
+    margin-left: 6.2rem;
     outline: none !important; /* Remove outline */
     /* box-shadow: none !important; Remove default box shadow */
     box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2) !important; /* Add shadow */
