@@ -9,6 +9,7 @@
 <div class="form-container">
     <form action="/listings/category" method="get" id="categoryForm">
         <button id="scroll-left" class="scroll-btn lthan" type="button" disabled>&lt;</button>
+        <button class="left-white-btn" type="button">.</button>
         <div id="filters-container">
         <div id="filters">
             <div class="filter first-filter <%= selectedCategory === 'explore' ? 'selected' : '' %>" onclick="setCategory('explore', this)">
@@ -88,6 +89,7 @@
            </div>
            
         </div>
+        <button class="right-white-btn" type="button">.</button>
         <button id="scroll-right" class="scroll-btn gthan" type="button" disabled>&gt;</button>
         <input type="hidden" name="category" id="selectedCategory" value="<%= selectedCategory %>">
         <button type="submit" style="display: none;">Search</button>

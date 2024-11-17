@@ -1177,6 +1177,12 @@ form .search-btn:active {
     .scroll-btn{
         display: none;
     }
+    .right-white-btn{
+        display: none;
+    }
+    .left-white-btn{
+        display: none;
+    }
 
     .first-filter{
         margin-left: -2rem;
@@ -1211,6 +1217,33 @@ form .search-btn:active {
     margin-top: -0.5rem;
     margin-right: 2.2rem;
     box-shadow: 28px 3px 0px 17px white; /* Creates white shadow effect to the left */
+  }
+
+  .left-white-btn {
+    border: transparent;
+    position: fixed;   /* Makes the container fixed */
+    top: 0.1;            /* Align it at the top of the viewport */
+    left: 0;           /* Align it to the left of the viewport */
+       /* Full width of the viewport */
+    z-index: 1200;
+    background-color: transparent;
+    margin-top: -0.5rem;
+    margin-left: 2rem;
+    box-shadow: -35px 11px 0px 17px  white; /* Creates white shadow effect to the left */
+   color: white;
+  }
+  .right-white-btn {
+    position: fixed;   /* Makes the container fixed */
+    border: transparent;
+    top: 0.1;            /* Align it at the top of the viewport */
+    right: 0;           /* Align it to the left of the viewport */
+       /* Full width of the viewport */
+    z-index: 1200;
+    background-color: transparent;
+    margin-top: -0.5rem;
+    margin-right: 2rem;
+    box-shadow: 35px 11px 0px 17px  white; /* Creates white shadow effect to the left */
+    color: white;
   }
 
 
