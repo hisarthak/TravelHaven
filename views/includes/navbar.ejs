@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto search-div">
               <form class="d-flex" role="search" action="/listings/search" method="GET">
-                <input class="form-control me-2 search-inp searchinput" type="search" name="query" placeholder="Search destinations" aria-label="Search" value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" style="margin-left: <%= typeof currUser !== 'undefined' && currUser ? '1.4rem' : '6.2rem' %>;">
+                <input class="form-control me-2 search-inp searchinput" type="search" name="query" placeholder="Search, e.g., Thailand" aria-label="Search" value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" style="margin-left: <%= typeof currUser !== 'undefined' && currUser ? '1.4rem' : '6.2rem' %>;">
                   <button class="btn search-btn" type="submit" title="Search">
                       <i class="fa-solid fa-magnifying-glass"></i>
                   </button>

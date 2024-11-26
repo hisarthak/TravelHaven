@@ -14,7 +14,7 @@ const listing = <%- JSON.stringify(listing) %>;
       <p class="card-text">Owned by <i><%=listing.owner.username %></i></p>
 
       <p class="card-text"> <%= listing.description %></p>
-      <p class="card-text"> &#8377; <%= listing.price.toLocaleString("en-IN") %></p>
+      <p class="card-text"> &#8377; <%= listing.price.toLocaleString("en-IN") %>/night</p>
       <p class="card-text"> <%= listing.location %></p>
       <p class="card-text"> <%= listing.country %>
     </p>
@@ -63,7 +63,7 @@ const listing = <%- JSON.stringify(listing) %>;
 
 <div class="mb-3 mt-3">
     <label for="comment" class="form-label"><b>Comment</b></label>
-    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required  placeholder="<%= currUser ? 'Write your comments here...' : 'Please log in or sign up to give reviews' %>"></textarea>
+    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required style="resize: none;"  placeholder="<%= currUser ? 'Write your comments here...' : 'Please log in or sign up to give reviews' %>" ></textarea>
     <div class="invalid-feedback">
       Please add a comment for the reviews
     </div>
