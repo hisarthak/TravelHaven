@@ -26,4 +26,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector('form[action="/signup"]').addEventListener('submit', function(event) {
+        // Get the username input field
+        const usernameInput = document.querySelector('input[name="username"]');
+        // Trim spaces from the username input
+        usernameInput.value = usernameInput.value.trim();
+    });
+    </script>
         

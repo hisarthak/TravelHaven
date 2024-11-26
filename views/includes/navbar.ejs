@@ -74,6 +74,8 @@ window.addEventListener('resize', updateAnchorText);
 document.querySelector('form[role="search"]').addEventListener('submit', function(event) {
     const input = document.querySelector('input[name="query"]');
     const btn = document.querySelector(".search-btn");
+
+    input.value = input.value.trim();
     if (input.value.trim() === '') {
       btn.style.boxShadow = "0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)";
         event.preventDefault(); // Prevent form submission
