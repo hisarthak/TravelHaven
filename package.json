@@ -38,6 +38,8 @@
     "prettier-plugin-ejs": "^1.0.3"
   },
   "overrides": {
-    "mongoose-fuzzy-searching/mongoose": "^8.5.1"
+    "mongoose-fuzzy-searching": {
+      "mongoose": "^8.5.1"
+    }
   }
 }
