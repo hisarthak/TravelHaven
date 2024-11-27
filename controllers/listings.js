@@ -228,25 +228,11 @@ const fuzzyResults = await Listing.fuzzySearch(searchQuery);
     // Perform regex search
   
     let regexquery = searchQuery;
-    if(fuzzyResults.length> 0){
-        regexquery = fuzzyResults[0].title;
-    }
     const regexResults = await Listing.find({
          
             title: { $regex: regexquery, $options: 'i' } 
         
     });
-
-   
-
-   
-
-   
-
-    
-    // Initialize variables to track the best fuzzy match
-    
-
     // Function to calculate similarity threshold
     const calculateSimilarityThreshold = (string) => {
         return Math.ceil(string.length * 0.4); // 40% of the string length
