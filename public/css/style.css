@@ -959,6 +959,12 @@ form .search-btn:active {
 .responsive-image {
     width: 60%; /* Make the image responsive */
     height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+}
+
+.privacy-img {
+    height: 75vh;
+    width: 50%;
 }
 
 /* Media Query for screens smaller than 740px */
