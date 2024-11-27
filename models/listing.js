@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
+const fuzzy = require("mongoose-fuzzy-searching");
 
 const listingSchema = new Schema({
     title: {
@@ -59,6 +60,11 @@ const listingSchema = new Schema({
         ],
         required: true, // Ensures that category is mandatory
     },
+});
+
+// Add fuzzy searching plugin for location, country, and title
+listingSchema.plugin(fuzzy, {
+    fields: ["title", "location", "country"],
 });
 
 

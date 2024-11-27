@@ -100,7 +100,32 @@
      </div>
     </div>
 <!-- Listings (Search Results or All Listings) -->
+
 <div class="listings-container mx-lg-5 mx-md-3 mx-sm-1">
+    <div class="showing-results" style="margin-left: 0.5rem ; margin-top: 0.25rem; font-weight: 500 ; font-size: 15px;">
+        <% if(suggestion) {%>
+    <p class=" d-block  ">
+        Showing results for <b style="font-weight: 600; "> <%= suggestion.value %></b><%if(searchInstead==1){%>
+            <br>
+            <div style="margin-top: -1rem;" class="search-instead">
+            <form action="/listings/search" method="GET" style="display: inline;">
+                <!-- Hidden input for the search query -->
+                <input type="hidden" name="query" value="<%= searchQuery %>">
+                <!-- Hidden input for additional data -->
+                <input type="hidden" name="secondSearch" value="secondsearch">
+                
+                    <k style="font-size: smaller;">Search instead for </k><a
+                    href="#"
+                    style="font-size: small;  text-decoration: none;"
+                    onclick="this.closest('form').submit(); return false;"
+                ><b style="font-weight: 600; font-size: small;" class="search-query"><%= searchQuery %></b></a>
+                
+            </form>
+        </div>
+            <%}%>
+    </p>
+    <%}%>
+</div>
     <div class="custom-row custom-cols mt-3">
     <% if (searchResults.length > 0) { %>
         <% for (let listing of searchResults) { %>

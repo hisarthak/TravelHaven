@@ -1250,6 +1250,35 @@ form .search-btn:active {
     color: white;
   }
 
+  @media(max-width:250px){
+    .texts{
+        font-size: 7px !important;
+    }
 
+    h1, h2, h3, h4{
+        font-size: small !important;
+    }}
   
-  
+
+    @media(max-width:300px){
+        .showing-results{
+            text-align: center;
+            margin-right: 9px;
+        }
+       }
+
+       @media(max-width:220px){
+        .showing-results{
+            margin-top: 1rem !important;
+        }
+       }
+
+    @media(max-width: 576px){
+        .showing-results{
+            font-size: 13px !important;
+        }
+
+        .search-query{
+            font-size: smaller !important;
+        }
+    }

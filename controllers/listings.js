@@ -142,23 +142,227 @@ module.exports.destroyListing = async (req,res)=>{
     res.redirect("/");
 }
 
-module.exports.searchListing =  async (req, res) => {
-    const searchQuery = req.query.query;
-    const selectedCategory = req.query.category || '';
+// module.exports.searchListing =  async (req, res) => {
+//     const searchQ = req.query.query;
+//     const searchQuery = searchQ.trim();
+//     const selectedCategory = req.query.category || '';
 
-      // Search the listings based on the search query
-      const results = await Listing.find({
+//       // Search the listings based on the search query
+//       const results = await Listing.find({
+//         $or: [
+//           { location: { $regex: searchQuery, $options: 'i' } }, // Case-insensitive search for location
+//           { country: { $regex: searchQuery, $options: 'i' } },   // Case-insensitive search for country
+//           { title: { $regex: searchQuery, $options: 'i' } }      // Case-insensitive search for title
+//         ]
+//       });
+  
+//       // Render the search results (assuming you have a search-results view)
+//       res.render("listings/search.ejs", { searchResults: results || [], selectedCategory, searchQuery });
+
+//   }
+
+
+// module.exports.searchListing = async (req, res) => {
+//     const searchQ = req.query.query || '';
+//     const selectedCategory = req.query.category || '';
+
+//     try {
+//         // Perform fuzzy search
+//         const results = await Listing.fuzzySearch(searchQ);
+//         console.log(results);
+
+//         // Optionally, filter by category if provided
+//         const filteredResults = selectedCategory
+//             ? results.filter(listing => listing.category === selectedCategory)
+//             : results;
+
+//         // Render the search results
+//         res.render("listings/search.ejs", {
+//             searchResults: filteredResults || [],
+//             selectedCategory,
+//             searchQuery: searchQ.trim(),
+//         });
+//     } catch (err) {
+//         console.error("Error during search:", err);
+//         res.status(500).send("An error occurred while searching.");
+//     }
+// };
+
+module.exports.searchListing = async (req, res) => {
+    const searchQ = req.query.query || '';
+    const searchQuery = searchQ.trim();
+    const selectedCategory = req.query.category || '';
+const secondSearch = req.query.secondSearch;
+
+if(secondSearch){
+    const combinedResults = await Listing.find({
         $or: [
           { location: { $regex: searchQuery, $options: 'i' } }, // Case-insensitive search for location
           { country: { $regex: searchQuery, $options: 'i' } },   // Case-insensitive search for country
           { title: { $regex: searchQuery, $options: 'i' } }      // Case-insensitive search for title
         ]
       });
-  
-      // Render the search results (assuming you have a search-results view)
-      res.render("listings/search.ejs", { searchResults: results || [], selectedCategory, searchQuery });
 
-  }
+      let searchInstead = 0;
+      let suggestion;
+      if(combinedResults.length>0){
+       suggestion =  {
+        value: searchQuery, // Use the search query itself as the suggestion
+        field: 'title', // Assume title as the field
+    };
+}else{
+    suggestion = null;
+   
+}
+      // Render the search results (assuming you have a search-results view)
+      return res.render('listings/search.ejs', {
+        searchResults: combinedResults || [],
+        selectedCategory,
+        searchQuery: searchQuery || "",
+        searchInstead,
+        suggestion: suggestion || null , // Pass suggestion to the view
+    });
+    
+}
+const fuzzyResults = await Listing.fuzzySearch(searchQuery);
+    // Perform regex search
+  
+    let regexquery = searchQuery;
+    if(fuzzyResults.length> 0){
+        regexquery = fuzzyResults[0].title;
+    }
+    const regexResults = await Listing.find({
+         
+            title: { $regex: regexquery, $options: 'i' } 
+        
+    });
+
+   
+
+   
+
+   
+
+    
+    // Initialize variables to track the best fuzzy match
+    
+
+    // Function to calculate similarity threshold
+    const calculateSimilarityThreshold = (string) => {
+        return Math.ceil(string.length * 0.4); // 40% of the string length
+    };
+
+    // Initialize variables for suggestion and minimum edit distance
+    let suggestion = null;
+    let minEditDistance = Infinity; // Initialize with a very high value
+    let closestMatch = null;
+
+    if (fuzzyResults.length > 0) {
+        const topMatch = fuzzyResults[0]; // Get the best match
+
+        // Check each relevant field for closeness to the query
+        const fields = ['title', 'location', 'country'];
+        for (const field of fields) {
+            if (topMatch[field]) {
+                const editDistance = calculateEditDistance(
+                    searchQuery.toLowerCase(),
+                    topMatch[field].toLowerCase()
+                );
+                const similarityThreshold = calculateSimilarityThreshold(topMatch[field]) || 3;
+               
+                if (editDistance < minEditDistance && editDistance<=similarityThreshold) {
+                    minEditDistance = editDistance;
+                    closestMatch = {
+                        value: topMatch[field], // Store the closest match
+                        field, // Track the matching field
+                    };
+                }
+            }
+        }
+    }
+
+    
+    let regexSearchResults = [];
+    if (closestMatch) {
+        suggestion = closestMatch;
+        regexSearchResults = await Listing.find({
+            $or: [
+                { location: { $regex: closestMatch.value, $options: 'i' } },
+                { country: { $regex: closestMatch.value, $options: 'i' } },
+                { title: { $regex: closestMatch.value, $options: 'i' } },
+            ],
+        });
+    }
+    
+
+    let searchInstead = 1;
+   
+
+if (closestMatch && closestMatch.value.trim().toLowerCase() === searchQuery.toLowerCase()) {
+    searchInstead = 0;
+}
+
+if(closestMatch==null){
+    searchInstead = 0;
+}
+
+if (regexSearchResults.length === 0 && regexResults.length > 0) {
+    suggestion = {
+        value: searchQuery, // Use the search query itself as the suggestion
+        field: 'title', // Assume title as the field
+    }; 
+    
+   
+}
+   
+    
+    const combinedResults = mergeResults(regexResults, regexSearchResults);
+   
+
+    // Render the results
+    return res.render('listings/search.ejs', {
+        searchResults: combinedResults || [],
+        selectedCategory,
+        searchQuery: searchQuery || "",
+        searchInstead,
+        suggestion: suggestion || null , // Pass suggestion to the view
+    });
+};
+
+// Helper function to merge results and remove duplicates
+function mergeResults(array1, array2) {
+    const merged = [...array1, ...array2];
+    // Use a Map to remove duplicates based on the unique `_id` field
+    const uniqueResults = new Map();
+    for (const item of merged) {
+        uniqueResults.set(item._id.toString(), item); // Ensure unique by `_id`
+    }
+    return Array.from(uniqueResults.values());
+}
+
+
+// Helper function to calculate edit distance (Levenshtein distance)
+function calculateEditDistance(a, b) {
+    const matrix = Array.from({ length: a.length + 1 }, (_, i) =>
+        Array(b.length + 1).fill(0)
+    );
+
+    for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+    for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= a.length; i++) {
+        for (let j = 1; j <= b.length; j++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            matrix[i][j] = Math.min(
+                matrix[i - 1][j] + 1, // Deletion
+                matrix[i][j - 1] + 1, // Insertion
+                matrix[i - 1][j - 1] + cost // Substitution
+            );
+        }
+    }
+    return matrix[a.length][b.length];
+}
+
 
   module.exports.listingCategory =  async (req, res) => {
 
@@ -175,6 +379,11 @@ module.exports.searchListing =  async (req, res) => {
     });
   
     // Render the search results page (make sure you have a search.ejs or similar view)
-    res.render('listings/search.ejs', { searchResults: results || [] , selectedCategory});
+    res.render('listings/search.ejs', {
+         searchResults: results || [] ,
+          selectedCategory,
+          searchInstead: 0,
+          suggestion: null ,
+        });
   }
 

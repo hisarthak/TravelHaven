@@ -25,6 +25,7 @@
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
     "mongoose": "^8.5.1",
+    "mongoose-fuzzy-searching": "^2.0.2",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.7.0",
@@ -37,4 +38,3 @@
     "prettier-plugin-ejs": "^1.0.3"
   }
 }
-
