@@ -227,10 +227,13 @@ if(secondSearch){
 const fuzzyResults = await Listing.fuzzySearch(searchQuery);
     // Perform regex search
   
-    let regexquery = searchQuery;
+
     const regexResults = await Listing.find({
-         
-            title: { $regex: regexquery, $options: 'i' } 
+        $or: [
+            { location: { $regex: searchQuery, $options: 'i' } }, // Case-insensitive search for location
+            { country: { $regex: searchQuery, $options: 'i' } },   // Case-insensitive search for country
+            { title: { $regex: searchQuery, $options: 'i' } }      // Case-insensitive search for title
+          ] 
         
     });
     // Function to calculate similarity threshold
