@@ -49,8 +49,10 @@ module.exports.createListing = async (req, res, next) => {
         if (!req.body.listing) {
             return res.status(400).send("Send valid data for listing");
         }
-    
-        
+        req.body.listing.title = req.body.listing.title.trim().replace(/\s+/g, ' ');
+        req.body.listing.country = req.body.listing.country.trim().replace(/\s+/g, ' ');
+        req.body.listing.location = req.body.listing.location.trim().replace(/\s+/g, ' ');
+
         if (category && category.includes('trending')) {
             return res.status(403).send('You cannot add items to the trending category.');
         }
@@ -67,7 +69,6 @@ module.exports.createListing = async (req, res, next) => {
     
         // Save the listing to the database
         let savedListing = await newListing.save();
-        console.log(savedListing);
     
         // Flash success message and redirect
         req.flash("success", "New Listing Created!");
@@ -106,6 +107,10 @@ module.exports.updateListing =  async (req, res)=>{
         if (!req.body.listing) {
             return res.status(400).send("Send valid data for listing");
         }
+
+        req.body.listing.title = req.body.listing.title.trim().replace(/\s+/g, ' ');
+        req.body.listing.country = req.body.listing.country.trim().replace(/\s+/g, ' ');
+        req.body.listing.location = req.body.listing.location.trim().replace(/\s+/g, ' ');
     
         // Check if the 'trending' category is included in the user selection
         if (category && category.includes('trending')) {
