@@ -100,8 +100,8 @@ module.exports.updateListing =  async (req, res)=>{
         let {id} = req.params;
 
         const category = req.body.listing.category;
-       
-    
+
+        
         // Validate listing data
         if (!req.body.listing) {
             return res.status(400).send("Send valid data for listing");
@@ -141,52 +141,6 @@ module.exports.destroyListing = async (req,res)=>{
     req.flash("success", "Listing Deleted!");
     res.redirect("/");
 }
-
-// module.exports.searchListing =  async (req, res) => {
-//     const searchQ = req.query.query;
-//     const searchQuery = searchQ.trim();
-//     const selectedCategory = req.query.category || '';
-
-//       // Search the listings based on the search query
-//       const results = await Listing.find({
-//         $or: [
-//           { location: { $regex: searchQuery, $options: 'i' } }, // Case-insensitive search for location
-//           { country: { $regex: searchQuery, $options: 'i' } },   // Case-insensitive search for country
-//           { title: { $regex: searchQuery, $options: 'i' } }      // Case-insensitive search for title
-//         ]
-//       });
-  
-//       // Render the search results (assuming you have a search-results view)
-//       res.render("listings/search.ejs", { searchResults: results || [], selectedCategory, searchQuery });
-
-//   }
-
-
-// module.exports.searchListing = async (req, res) => {
-//     const searchQ = req.query.query || '';
-//     const selectedCategory = req.query.category || '';
-
-//     try {
-//         // Perform fuzzy search
-//         const results = await Listing.fuzzySearch(searchQ);
-//         console.log(results);
-
-//         // Optionally, filter by category if provided
-//         const filteredResults = selectedCategory
-//             ? results.filter(listing => listing.category === selectedCategory)
-//             : results;
-
-//         // Render the search results
-//         res.render("listings/search.ejs", {
-//             searchResults: filteredResults || [],
-//             selectedCategory,
-//             searchQuery: searchQ.trim(),
-//         });
-//     } catch (err) {
-//         console.error("Error during search:", err);
-//         res.status(500).send("An error occurred while searching.");
-//     }
-// };
 
 module.exports.searchListing = async (req, res) => {
     const searchQ = req.query.query || '';

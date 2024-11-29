@@ -95,11 +95,25 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/" , async (req, res)=>{
+
+
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+};
+
+app.get("/", async (req, res) => {
     const selectedCategory = req.query.category || 'explore';
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings, selectedCategory });
-     });
+    
+    // Shuffle the listings
+    const shuffledListings = shuffleArray(allListings);
+    res.render("listings/index.ejs", { allListings: shuffledListings, selectedCategory });
+});
+
 
 app.use("/legal" , legalRouter);
 app.use("/listings", listingRouter);
