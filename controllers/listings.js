@@ -144,7 +144,8 @@ module.exports.destroyListing = async (req,res)=>{
 
 module.exports.searchListing = async (req, res) => {
     const searchQ = req.query.query || '';
-    const searchQuery = searchQ.trim();
+    const searchQuery = searchQ.trim().replace(/\s+/g, ' ');
+    
     const selectedCategory = req.query.category || '';
 const secondSearch = req.query.secondSearch;
 
