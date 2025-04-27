@@ -1288,3 +1288,10 @@ form .search-btn:active {
             font-size: smaller !important;
         }
     }
+
+    @media (hover: none) {
+        #location-message {
+            display: block !important;
+        }
+    }
+    
